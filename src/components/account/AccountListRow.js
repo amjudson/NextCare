@@ -13,6 +13,7 @@ const handleOnClick = (accountId) => {
 };
 
 const AccountListRow = ({ account }) => {
+const AcademyListRow = ({ account }) => {
   return (
     <Link className="row row-detail" to={'/account/' + account.accountId}>
       <div className="col-sm-1 item-detail">{account.accountId}</div>
