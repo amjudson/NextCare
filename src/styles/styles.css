@@ -69,6 +69,7 @@ nav {
 
 .banner-container {
   border: 2px solid green;
+  border-radius: 9px;
 }
 
 .banner {
