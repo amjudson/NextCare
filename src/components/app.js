@@ -8,9 +8,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div className="row mb-3 banner-container">
-          <div className="col-lg-12 banner">The Banner For NextCARE</div>
-        </div>
         <div className="row">
           <Header loading={this.props.loading} />
           <div className="col-lg-10 app-body">

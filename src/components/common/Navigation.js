@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, IndexLink } from 'react-router';
 import LoadingDots from './LoadingDots';
 
-const Header = function ({loading}) {
+const Navigation = function ({loading}) {
  return (
   <div className="col-sm-2 vertical-menu">
     <IndexLink to="/" activeClassName="active">Home</IndexLink>
