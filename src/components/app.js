@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from './common/Header';
+import Navigation from './common/Navigation';
 import { connect } from 'react-redux';
 
 class App extends React.Component {
@@ -10,15 +11,17 @@ class App extends React.Component {
       <div>
         <div className="row">
           <Header loading={this.props.loading} />
-          <div className="col-lg-10 app-body">
+        </div>
+        <div className="row">
+          <Navigation loading={this.props.loading} />
+          <main className="main">
             {this.props.children}
-          </div>
+          </main>
         </div>
       </div>
     );
   }
 }
-
 App.propTypes = {
   children: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired

@@ -14,10 +14,12 @@ const handleOnClick = (accountId) => {
 
 const AcademyListRow = ({ account }) => {
   return (
-    <Link className="row row-detail" to={'/account/' + account.accountId}>
-      <div className="col-sm-1 item-detail">{account.accountId}</div>
-      <div className="col-md-4 item-detail">{account.owner.lname}, {account.owner.fname}</div>
-    </Link>
+          <Link className="list-group-item list-group-item-action list-group-item-primary flex-column align-items-start" to={'/account/' + account.accountId}>
+          <div className = "row">
+            <div className="col-md-6">{account.accountId}</div>
+            <div className="col-md-6">{account.owner.lname}, {account.owner.fname}</div>
+          </div>
+          </Link>
   );
 };
 

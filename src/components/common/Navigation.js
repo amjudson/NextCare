@@ -5,30 +5,44 @@ import LoadingDots from './LoadingDots';
 
 const Navigation = function ({loading}) {
  return (
-  <div className="col-sm-2 vertical-menu">
-    <IndexLink to="/" activeClassName="active">Home</IndexLink>
-    <Link to="/accounts" activeClassName="active">Accounts</Link>
-    <Link to="/about" activeClassName="active">About</Link>
-    <a href="#">Invoices</a>
-    <a href="#">Messages</a>
-    <a href="#">Room Feeds</a>
-    {loading && <LoadingDots interval={100} dots={20} />}
+  <div className="sidebar">
+    <nav className="sidebar-nav">
+      <ul className="nav">
+      {loading && <LoadingDots interval={100} dots={20} />}
+        <li className="nav-item">
+        <IndexLink to="/" className="nav-link">Home</IndexLink>
+        </li>
+        <li className="nav-item">
+          <Link to="/accounts" className="nav-link">Accounts</Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/about" className="nav-link">Invoices</Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/about" className="nav-link">Messages</Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/about" className="nav-link">Room Feeds</Link>
+        </li>
+      </ul>
+    </nav>
   </div>
+ 
   );
 };
 
-Header.propTypes = {
+Navigation.propTypes = {
   loading: PropTypes.bool.isRequired
 };
 
-export default Header;
+export default Navigation;
 
 /*
       <ul className="no-bullets">
-        <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
-        <li><Link to="/accounts" activeClassName="active">Accounts</Link></li>
-        <li><Link to="/about" activeClassName="active">About</Link></li>
+        <li><IndexLink to="/"className="active">Home</IndexLink></li>
+        <li><Link to="/accounts"className="active">Accounts</Link></li>
+        <li><Link to="/about"className="active">About</Link></li>
       </ul>
       {" | "}
-      <Link to="/courses" activeClassName="active">Courses</Link>
+      <Link to="/courses"className="active">Courses</Link>
 */

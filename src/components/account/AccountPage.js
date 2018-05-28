@@ -26,16 +26,27 @@ class AccountPage extends React.Component {
   render() {
     const {accounts} = this.props;
     return (
-      <div>
-        <h1>Accounts</h1>
-        <input
-          type="submit"
-          value="Add Account"
-          className="btn btn-secondary"
-          onClick={this.redirectToAddAccountPage}
-        />
-        <AccountList accounts={accounts} />
+      <div className="container-fluid">
+      <div className="row">
+        <div className = "pageHeaders">
+            <div className="col-md-4">
+                <h2>Accounts</h2>
+            </div>
+            <div className="col-md-8 text-right">
+                <input type="submit" value="Add Account" className="btn btn-secondary" onClick={this.redirectToAddAccountPage} />
+            </div>
+        </div>
+          <div className="tableHeader">
+              <div className="col-md-6">
+                  Customer ID
+              </div>
+              <div className="col-md-6">
+                  Customer Name
+              </div>
+          </div>
+          <AccountList accounts={accounts} />
       </div>
+  </div>
     );
   }
 }

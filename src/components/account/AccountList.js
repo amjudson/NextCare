@@ -5,16 +5,15 @@ import toastr from 'toastr';
 
 const AccountList = ({ accounts }) => {
   return (
-    <div className="container-fluid">
-      <div className="row row-title">
-          <div className="col-sm-1">ID</div>
-          <div className="col-md-4">Owner</div>
-      </div>
+    <div className="col-md-12">
+     <div className="list-group">  
         {accounts.map(account =>
           <AccountListRow key={account.accountId}
             account={account} />
         )}
+      </div>
     </div>
+
   );
 };
 
