@@ -12,7 +12,7 @@ const handleOnClick = (accountId) => {
   alert('I wish I could click this.', accountId);
 };
 
-const AcademyListRow = ({ account }) => {
+const AccountListRow = ({ account }) => {
   return (
           <Link className="list-group-item list-group-item-action list-group-item-primary flex-column align-items-start" to={'/account/' + account.accountId}>
           <div className = "row">
@@ -23,11 +23,11 @@ const AcademyListRow = ({ account }) => {
   );
 };
 
-AcademyListRow.propTypes = {
+AccountListRow.propTypes = {
   account: PropTypes.object.isRequired
 };
 
-export default AcademyListRow;
+export default AccountListRow;
 
 /*
       <td>

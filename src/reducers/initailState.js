@@ -1,12 +1,10 @@
 export default {
   students: [],
-  ranks: [],
   phones: [],
   accounts: [],
   states: [],
   addresses: [],
   addressTypes: [],
-  studentStatuses: [],
-  academyAddresses: [],
+  invoices: [],
   ajaxCallsInProgress: 0
 };
