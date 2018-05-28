@@ -97,15 +97,7 @@ const Header = function ({loading}) {
     <span className="navbar-toggler-icon"></span>
   </button>
 </header>
-  <div className="col-sm-2 vertical-menu">
-    <IndexLink to="/" activeClassName="active">Home</IndexLink>
-    <Link to="/accounts" activeClassName="active">Accounts</Link>
-    <Link to="/invoices" activeClassName="active">Invoices</Link>
-    <a href="#">Messages</a>
-    <a href="#">Room Feeds</a>
-    <Link to="/about" activeClassName="active">About</Link>
-    {loading && <LoadingDots interval={100} dots={20} />}
-  </div>
+
   );
 };
 
