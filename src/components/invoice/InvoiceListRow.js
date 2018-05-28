@@ -15,7 +15,7 @@ const InvoiceListRow = ({ invoice }) => {
   return (
     <Link className="row row-detail" to={'/invoice/' + invoice.invoiceId}>
       <div className="col-sm-1 item-detail">{invoice.invoiceId}</div>
-      <div className="col-md-4 item-detail">{invoice.owner.lname}, {invoice.owner.fname}</div>
+      <div className="col-md-4 item-detail">{invoice.title}</div>
     </Link>
   );
 };

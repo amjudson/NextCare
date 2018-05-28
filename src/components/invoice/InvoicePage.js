@@ -20,7 +20,7 @@ class InvoicePage extends React.Component {
   }
 
   redirectToAddInvoicePage() {
-    browserHistory.push('/Invoice');
+    browserHistory.push('/invoice');
   }
 
   render() {

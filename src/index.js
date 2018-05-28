@@ -8,7 +8,8 @@ import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 import { loadStudents } from './actions/studentActions';
 import { loadPhones } from './actions/phoneActions';
-import { loadAccounts } from './actions/accountActions';
+import {loadAccounts} from './actions/accountActions';
+import {loadInvoices} from './actions/invoiceActions';
 import { loadStates } from './actions/stateActions';
 import { loadAddresses } from './actions/addressActions';
 import { loadAddressTypes } from './actions/addressTypeActions';
@@ -20,9 +21,11 @@ const store = configureStore();
 store.dispatch(loadStudents());
 store.dispatch(loadPhones());
 store.dispatch(loadAccounts());
+store.dispatch(loadInvoices());
 store.dispatch(loadAddresses());
 store.dispatch(loadAddressTypes());
 store.dispatch(loadStates());
+
 
 /* jshint ignore:start */
 render(

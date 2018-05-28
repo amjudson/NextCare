@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 import {browserHistory} from 'react-router';
+import InvoiceItemList from './InvoiceItemList';
 
 const InvoiceForm = ({ invoice, onSave, onDelete, onChange, saving, deleting, errors }) => {
   const returnToPreviousPage = () => {
@@ -33,35 +34,27 @@ const InvoiceForm = ({ invoice, onSave, onDelete, onChange, saving, deleting, er
   const disableSelect = true;
   return (
     <div className="container">
-      <form>
         <h1>Manage Invoice</h1>
         <div className="row">
           <div className="col-lg-3">
             <TextInput
               disabled={disableText}
-              name="fname"
-              label="First Name"
-              value={invoice.owner.fname}
+              name="title"
+              label="Title"
+              value={invoice.title}
               onChange={onChange}
-              error={errors.name} />
-          </div>
-          <div className="col-lg-3">
-            <TextInput
-              disabled={disableText}
-              name="lname"
-              label="Last Name"
-              value={invoice.owner.lname}
-              onChange={onChange}
-              error={errors.name} />
+              error={errors.title} />
           </div>
         </div>
+            <InvoiceItemList invoice={invoice}/>
+      <div className="row mt-3">
         {saveButton}
         {deleteButton}
         <button className="btn btn-primary btn-lg mr-3"
           type="submit" onClick={returnToPreviousPage}>
           Back
         </button>
-      </form>
+      </div>
     </div>
   );
 };

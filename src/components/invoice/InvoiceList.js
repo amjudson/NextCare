@@ -8,7 +8,7 @@ const InvoiceList = ({ invoices }) => {
     <div className="container-fluid">
       <div className="row row-title">
           <div className="col-sm-1">ID</div>
-          <div className="col-md-4">Owner</div>
+          <div className="col-md-4">Title</div>
       </div>
         {invoices.map(invoice =>
           <InvoiceListRow key={invoice.invoiceId}

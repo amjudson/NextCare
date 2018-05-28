@@ -5,122 +5,39 @@ import delay from './delay';
 // All calls return promises.
 const invoices = [
   {
-    invoiceId: 1,
-    owner: {
-      lname: 'Smith',
-      fname: 'James'
-    },
-    address: {
-      addressLine1: '123 Raining Blvd',
-      addressLine2: '',
-      stateId: 1,
-      city: 'Remlap',
-      zip: '11111'
-    },
-    phones: [
-      {
-        number: '850-555-1212',
-        type: 'Cell',
-        isPrimary: true
-      },
-      {
-        number: '850-555-1212',
-        type: 'Cell',
-        isPrimary: true
-      }
-   ],
-    emails: [
-      {
-      address: 'joe.smith@email.com',
-      type: 'Home',
-      isPrimary: true
-      }
-    ],
-    students: [
-       {
-        fname: 'Jane',
-        lname: 'Smith',
-        age: 6,
-        sex: 'F'
-      },
-      {
-        fname: 'Mark',
-        lname: 'Smith',
-        age: 4,
-        sex: 'M'
-      }
+    invoiceId: 1357,
+    title: 'Judson Invoice 5/12/2016',
+    lineItems: [
+      {itemId: 1, item: 'Month of Care', quantity: 4, costPer: 12.88},
+      {itemId: 2, item: 'Snacks', quantity: 30, costPer: 1.50},
+      {itemId: 3, item: 'Fun Time', quantity: 1, costPer: 100.67}
     ]
   },
   {
-    invoiceId: 2,
-    owner: {
-      lname: 'Jones',
-      fname: 'Peter'
-    },
-    address: {
-      addressLine1: '999 Anyway St',
-      addressLine2: '',
-      stateId: 16,
-      city: 'Small Town',
-      zip: '22222'
-    },
-    phones: [
-      {
-        number: '850-555-1212',
-        type: 'Cell',
-        isPrimary: true
-      }
-    ],
-    emails: [
-      {
-        address: 'joe.smith@email.com',
-        type: 'Home',
-        isPrimary: true
-      }
-    ],
-    students: [
-      {
-        fname: 'Sam',
-        lname: 'Jones',
-        age: 4,
-        sex: 'M'
-      }
+    invoiceId: 4567,
+    title: 'Bradshaw Invoice 4/12/2015',
+    lineItems: [
+      {itemId: 1, item: 'Month of Care', quantity: 6, costPer: 12.88},
+      {itemId: 2, item: 'Clothes', quantity: 10, costPer: 11.50},
+      {itemId: 3, item: 'Transportation', quantity: 2, costPer: 32.95}
     ]
   },
   {
-    invoiceId: 3,
-    owner: {
-      lname: 'Collins',
-      fname: 'Jane'
-    },
-    address: {
-      addressLine1: '88 Pair Ave N',
-      addressLine2: '',
-      stateId: 1,
-      city: 'St Paul',
-      zip: '33333'
-    },
-    phones: [
-      {
-        number: '850-555-1212',
-        type: 'Cell',
-        isPrimary: true
-      }
-    ],
-    emails: [
-      {
-        address: 'joe.smith@email.com',
-        type: 'Work',
-        isPrimary: true
-      }
-    ],
-    students: [
-     {
-        fname: 'Pam',
-        lname: 'Collins',
-        age: 5,
-        sex: 'F'
-      }
+    invoiceId: 2345,
+    title: 'Baker Invoice 3/15/2016',
+    lineItems: [
+      {itemId: 1, item: 'Month of Care', quantity: 2, costPer: 12.88},
+      {itemId: 2, item: 'Wait time', quantity: 10, costPer: 20.55},
+      {itemId: 3, item: 'Transportation', quantity: 1, costPer: 32.95}
+    ]
+  },
+  {
+    invoiceId: 1234,
+    title: 'Jones Invoice 7/31/2017',
+    lineItems: [
+      {itemId: 1, item: 'Month of Care', quantity: 2, costPer: 12.88},
+      {itemId: 2, item: 'Snacks', quantity: 25, costPer: 1.50},
+      {itemId: 3, item: 'Wait time', quantity: 4, costPer: 20.55}
     ]
   }
 ];
@@ -144,15 +61,6 @@ class invoiceApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         // Simulate server-side validation
-        const mininvoiceNameLength = 3;
-        if (invoice.line1.length < mininvoiceNameLength) {
-          reject(`Ainvoice Line 1 must be at least ${mininvoiceNameLength} characters.`);
-        }
-
-        if (invoice.stateId <= 0) {
-          reject('No State has been selected.');
-        }
-        //debugger;
         if (invoice.invoiceId) {
           const existinginvoiceIndex = invoices.findIndex(a => a.invoiceId === invoice.invoiceId);
           invoices.splice(existinginvoiceIndex, 1, invoice);

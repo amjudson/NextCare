@@ -2,60 +2,50 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as accountActions from '../../actions/accountActions';
-import AccountForm from '../account/AccountForm';
+import * as invoiceActions from '../../actions/invoiceActions';
+import InvoiceForm from '../invoice/InvoiceForm';
 import toastr from 'toastr';
 
-class ManageAccountPage extends React.Component {
+class ManageInvoicePage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
     this.state = {
-      account: Object.assign({}, this.props.account),
+      invoice: Object.assign({}, this.props.invoice),
       errors: {},
       saving: false,
       deleting: false
     };
 
     //this.getPhoneNumber = this.getPhoneNumber.bind(this);
-    this.updateAccountState = this.updateAccountState.bind(this);
-    this.saveAccount = this.saveAccount.bind(this);
-    this.deleteAccountInner = this.deleteAccountInner.bind(this);
+    this.updateInvoiceState = this.updateInvoiceState.bind(this);
+    this.saveInvoice = this.saveInvoice.bind(this);
+    this.deleteInvoiceInner = this.deleteInvoiceInner.bind(this);
   }
 
-  updateAccountState(event) {
+  updateInvoiceState(event) {
     const field = event.target.name;
-    let account = this.state.account;
-    account[field] = event.target.value;
-    return this.setState({ account: account });
+    let invoice = this.state.invoice;
+    invoice[field] = event.target.value;
+    return this.setState({ invoice: invoice });
   }
 
-  accountFormIsValid() {
+  invoiceFormIsValid() {
     let formIsValid = true;
     let errors = {};
-
-    if (this.state.account.name.length < 5) {
-      errors.name = 'Name must be at least 5 characters.';
-      formIsValid = false;
-    }
-
-    if (this.state.account.description.length < 5) {
-      errors.description = 'Description must be at least 5 characters.';
-      formIsValid = false;
-    }
 
     this.setState({ errors: errors });
     return formIsValid;
   }
 
-  saveAccount(event) {
+  saveInvoice(event) {
     event.preventDefault();
-    if (!this.accountFormIsValid()) {
+    if (!this.invoiceFormIsValid()) {
       return;
     }
 
     this.setState({ saving: true });
-    this.props.actions.saveAccount(this.state.account)
+    this.props.actions.saveInvoice(this.state.invoice)
       .then(() => this.redirect())
       .catch(error => {
         this.setState({ saving: false });
@@ -65,14 +55,14 @@ class ManageAccountPage extends React.Component {
 
   redirect() {
     this.setState({ saving: false });
-    toastr.success('Account saved!');
-    this.context.router.push('/accounts');
+    toastr.success('Invoice saved!');
+    this.context.router.push('/invoices');
   }
 
-  deleteAccountInner(event) {
+  deleteInvoiceInner(event) {
     event.preventDefault();
     this.setState({ deleting: true });
-    this.props.actions.deleteAccount(this.state.account)
+    this.props.actions.deleteInvoice(this.state.invoice)
       .then(() => { this.redirectDelete(); })
       .catch(error => {
         this.setState({ deleting: false });
@@ -82,19 +72,18 @@ class ManageAccountPage extends React.Component {
 
   redirectDelete() {
     this.setState({ deleting: false });
-    toastr.success('Account Deleted!');
-    this.context.router.push('/accounts');
+    toastr.success('Invoice Deleted!');
+    this.context.router.push('/invoices');
   }
 
   render() {
     return (
-      <AccountForm
-        onChange={this.updateAccountState}
-        onSave={this.saveAccount}
-        onDelete={this.deleteAccountInner}
-        account={this.state.account}
+      <InvoiceForm
+        onChange={this.updateInvoiceState}
+        onSave={this.saveInvoice}
+        onDelete={this.deleteInvoiceInner}
+        invoice={this.state.invoice}
         errors={this.state.errors}
-        allStates={this.props.states}
         saving={this.state.saving}
         deleting={this.deleting}
       />
@@ -102,62 +91,46 @@ class ManageAccountPage extends React.Component {
   }
 }
 
-ManageAccountPage.propTypes = {
-  account: PropTypes.object.isRequired,
-  states: PropTypes.array.isRequired,
+ManageInvoicePage.propTypes = {
+  invoice: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 };
 
 // Pull in the React Router context so router is available on this.context.router.
-ManageAccountPage.contextTypes = {
+ManageInvoicePage.contextTypes = {
   router: PropTypes.object
 };
 
-function getAccountById(accounts, id) {
-  const account = accounts.filter(account => account.accountId == id);
-  if (account) return account[0]; // since filter returns an array, have to grab the first.
+function getInvoiceById(invoices, id) {
+  const invoice = invoices.filter(invoice => invoice.invoiceId == id);
+  if (invoice) return invoice[0]; // since filter returns an array, have to grab the first.
   return null;
 }
 
 function mapStateToProps(state, ownProps) {
-  const accountId = ownProps.params.id; // from the path '/account/:id'
+  const invoiceId = ownProps.params.id; // from the path '/invoice/:id'
 
-  let account = {
-    accountId: 0,
-    owner: {lname: '', fname: ''},
-    address: {addressLine1: '', addressLine2: '', city: '', stateId: 0, zip: '', type: 'Home'},
-    phones: [
-      { number: '', type: 'Cell', isPrimary: true }
-    ],
-    emails: [
-      { address: '', type: 'Home', isPrimary: true }
-    ],
-    students: [
-      { fname: '', lname: '', age: 0, sex: 'U' }
+  let invoice = {
+    invoiceId: 0,
+    title: '',
+    lineItems: [
+      {item: '', quantity: 0, costPer: 0.00}
     ]
   };
 
-  if (accountId && state.accounts.length > 0) {
-    account = getAccountById(state.accounts, accountId);
+  if (invoiceId && state.invoices.length > 0) {
+    invoice = getInvoiceById(state.invoices, invoiceId);
   }
 
-  const statesFormattedForDropdown = state.states.map(state => {
-    return {
-      value: state.stateId.toString(),
-      text: state.name
-    };
-  });
-
   return {
-    account: account,
-    states: statesFormattedForDropdown
+    invoice: invoice
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(accountActions, dispatch)
+    actions: bindActionCreators(invoiceActions, dispatch)
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManageAccountPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ManageInvoicePage);
