@@ -12,11 +12,13 @@ const handleOnClick = (invoiceId) => {
 };
 
 const InvoiceListRow = ({ invoice }) => {
-  return (
-    <Link className="row row-detail" to={'/invoice/' + invoice.invoiceId}>
-      <div className="col-sm-1 item-detail">{invoice.invoiceId}</div>
-      <div className="col-md-4 item-detail">{invoice.title}</div>
-    </Link>
+  return (  
+      <Link className="list-group-item list-group-item-action list-group-item-primary flex-column align-items-start" to={'/invoice/' + invoice.invoiceId}>
+        <div className = "row">
+          <div className="col-md-6">{invoice.invoiceId}</div>
+          <div className="col-md-6">{invoice.title}</div>
+        </div>
+      </Link>
   );
 };
 

@@ -21,6 +21,7 @@
   "license": "ISC",
   "dependencies": {
     "@coreui/coreui": "^2.0.1",
+    "@fortawesome/fontawesome": "^1.1.8",
     "babel-polyfill": "6.8.0",
     "bootstrap": "^4.1.1",
     "coreui": "^0.4.2-alpha2",

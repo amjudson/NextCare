@@ -26,15 +26,31 @@ class InvoicePage extends React.Component {
   render() {
     const {invoices} = this.props;
     return (
-      <div>
-        <h1>Invoices</h1>
-        <input
-          type="submit"
-          value="Add Invoice"
-          className="btn btn-secondary"
-          onClick={this.redirectToAddInvoicePage}
-        />
-        <InvoiceList invoices={invoices} />
+      <div className="container-fluid">
+        <div className="row">
+          <div className = "pageHeaders">
+              <div className="col-md-4">
+                  <h2>Invoices</h2>
+              </div>
+              <div className="col-md-8 text-right">
+              <input
+                type="submit"
+                value="Add Invoice"
+                className="btn btn-secondary"
+                onClick={this.redirectToAddInvoicePage}
+              />
+              </div>
+          </div>
+            <div className="tableHeader">
+                <div className="col-md-6">
+                    Customer ID
+                </div>
+                <div className="col-md-6">
+                    Customer Name
+                </div>
+            </div>
+            <InvoiceList invoices={invoices} />
+        </div>
       </div>
     );
   }
