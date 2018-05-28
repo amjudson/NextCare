@@ -1,5 +1,5 @@
 {
-  "name": "martial-arts-starter",
+  "name": "next-care",
   "version": "1.0.0",
   "description": "Martial Art Studio Starter by Mark Judson",
   "scripts": {
@@ -21,12 +21,8 @@
   "license": "ISC",
   "dependencies": {
     "@coreui/coreui": "^2.0.1",
-    "@fortawesome/fontawesome": "^1.1.8",
     "babel-polyfill": "6.8.0",
     "bootstrap": "^4.1.1",
-    "coreui": "^0.4.2-alpha2",
-    "coreui.io": "^1.0.0-alpha.6",
-    "coreui.io-react": "^1.0.0-alpha.6",
     "es6-promise": "^4.2.2",
     "i": "^0.3.6",
     "isomorphic-fetch": "^2.2.1",

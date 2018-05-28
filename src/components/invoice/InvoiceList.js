@@ -7,7 +7,7 @@ const InvoiceList = ({ invoices }) => {
   return (
 
     <div className="col-md-12">
-      <div className="list-group">  
+      <div className="list-group">
         {invoices.map(invoice =>
           <InvoiceListRow key={invoice.invoiceId}
             invoice={invoice} />
