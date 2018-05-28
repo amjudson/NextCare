@@ -16,7 +16,7 @@ const Navigation = function ({loading}) {
           <Link to="/accounts" className="nav-link">Accounts</Link>
         </li>
         <li className="nav-item">
-          <Link to="/about" className="nav-link">Invoices</Link>
+          <Link to="/invoices" className="nav-link">Invoices</Link>
         </li>
         <li className="nav-item">
           <Link to="/about" className="nav-link">Messages</Link>
