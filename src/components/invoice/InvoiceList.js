@@ -5,7 +5,6 @@ import toastr from 'toastr';
 
 const InvoiceList = ({ invoices }) => {
   return (
-
     <div className="col-md-12">
       <div className="list-group">
         {invoices.map(invoice =>

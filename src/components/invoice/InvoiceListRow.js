@@ -3,20 +3,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import CommonButton from '../common/CommonButton';
 
-const clickIt = () => {
-  alert('I wish I could delete.');
-};
-
-const handleOnClick = (invoiceId) => {
-  alert('I wish I could click this.', invoiceId);
-};
-
 const InvoiceListRow = ({ invoice }) => {
-  return (  
-      <Link className="list-group-item list-group-item-action list-group-item-primary flex-column align-items-start" to={'/invoice/' + invoice.invoiceId}>
+  return (
+    <Link className="list-group-item list-group-item-action list-group-item-info flex-column align-items-start"
+      to={'/invoice/' + invoice.invoiceId}>
         <div className = "row">
-          <div className="col-md-6">{invoice.invoiceId}</div>
-          <div className="col-md-6">{invoice.title}</div>
+          <div className="col-sm-2">{invoice.invoiceId}</div>
+          <div className="col-md-10">{invoice.title}</div>
         </div>
       </Link>
   );
