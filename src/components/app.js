@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from './common/Header';
 import Navigation from './common/Navigation';
+import Aside from './common/Aside';
 import { connect } from 'react-redux';
 
 class App extends React.Component {
@@ -17,6 +18,7 @@ class App extends React.Component {
           <main className="main">
             {this.props.children}
           </main>
+          <Aside loading={this.props.loading} />
         </div>
       </div>
     );

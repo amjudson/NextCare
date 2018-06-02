@@ -14,7 +14,7 @@ const handleOnClick = (accountId) => {
 
 const AccountListRow = ({ account }) => {
   return (
-          <Link className="list-group-item list-group-item-action list-group-item-primary flex-column align-items-start" to={'/account/' + account.accountId}>
+          <Link className="list-group-item list-group-item-action flex-column align-items-start" to={'/account/' + account.accountId}>
           <div className = "row">
             <div className="col-md-6">{account.accountId}</div>
             <div className="col-md-6">{account.owner.lname}, {account.owner.fname}</div>

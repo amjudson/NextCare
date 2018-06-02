@@ -9,7 +9,7 @@ const Header = function ({loading}) {
   <button className="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
     <span className="navbar-toggler-icon"></span>
   </button>
-  <a className="navbar-brand" href="#">
+  <a className="navbar-brand" href="/">
     NextCare
   </a>
   <button className="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
@@ -29,23 +29,23 @@ const Header = function ({loading}) {
   <ul className="nav navbar-nav ml-auto">
     <li className="nav-item d-md-down-none">
       <a className="nav-link" href="#">
-        <i className="icon-bell"></i>
+        <i className="far fa-bell"></i>
         <span className="badge badge-pill badge-danger">5</span>
       </a>
     </li>
     <li className="nav-item d-md-down-none">
       <a className="nav-link" href="#">
-        <i className="icon-list"></i>
+      <i class="far fa-list-alt"></i>
       </a>
     </li>
     <li className="nav-item d-md-down-none">
       <a className="nav-link" href="#">
-        <i className="icon-location-pin"></i>
+      <i className="far fa-envelope-open"></i>
       </a>
     </li>
     <li className="nav-item dropdown">
       <a className="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-        <img className="img-avatar" src="img/avatars/6.jpg" alt="admin@bootstrapmaster.com"></img>
+        <img className="img-avatar" src="https://randomuser.me/api/portraits/men/93.jpg" alt="admin@bootstrapmaster.com"></img>
       </a>
       <div className="dropdown-menu dropdown-menu-right">
         <div className="dropdown-header text-center">
@@ -79,7 +79,7 @@ const Header = function ({loading}) {
           <span className="badge badge-secondary">42</span>
         </a>
         <a className="dropdown-item" href="#">
-          <i className="fa fa-file"></i> Projects
+          <i className="far fa-file"></i> Projects
           <span className="badge badge-primary">42</span>
         </a>
         <div className="divider"></div>
@@ -108,11 +108,11 @@ Header.propTypes = {
 export default Header;
 
 /*
-      <ul classNameName="no-bullets">
-        <li><IndexLink to="/" activeclassNameName="active">Home</IndexLink></li>
-        <li><Link to="/accounts" activeclassNameName="active">Accounts</Link></li>
-        <li><Link to="/about" activeclassNameName="active">About</Link></li>
+      <ul className="no-bullets">
+        <li><IndexLink to="/" activeclassName="active">Home</IndexLink></li>
+        <li><Link to="/accounts" activeclassName="active">Accounts</Link></li>
+        <li><Link to="/about" activeclassName="active">About</Link></li>
       </ul>
       {" | "}
-      <Link to="/courses" activeclassNameName="active">Courses</Link>
+      <Link to="/courses" activeclassName="active">Courses</Link>
 */

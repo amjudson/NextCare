@@ -13,7 +13,7 @@ const handleOnClick = (invoiceId) => {
 
 const InvoiceListRow = ({ invoice }) => {
   return (  
-      <Link className="list-group-item list-group-item-action list-group-item-primary flex-column align-items-start" to={'/invoice/' + invoice.invoiceId}>
+      <Link className="list-group-item list-group-item-action flex-column align-items-start" to={'/invoice/' + invoice.invoiceId}>
         <div className = "row">
           <div className="col-md-6">{invoice.invoiceId}</div>
           <div className="col-md-6">{invoice.title}</div>
