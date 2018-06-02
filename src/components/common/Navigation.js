@@ -7,10 +7,9 @@ const Navigation = function ({loading}) {
  return (
   <div className="sidebar">
     <nav className="sidebar-nav">
-      <ul className="nav">
-      {loading && <LoadingDots interval={100} dots={20} />}
+       <ul className="nav mt-8">
         <li className="nav-item">
-        <IndexLink to="/" className="nav-link">Home</IndexLink>
+          <IndexLink to="/" className="nav-link">Home</IndexLink>
         </li>
         <li className="nav-item">
           <Link to="/accounts" className="nav-link">Accounts</Link>
@@ -25,9 +24,10 @@ const Navigation = function ({loading}) {
           <Link to="/about" className="nav-link">Room Feeds</Link>
         </li>
       </ul>
+       {loading && <LoadingDots interval={100} dots={20} />}
     </nav>
   </div>
- 
+
   );
 };
 

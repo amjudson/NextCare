@@ -10,10 +10,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div className="row">
+        <div className="row mb-1">
           <Header loading={this.props.loading} />
         </div>
-        <div className="row">
+        <div className="row mt-5">
           <Navigation loading={this.props.loading} />
           <main className="main">
             {this.props.children}
