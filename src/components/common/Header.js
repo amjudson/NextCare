@@ -35,7 +35,7 @@ const Header = function ({loading}) {
     </li>
     <li className="nav-item d-md-down-none">
       <a className="nav-link" href="#">
-      <i class="far fa-list-alt"></i>
+      <i className="far fa-list-alt"></i>
       </a>
     </li>
     <li className="nav-item d-md-down-none">
