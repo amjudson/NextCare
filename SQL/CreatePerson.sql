@@ -5,6 +5,7 @@ GO
 IF OBJECT_ID('dbo.Person', 'U') IS NOT NULL
 BEGIN
   ALTER TABLE dbo.Person DROP CONSTRAINT FK_Person_PersonType
+  ALTER TABLE dbo.Person DROP CONSTRAINT FK_Person_Race
   DROP TABLE dbo.Person;
 END
 GO
@@ -42,5 +43,12 @@ REFERENCES dbo.PersonType (PersonTypeId)
 GO
 
 ALTER TABLE dbo.Person CHECK CONSTRAINT FK_Person_PersonType
+GO
+
+ALTER TABLE dbo.Person  WITH CHECK ADD  CONSTRAINT FK_Person_Race FOREIGN KEY(RaceId)
+REFERENCES dbo.Race (RaceId)
+GO
+
+ALTER TABLE dbo.Person CHECK CONSTRAINT FK_Person_Race
 GO
 
