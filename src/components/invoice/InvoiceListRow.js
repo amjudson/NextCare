@@ -1,18 +1,22 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import CommonButton from '../common/CommonButton';
 
-const InvoiceListRow = ({ invoice }) => {
-  return (  
+class InvoiceListRow extends Component {
+  render()
+   {
+    const invoice = this.props.invoice;
+    return (
       <Link className="list-group-item list-group-item-action flex-column align-items-start" to={'/invoice/' + invoice.invoiceId}>
-        <div className = "row">
+        <div className="row">
           <div className="col-sm-2">{invoice.invoiceId}</div>
           <div className="col-md-10">{invoice.title}</div>
         </div>
       </Link>
-  );
-};
+    );
+  }
+}
 
 InvoiceListRow.propTypes = {
   invoice: PropTypes.object.isRequired
