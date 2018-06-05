@@ -3,7 +3,10 @@ GO
 
 /****** Object:  Table dbo.Address    Script Date: 5/29/2018 6:52:45 PM ******/
 IF OBJECT_ID('dbo.Address', 'U') IS NOT NULL
+BEGIN
+  ALTER TABLE dbo.Address DROP CONSTRAINT FK_Address_AddressType
   DROP TABLE dbo.Address;
+END
 GO
 
 /****** Object:  Table dbo.Address    Script Date: 5/29/2018 6:52:45 PM ******/
@@ -29,3 +32,9 @@ CREATE TABLE dbo.Address(
 ) ON [PRIMARY]
 GO
 
+ALTER TABLE dbo.Address  WITH CHECK ADD  CONSTRAINT FK_Address_AddressType FOREIGN KEY(AddressTypeId)
+REFERENCES dbo.AddressType (AddressTypeId)
+GO
+
+ALTER TABLE dbo.Address CHECK CONSTRAINT FK_Address_AddressType
+GO

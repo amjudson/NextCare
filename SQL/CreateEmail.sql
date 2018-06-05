@@ -3,7 +3,10 @@ GO
 
 /****** Object:  Table dbo.Email    Script Date: 5/29/2018 6:54:08 PM ******/
 IF OBJECT_ID('dbo.Email', 'U') IS NOT NULL
+BEGIN
+  ALTER TABLE dbo.Email DROP CONSTRAINT FK_Email_EmailType
 	DROP TABLE dbo.Email
+END
 GO
 
 /****** Object:  Table dbo.Email    Script Date: 5/29/2018 6:54:08 PM ******/
@@ -15,7 +18,7 @@ GO
 
 CREATE TABLE dbo.Email(
 	EmailId int IDENTITY(1,1) NOT NULL,
-	EmailAddress nvarchar(1024) NOT NULL,
+	EmailEmail nvarchar(1024) NOT NULL,
 	EmailTypeId int NOT NULL,
 	isPrimary bit NOT NULL,
  CONSTRAINT PK_Email PRIMARY KEY CLUSTERED
@@ -25,19 +28,9 @@ CREATE TABLE dbo.Email(
 ) ON [PRIMARY]
 GO
 
-/*
-
-ALTER TABLE [dbo].[AcademyAddress]  WITH CHECK ADD  CONSTRAINT [FK_dbo.AcademyAddress_dbo.Academy_AcademyId] FOREIGN KEY([AcademyId])
-REFERENCES [dbo].[Academy] ([AcademyId])
+ALTER TABLE dbo.Email  WITH CHECK ADD  CONSTRAINT FK_Email_EmailType FOREIGN KEY(EmailTypeId)
+REFERENCES dbo.EmailType (EmailTypeId)
 GO
 
-ALTER TABLE [dbo].[AcademyAddress] CHECK CONSTRAINT [FK_dbo.AcademyAddress_dbo.Academy_AcademyId]
+ALTER TABLE dbo.Email CHECK CONSTRAINT FK_Email_EmailType
 GO
-
-ALTER TABLE [dbo].[AcademyAddress]  WITH CHECK ADD  CONSTRAINT [FK_dbo.AcademyAddress_dbo.Address_AddressId] FOREIGN KEY([AddressId])
-REFERENCES [dbo].[Address] ([AddressId])
-GO
-
-ALTER TABLE [dbo].[AcademyAddress] CHECK CONSTRAINT [FK_dbo.AcademyAddress_dbo.Address_AddressId]
-GO
-*/

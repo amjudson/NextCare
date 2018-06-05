@@ -3,7 +3,9 @@ GO
 
 /****** Object:  Table dbo.PersonEmail    Script Date: 6/3/2018 4:55:48 PM ******/
 IF OBJECT_ID('dbo.PersonEmail', 'U') IS NOT NULL
- DROP TABLE dbo.PersonEmail
+  -- ALTER TABLE dbo.PersonEmail DROP CONSTRAINT FK_PersonEmail_Email
+  -- ALTER TABLE dbo.PersonEmail DROP CONSTRAINT FK_PersonEmail_Student
+  DROP TABLE dbo.PersonEmail
 GO
 
 /****** Object:  Table dbo.PersonEmail    Script Date: 6/3/2018 4:55:48 PM ******/
@@ -24,5 +26,19 @@ CREATE TABLE dbo.PersonEmail
 	PersonEmailId ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+
+ALTER TABLE dbo.PersonEmail  WITH CHECK ADD  CONSTRAINT FK_PersonEmail_Person FOREIGN KEY(PersonId)
+REFERENCES dbo.Person (PersonId)
+GO
+
+ALTER TABLE dbo.PersonEmail CHECK CONSTRAINT FK_PersonEmail_Person
+GO
+
+ALTER TABLE dbo.PersonEmail  WITH CHECK ADD  CONSTRAINT FK_PersonEmail_Email FOREIGN KEY(EmailId)
+REFERENCES dbo.Email (EmailId)
+GO
+
+ALTER TABLE dbo.PersonEmail CHECK CONSTRAINT FK_PersonEmail_Email
 GO
 

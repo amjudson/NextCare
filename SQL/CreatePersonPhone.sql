@@ -2,8 +2,10 @@ USE NextCARE
 GO
 
 /****** Object:  Table dbo.PersonPhone    Script Date: 6/3/2018 4:55:48 PM ******/
- IF OBJECT_ID('dbo.PersonPhone', 'U') IS NOT NULL
- DROP TABLE dbo.PersonPhone
+IF OBJECT_ID('dbo.PersonPhone', 'U') IS NOT NULL
+  -- ALTER TABLE dbo.PersonPhone DROP CONSTRAINT FK_PersonPhone_Phone
+  -- ALTER TABLE dbo.PersonPhone DROP CONSTRAINT FK_PersonPhone_Student
+  DROP TABLE dbo.PersonPhone
 GO
 
 /****** Object:  Table dbo.PersonPhone    Script Date: 6/3/2018 4:55:48 PM ******/
@@ -23,5 +25,19 @@ CREATE TABLE dbo.PersonPhone(
 	PersonPhoneId ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+
+ALTER TABLE dbo.PersonPhone  WITH CHECK ADD  CONSTRAINT FK_PersonPhone_Person FOREIGN KEY(PersonId)
+REFERENCES dbo.Person (PersonId)
+GO
+
+ALTER TABLE dbo.PersonPhone CHECK CONSTRAINT FK_PersonPhone_Person
+GO
+
+ALTER TABLE dbo.PersonPhone  WITH CHECK ADD  CONSTRAINT FK_PersonPhone_Phone FOREIGN KEY(PhoneId)
+REFERENCES dbo.Phone (PhoneId)
+GO
+
+ALTER TABLE dbo.PersonPhone CHECK CONSTRAINT FK_PersonPhone_Phone
 GO
 

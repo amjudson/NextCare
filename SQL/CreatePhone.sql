@@ -3,7 +3,10 @@ GO
 
 /****** Object:  Table dbo.Phone    Script Date: 5/29/2018 6:54:52 PM ******/
 IF OBJECT_ID('dbo.Phone', 'U') IS NOT NULL
+BEGIN
+  ALTER TABLE dbo.Phone DROP CONSTRAINT FK_Phone_PhoneType
 	DROP TABLE dbo.Phone
+END
 GO
 
 /****** Object:  Table dbo.Phone    Script Date: 5/29/2018 6:54:52 PM ******/
@@ -26,3 +29,9 @@ CREATE TABLE dbo.Phone(
 ) ON [PRIMARY]
 GO
 
+ALTER TABLE dbo.Phone  WITH CHECK ADD  CONSTRAINT FK_Phone_PhoneType FOREIGN KEY(PhoneTypeId)
+REFERENCES dbo.PhoneType (PhoneTypeId)
+GO
+
+ALTER TABLE dbo.Phone CHECK CONSTRAINT FK_Phone_PhoneType
+GO

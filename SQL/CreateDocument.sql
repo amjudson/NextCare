@@ -3,7 +3,10 @@ GO
 
 /****** Object:  Table dbo.Document    Script Date: 5/29/2018 6:53:54 PM ******/
 IF OBJECT_ID('dbo.Document', 'U') IS NOT NULL
-	DROP TABLE dbo.Document
+BEGIN
+  ALTER TABLE dbo.Document DROP CONSTRAINT FK_Document_DocumentType
+  DROP TABLE dbo.Document;
+END
 GO
 
 /****** Object:  Table dbo.Document    Script Date: 5/29/2018 6:53:54 PM ******/
@@ -25,5 +28,12 @@ CREATE TABLE dbo.Document(
 	DocumentId ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+
+ALTER TABLE dbo.Document  WITH CHECK ADD  CONSTRAINT FK_Document_DocumentType FOREIGN KEY(DocumentTypeId)
+REFERENCES dbo.DocumentType (DocumentTypeId)
+GO
+
+ALTER TABLE dbo.Document CHECK CONSTRAINT FK_Document_DocumentType
 GO
 

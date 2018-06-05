@@ -3,7 +3,10 @@ GO
 
 /****** Object:  Table dbo.Person    Script Date: 5/29/2018 6:54:36 PM ******/
 IF OBJECT_ID('dbo.Person', 'U') IS NOT NULL
-	DROP TABLE dbo.Person
+BEGIN
+  ALTER TABLE dbo.Person DROP CONSTRAINT FK_Person_PersonType
+  DROP TABLE dbo.Person;
+END
 GO
 
 /****** Object:  Table dbo.Person    Script Date: 5/29/2018 6:54:36 PM ******/
@@ -32,5 +35,12 @@ CREATE TABLE dbo.Person(
 	PersonId ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+
+ALTER TABLE dbo.Person  WITH CHECK ADD  CONSTRAINT FK_Person_PersonType FOREIGN KEY(PersonTypeId)
+REFERENCES dbo.PersonType (PersonTypeId)
+GO
+
+ALTER TABLE dbo.Person CHECK CONSTRAINT FK_Person_PersonType
 GO
 
