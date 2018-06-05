@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as studentActions from '../../actions/studentActions';
-import * as rankActions from '../../actions/rankActions';
 import StudentList from './StudentList';
 import { browserHistory } from 'react-router';
 
@@ -19,10 +18,7 @@ class StudentsPage extends React.Component {
   }
 
   render() {
-    const { students } = this.props;
-    const { ranks } = this.props;
-    const { phones } = this.props;
-    const { studentStatuses } = this.props;
+    const { students, phones, studentStatuses } = this.props;
     return (
       <div>
         <h1>Students</h1>
@@ -32,7 +28,7 @@ class StudentsPage extends React.Component {
           className="btn btn-secondary"
           onClick={this.redirectToAddStudentPage}
         />
-        <StudentList students={students} ranks={ranks} phones={phones} studentStatuses={studentStatuses} />
+        <StudentList students={students} phones={phones} studentStatuses={studentStatuses} />
       </div>
     );
   }
@@ -57,8 +53,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(studentActions, dispatch),
-    rankActions: bindActionCreators(rankActions, dispatch)
+    actions: bindActionCreators(studentActions, dispatch)
   };
 }
 

@@ -1,17 +1,20 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-const CommonButton = ({ name, onClick, content }) => {
-  return (
-    <div>
-      <button className="btn btn-primary"
-        name={name}
-        onClick={onClick}>
-        {content}
-      </button>
-    </div>
-  );
-};
+class CommonButton extends PureComponent {
+  render() {
+    const {name, onClick, content} = this.props;
+    return (
+      <div>
+        <button className="btn btn-primary"
+          name={name}
+          onClick={onClick}>
+          {content}
+        </button>
+      </div>
+    );
+  }
+}
 
 CommonButton.propTypes = {
   name: PropTypes.string.isRequired,

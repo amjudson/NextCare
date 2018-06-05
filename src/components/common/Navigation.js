@@ -1,35 +1,37 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import { Link, IndexLink } from 'react-router';
 import LoadingDots from './LoadingDots';
 
-const Navigation = function ({loading}) {
- return (
-  <div className="sidebar">
-    <nav className="sidebar-nav">
-       <ul className="nav mt-8">
-        <li className="nav-item">
-          <IndexLink to="/" className="nav-link">Home</IndexLink>
-        </li>
-        <li className="nav-item">
-          <Link to="/accounts" className="nav-link">Accounts</Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/invoices" className="nav-link">Invoices</Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/about" className="nav-link">Messages</Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/about" className="nav-link">Room Feeds</Link>
-        </li>
-      </ul>
-       {loading && <LoadingDots interval={100} dots={20} />}
-    </nav>
-  </div>
-
-  );
-};
+class Navigation extends PureComponent {
+  render() {
+    const loading = this.props.loading;
+    return (
+      <div className="sidebar">
+        <nav className="sidebar-nav">
+          <ul className="nav mt-8">
+            <li className="nav-item">
+              <IndexLink to="/" className="nav-link">Home</IndexLink>
+            </li>
+            <li className="nav-item">
+              <Link to="/accounts" className="nav-link">Accounts</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/invoices" className="nav-link">Invoices</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/about" className="nav-link">Messages</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/about" className="nav-link">Room Feeds</Link>
+            </li>
+          </ul>
+          {loading && <LoadingDots interval={100} dots={20} />}
+        </nav>
+      </div>
+    );
+  }
+}
 
 Navigation.propTypes = {
   loading: PropTypes.bool.isRequired

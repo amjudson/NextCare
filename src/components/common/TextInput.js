@@ -1,34 +1,37 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-const TextInput = ({ name, label, addClass, onChange, placeholder, value, error, disabled }) => {
-  let wrapperClass = 'form-group';
-  let inputClass = 'form-control';
-  if (addClass) {
-    inputClass += " " + `${addClass}`;
-  }
+class TextInput extends PureComponent {
+  render() {
+    const {name, label, addClass, onChange, placeholder, value, error, disabled} = this.props;
+    let wrapperClass = 'form-group';
+    let inputClass = 'form-control';
+    if (addClass) {
+      inputClass += " " + `${addClass}`;
+    }
 
-  if (error && error.length > 0) {
-    wrapperClass += " " + 'has-error';
-  }
+    if (error && error.length > 0) {
+      wrapperClass += " " + 'has-error';
+    }
 
-  return (
-    <div className={wrapperClass}>
-      <label htmlFor={name}>{label}</label>
-      <div className="field">
-        <input
-          disabled={disabled}
-          type="text"
-          name={name}
-          className={inputClass}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange} />
-        {error && <div className="alert alert-danger">{error}</div>}
+    return (
+      <div className={wrapperClass}>
+        <label htmlFor={name}>{label}</label>
+        <div className="field">
+          <input
+            disabled={disabled}
+            type="text"
+            name={name}
+            className={inputClass}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange} />
+          {error && <div className="alert alert-danger">{error}</div>}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 TextInput.propTypes = {
   name: PropTypes.string.isRequired,
