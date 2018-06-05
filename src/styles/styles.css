@@ -31,5 +31,31 @@ div{
     display:flex;
     width:100%;
     margin-bottom:10px;
-    
+
+}
+
+.row-detail {
+  border-style: solid;
+  border-color: black;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  border-top-width: 0px;
+  border-bottom-width: 1px;
+  /* background-color: #CCC; */
+}
+
+.item-detail {
+  color: black;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: large;
+}
+
+.number-detail {
+  text-align: right;
+}
+
+.total-line {
+  font-weight: bold;
+  background-color: darkseagreen;
 }

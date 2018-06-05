@@ -33,7 +33,7 @@ class Aside extends PureComponent {
                   <img className="img-avatar" src="img/avatars/7.jpg" alt="admin@bootstrapmaster.com"></img>
                 </div>
                 <div>Meeting with
-                <strong>Lucas</strong>
+                  <strong>Lucas</strong>
                 </div>
                 <small className="text-muted mr-3">
                   <i className="icon-calendar"></i>  1 - 3pm</small>

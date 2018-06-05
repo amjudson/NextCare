@@ -24,6 +24,7 @@ class App extends React.Component {
     );
   }
 }
+
 App.propTypes = {
   children: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired
