@@ -18,7 +18,7 @@ GO
 
 CREATE TABLE dbo.Email(
 	EmailId int IDENTITY(1,1) NOT NULL,
-	EmailEmail nvarchar(1024) NOT NULL,
+	EmailAddress nvarchar(1024) NOT NULL,
 	EmailTypeId int NOT NULL,
 	isPrimary bit NOT NULL,
  CONSTRAINT PK_Email PRIMARY KEY CLUSTERED
