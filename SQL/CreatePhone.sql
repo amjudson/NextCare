@@ -18,8 +18,8 @@ GO
 
 CREATE TABLE dbo.Phone(
 	PhoneId int IDENTITY(1,1) NOT NULL,
-	Number nvarchar(20) NOT NULL,
-	Extention nvarchar(10) NULL,
+	PhoneNumber nvarchar(20) NOT NULL,
+	Extension nvarchar(10) NULL,
 	PhoneTypeId int NOT NULL,
 	IsPrimary bit NOT NULL,
  CONSTRAINT PK_Phone PRIMARY KEY CLUSTERED

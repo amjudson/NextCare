@@ -3,10 +3,12 @@ GO
 
 /****** Object:  Table dbo.Insurance    Script Date: 6/1/2018 8:39:27 AM ******/
 IF OBJECT_ID('dbo.Insurance', 'U') IS NOT NULL
+BEGIN
   ALTER TABLE dbo.Insurance DROP CONSTRAINT FK_Insurance_Address
   ALTER TABLE dbo.Insurance DROP CONSTRAINT FK_Insurance_Phone
   ALTER TABLE dbo.Insurance DROP CONSTRAINT FK_Insurance_Email
 	DROP TABLE dbo.Insurance
+END
 GO
 
 /****** Object:  Table dbo.Insurance    Script Date: 6/1/2018 8:39:27 AM ******/

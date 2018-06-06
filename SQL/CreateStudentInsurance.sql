@@ -3,9 +3,11 @@ GO
 
 /****** Object:  Table dbo.StudentInsurance    Script Date: 6/3/2018 2:35:06 PM ******/
 IF OBJECT_ID('dbo.StudentInsurance', 'U') IS NOT NULL
+BEGIN
   ALTER TABLE dbo.StudentInsurance DROP CONSTRAINT FK_StudentInsurance_Insurance
   ALTER TABLE dbo.StudentInsurance DROP CONSTRAINT FK_StudentInsurance_Student
 	DROP TABLE dbo.StudentInsurance
+END
 GO
 
 /****** Object:  Table dbo.StudentInsurance    Script Date: 6/3/2018 2:35:06 PM ******/

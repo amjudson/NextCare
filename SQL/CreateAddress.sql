@@ -19,9 +19,9 @@ GO
 CREATE TABLE dbo.Address(
 	AddressId int IDENTITY(1,1) NOT NULL,
 	AddressLine1 nvarchar(255) NOT NULL,
-	AddressLIne2 nvarchar(255) NULL,
+	AddressLine2 nvarchar(255) NULL,
 	City nvarchar(50) NOT NULL,
-	StateId int NOT NULL,
+	StatesId int NOT NULL,
 	Zip nvarchar(20) NOT NULL,
 	AddressTypeId int NOT NULL,
 	IsPrimary bit NOT NULL,

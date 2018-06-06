@@ -3,9 +3,11 @@ GO
 
 /****** Object:  Table dbo.StudentPhone    Script Date: 6/3/2018 2:35:06 PM ******/
 IF OBJECT_ID('dbo.StudentPhone', 'U') IS NOT NULL
-  -- ALTER TABLE dbo.StudentPhone DROP CONSTRAINT FK_StudentPhone_Phone
-  -- ALTER TABLE dbo.StudentPhone DROP CONSTRAINT FK_StudentPhone_Student
+BEGIN
+  ALTER TABLE dbo.StudentPhone DROP CONSTRAINT FK_StudentPhone_Phone
+  ALTER TABLE dbo.StudentPhone DROP CONSTRAINT FK_StudentPhone_Student
 	DROP TABLE dbo.StudentPhone
+END
 GO
 
 /****** Object:  Table dbo.StudentPhone    Script Date: 6/3/2018 2:35:06 PM ******/

@@ -3,9 +3,11 @@ GO
 
 /****** Object:  Table dbo.PersonAddress    Script Date: 6/3/2018 4:55:48 PM ******/
 IF OBJECT_ID('dbo.PersonAddress', 'U') IS NOT NULL
+BEGIN
   ALTER TABLE dbo.PersonAddress DROP CONSTRAINT FK_PersonAddress_Address
-  ALTER TABLE dbo.PersonAddress DROP CONSTRAINT FK_PersonAddress_Student
- DROP TABLE dbo.PersonAddress
+  ALTER TABLE dbo.PersonAddress DROP CONSTRAINT FK_PersonAddress_Person
+  DROP TABLE dbo.PersonAddress
+END
 GO
 
 /****** Object:  Table dbo.PersonAddress    Script Date: 6/3/2018 4:55:48 PM ******/
