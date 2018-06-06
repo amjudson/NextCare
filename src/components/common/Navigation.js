@@ -10,6 +10,7 @@ class Navigation extends PureComponent {
       <div className="sidebar">
         <nav className="sidebar-nav">
           <ul className="nav mt-8">
+            <li className="nav-title">NextCARE</li>
             <li className="nav-item">
               <IndexLink to="/" className="nav-link">Home</IndexLink>
             </li>

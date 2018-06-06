@@ -8,6 +8,10 @@ class AccountList extends Component {
     const accounts = this.props.accounts;
       return (
         <div className="col-md-12">
+          <div className="tableHeader">
+            <div className="col-sm-2">Customer ID</div>
+            <div className="col-md-10">Customer Name</div>
+          </div>
           <div className="list-group">
             {accounts.map(account =>
               <AccountListRow key={account.accountId}

@@ -36,14 +36,6 @@ class AccountPage extends React.Component {
                 <input type="submit" value="Add Account" className="btn btn-secondary" onClick={this.redirectToAddAccountPage} />
             </div>
         </div>
-          <div className="tableHeader">
-              <div className="col-md-6">
-                  Customer ID
-              </div>
-              <div className="col-md-6">
-                  Customer Name
-              </div>
-          </div>
           <AccountList accounts={accounts} />
       </div>
   </div>

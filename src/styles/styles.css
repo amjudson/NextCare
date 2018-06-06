@@ -2,6 +2,7 @@ body
 {
  background-color:#ffffff !important;
 }
+
 #app
 {
     margin-right:30px;
@@ -14,7 +15,9 @@ body
 }
 .sidebar-nav
 {
-    padding-left:10px;
+  padding-left:10px;
+  font-size: medium;
+  font-weight: bold;
 }
 div{
     white-space: nowrap;
