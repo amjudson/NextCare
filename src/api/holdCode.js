@@ -18,7 +18,6 @@ const getAcademyByIdApi = (academyId) => {
   });
 };
 
-//const getAcademyApi = getPayload('http://localhost/MartialArts/api/academy', 'GET', 'Academy');
 const getAcademyApi = () => {
   const url = 'http://localhost/MartialArts/api/academy';
   return fetch(url, {
