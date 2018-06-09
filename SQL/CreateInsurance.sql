@@ -11,7 +11,6 @@ BEGIN
 END
 GO
 
-/****** Object:  Table dbo.Insurance    Script Date: 6/1/2018 8:39:27 AM ******/
 SET ANSI_NULLS ON
 GO
 

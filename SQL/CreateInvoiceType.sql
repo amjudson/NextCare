@@ -6,7 +6,6 @@ IF OBJECT_ID('dbo.InvoiceType', 'U') IS NOT NULL
 	DROP TABLE dbo.InvoiceType
 GO
 
-/****** Object:  Table dbo.InvoiceType    Script Date: 6/1/2018 8:46:06 AM ******/
 SET ANSI_NULLS ON
 GO
 

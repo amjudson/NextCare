@@ -9,7 +9,6 @@ BEGIN
 END
 GO
 
-/****** Object:  Table dbo.InvoiceLine    Script Date: 5/29/2018 6:53:54 PM ******/
 SET ANSI_NULLS ON
 GO
 

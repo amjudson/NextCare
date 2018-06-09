@@ -6,7 +6,6 @@ IF OBJECT_ID('dbo.PhotoType', 'U') IS NOT NULL
 	DROP TABLE dbo.PhotoType
 GO
 
-/****** Object:  Table dbo.PhotoType    Script Date: 6/1/2018 8:40:57 AM ******/
 SET ANSI_NULLS ON
 GO
 

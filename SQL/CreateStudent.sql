@@ -9,7 +9,6 @@ BEGIN
 END
 GO
 
-/****** Object:  Table dbo.Student    Script Date: 6/1/2018 8:39:51 AM ******/
 SET ANSI_NULLS ON
 GO
 

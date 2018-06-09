@@ -9,7 +9,6 @@ BEGIN
 END
 GO
 
-/****** Object:  Table dbo.Photo    Script Date: 6/3/2018 4:55:48 PM ******/
 SET ANSI_NULLS ON
 GO
 

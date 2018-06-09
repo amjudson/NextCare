@@ -1,18 +1,8 @@
 USE NextCARE;
 GO
 
-DELETE FROM StudentType;
-
 SET IDENTITY_INSERT StudentType ON;
-insert into StudentType
-  (StudentTypeId, Description)
-values(1, 'Toddler');
-insert into StudentType
-  (StudentTypeId, Description)
-values(2, 'Kindegarden');
-insert into StudentType
-  (StudentTypeId, Description)
-values(3, 'Grade School');
-insert into StudentType
-  (StudentTypeId, Description)
-values(4, 'Old');
+INSERT INTO StudentType (StudentTypeId, Description) VALUES(1, 'Toddler');
+INSERT INTO StudentType (StudentTypeId, Description) VALUES(2, 'Kindegarden');
+INSERT INTO StudentType (StudentTypeId, Description) VALUES(3, 'Grade School');
+INSERT INTO StudentType (StudentTypeId, Description) VALUES(4, 'Old');

@@ -3,12 +3,13 @@ GO
 
 /****** Object:  Table dbo.EmergencyContact    Script Date: 6/1/2018 8:39:10 AM ******/
 IF OBJECT_ID('dbo.EmergencyContact', 'U') IS NOT NULL
+BEGIN
   ALTER TABLE dbo.EmergencyContact DROP CONSTRAINT FK_EmergencyContact_Person
   ALTER TABLE dbo.EmergencyContact DROP CONSTRAINT FK_EmergencyContact_Student
 	DROP TABLE dbo.EmergencyContact
+END
 GO
 
-/****** Object:  Table dbo.EmergencyContact    Script Date: 6/1/2018 8:39:10 AM ******/
 SET ANSI_NULLS ON
 GO
 

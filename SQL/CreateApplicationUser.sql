@@ -3,8 +3,10 @@ GO
 
 /****** Object:  Table dbo.ApplicationUser    Script Date: 5/29/2018 6:54:08 PM ******/
 IF OBJECT_ID('dbo.AppUser', 'U') IS NOT NULL
+BEGIN
   ALTER TABLE dbo.AppUser DROP CONSTRAINT FK_AppUser_Person
 	DROP TABLE dbo.AppUser
+  END
 GO
 
 /****** Object:  Table dbo.ApplicationUser    Script Date: 5/29/2018 6:54:08 PM ******/

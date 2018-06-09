@@ -3,12 +3,13 @@ GO
 
 /****** Object:  Table dbo.StudentPhoto    Script Date: 6/1/2018 8:40:57 AM ******/
 IF OBJECT_ID('dbo.StudentPhoto', 'U') IS NOT NULL
-  -- ALTER TABLE dbo.StudentPhoto DROP CONSTRAINT FK_StudentPhoto_Photo
-  -- ALTER TABLE dbo.StudentPhoto DROP CONSTRAINT FK_StudentPhoto_Student
+BEGIN
+   ALTER TABLE dbo.StudentPhoto DROP CONSTRAINT FK_StudentPhoto_Photo
+   ALTER TABLE dbo.StudentPhoto DROP CONSTRAINT FK_StudentPhoto_Student
 	DROP TABLE dbo.StudentPhoto
+END
 GO
 
-/****** Object:  Table dbo.StudentPhoto    Script Date: 6/1/2018 8:40:57 AM ******/
 SET ANSI_NULLS ON
 GO
 

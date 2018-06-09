@@ -1,18 +1,10 @@
 USE NextCARE;
 GO
 
-DELETE FROM dbo.Race;
-
 SET IDENTITY_INSERT Race ON;
-insert into Race	(RaceId, Description)
-values(1, 'White');
-insert into Race	(RaceId, Description)
-values(2, 'Black');
-insert into Race	(RaceId, Description)
-values(3, 'Asian');
-insert into Race	(RaceId, Description)
-values(4, 'Native Hawaiian');
-insert into Race	(RaceId, Description)
-values(5, 'American Indian');
-insert into Race	(RaceId, Description)
-values(6, 'Other');
+INSERT INTO Race	(RaceId, Description) VALUES(1, 'White');
+INSERT INTO Race	(RaceId, Description) VALUES(2, 'Black');
+INSERT INTO Race	(RaceId, Description) VALUES(3, 'Asian');
+INSERT INTO Race	(RaceId, Description) VALUES(4, 'Native Hawaiian');
+INSERT INTO Race	(RaceId, Description) VALUES(5, 'American Indian');
+INSERT INTO Race	(RaceId, Description) VALUES(6, 'Other');

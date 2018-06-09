@@ -4,9 +4,8 @@ GO
 /****** Object:  Table dbo.PhoneType    Script Date: 6/1/2018 8:40:57 AM ******/
 IF OBJECT_ID('dbo.PhoneType', 'U') IS NOT NULL
 	DROP TABLE dbo.PhoneType
-	GO
+GO
 
-/****** Object:  Table dbo.PhoneType    Script Date: 6/1/2018 8:40:57 AM ******/
 SET ANSI_NULLS ON
 GO
 

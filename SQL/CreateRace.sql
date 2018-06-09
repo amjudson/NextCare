@@ -6,7 +6,6 @@ IF OBJECT_ID('dbo.Race', 'U') IS NOT NULL
   DROP TABLE dbo.Race
 GO
 
-/****** Object:  Table dbo.Race    Script Date: 6/1/2018 8:38:01 AM ******/
 SET ANSI_NULLS ON
 GO
 
