@@ -2,7 +2,7 @@ USE NextCARE
 GO
 
 /****** Object:  Table [dbo].[DocumentType]    Script Date: 6/1/2018 8:38:30 AM ******/
-IF OBJECT_ID('dbo.PersonType', 'U') IS NOT NULL
+IF OBJECT_ID('dbo.DocumentType', 'U') IS NOT NULL
 	DROP TABLE dbo.DocumentType
 GO
 
