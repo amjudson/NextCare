@@ -1,0 +1,197 @@
+USE NextCARE
+GO
+
+/****** Create dbo.AddressType    Script Date: 6/1/2018 8:38:01 AM ******/
+IF OBJECT_ID('dbo.AddressType', 'U') IS NOT NULL
+  DROP TABLE dbo.AddressType
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE dbo.AddressType
+(
+  AddressTypeId int IDENTITY(1,1) NOT NULL,
+  Description nvarchar(50) NOT NULL,
+  CONSTRAINT PK_AddressType PRIMARY KEY CLUSTERED
+(
+	AddressTypeId ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Create [dbo].[DocumentType]    Script Date: 6/1/2018 8:38:30 AM ******/
+IF OBJECT_ID('dbo.DocumentType', 'U') IS NOT NULL
+	DROP TABLE dbo.DocumentType
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE dbo.DocumentType
+(
+  DocumentTypeId int IDENTITY(1,1) NOT NULL,
+  Description nvarchar(50) NOT NULL
+    CONSTRAINT PK_DocumentType PRIMARY KEY CLUSTERED
+(
+	DocumentTypeId ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Create [dbo].[EmailType]    Script Date: 6/1/2018 8:38:30 AM ******/
+IF OBJECT_ID('dbo.EmailType', 'U') IS NOT NULL
+	DROP TABLE dbo.EmailType
+	GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE dbo.EmailType(
+	EmailTypeId int IDENTITY(1,1) NOT NULL,
+	Description nvarchar(50) NOT NULL
+CONSTRAINT PK_EmailType PRIMARY KEY CLUSTERED 
+(
+	EmailTypeId ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Create dbo.GuardianType    Script Date: 6/1/2018 8:46:06 AM ******/
+IF OBJECT_ID('dbo.GuardianType', 'U') IS NOT NULL
+	DROP TABLE dbo.GuardianType
+	GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE dbo.GuardianType(
+	GuardianTypeId int IDENTITY(1,1) NOT NULL,
+	Description varchar(50) NOT NULL,
+ CONSTRAINT PK_GuardianType PRIMARY KEY CLUSTERED 
+(
+	GuardianTypeId ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Create dbo.InvoiceType    Script Date: 6/1/2018 8:46:06 AM ******/
+IF OBJECT_ID('dbo.InvoiceType', 'U') IS NOT NULL
+	DROP TABLE dbo.InvoiceType
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE dbo.InvoiceType
+(
+  InvoiceTypeId int IDENTITY(1,1) NOT NULL,
+  Description varchar(50) NOT NULL,
+  CONSTRAINT PK_InvoiceType PRIMARY KEY CLUSTERED
+(
+	InvoiceTypeId ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** create  Table dbo.PersonType    Script Date: 6/1/2018 8:46:06 AM ******/
+IF OBJECT_ID('dbo.PersonType', 'U') IS NOT NULL
+	DROP TABLE dbo.PersonType
+	GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE dbo.PersonType(
+	PersonTypeId int IDENTITY(1,1) NOT NULL,
+	Description varchar(50) NOT NULL,
+ CONSTRAINT PK_PersonType PRIMARY KEY CLUSTERED 
+(
+	PersonTypeId ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table dbo.PhotoType    Script Date: 6/1/2018 8:40:57 AM ******/
+IF OBJECT_ID('dbo.PhotoType', 'U') IS NOT NULL
+	DROP TABLE dbo.PhotoType
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE dbo.PhotoType
+(
+  PhotoTypeId int IDENTITY(1,1) NOT NULL,
+  Description nvarchar(50) NOT NULL,
+  CONSTRAINT PK_PhotoType PRIMARY KEY CLUSTERED
+(
+	PhotoTypeId ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table dbo.Race    Script Date: 6/1/2018 8:38:01 AM ******/
+IF OBJECT_ID('dbo.Race', 'U') IS NOT NULL
+  DROP TABLE dbo.Race
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE dbo.Race
+(
+  RaceId int IDENTITY(1,1) NOT NULL,
+  Description nvarchar(50) NOT NULL,
+  CONSTRAINT PK_Race PRIMARY KEY CLUSTERED
+(
+	RaceId ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [dbo].[StudentType]    Script Date: 6/1/2018 8:38:30 AM ******/
+IF OBJECT_ID('dbo.StudentType', 'U') IS NOT NULL
+	DROP TABLE dbo.StudentType
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE dbo.StudentType
+(
+  StudentTypeId int IDENTITY(1,1) NOT NULL,
+  Description nvarchar(50) NOT NULL
+    CONSTRAINT PK_StudentType PRIMARY KEY CLUSTERED
+(
+	StudentTypeId ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
