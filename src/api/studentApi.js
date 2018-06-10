@@ -36,11 +36,11 @@ class studentApi {
       if (student.studentId) {
         getPayload(`${process.env.API_HOST}/api/Student/${student.studentId}`, 'PUT', 'Student', student).then((student) => {
           resolve(student);
-        }).catch((message) => console.log('Student ERROR:', message));
+        }).catch((message) => console.log('Student ERROR:', message)); // eslint-disable-line no-console
       } else {
         getPayload(`${process.env.API_HOST}/api/Student`, 'POST', 'Student', student).then((student) => {
           resolve(student);
-        }).catch((message) => console.log('Student ERROR:', message));
+        }).catch((message) => console.log('Student ERROR:', message)); // eslint-disable-line no-console
       }
     });
   }
