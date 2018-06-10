@@ -27,7 +27,7 @@ CREATE TABLE dbo.Person(
 	SocialSecurityNumber nvarchar(255) NULL,
 	SSNSalt nvarchar(50) NULL,
 	Sex nchar(1) NOT NULL,
-	Alias nvarchar(50) NOT NULL,
+	Alias nvarchar(50) NULL,
 	RaceId int NOT NULL,
 	DateOfBirth date NOT NULL,
  CONSTRAINT PK_Person PRIMARY KEY CLUSTERED

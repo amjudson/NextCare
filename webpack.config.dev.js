@@ -1,6 +1,10 @@
 import webpack from 'webpack';
 import path from 'path';
 
+const GLOBALS = {
+  'process.env.API_HOST': JSON.stringify('http://localhost/NextCare')
+};
+
 export default {
   debug: true,
   devtool: 'source-map', // source-map or inline-source-map
@@ -21,7 +25,8 @@ export default {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin(GLOBALS)
   ],
   module: {
     loaders: [

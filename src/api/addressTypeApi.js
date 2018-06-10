@@ -2,7 +2,7 @@ import { getPayload } from './callApi';
 
 class AddressTypeApi {
   static getAllAddressTypes() {
-    return getPayload('http://localhost/MartialArts/api/AddressType', 'GET', 'Address Type').then(addressTypes => {
+    return getPayload(`${process.env.API_HOST}/api/AddressType`, 'GET', 'Address Type').then(addressTypes => {
       return new Promise((resolve, reject) => {
         resolve(Object.assign([], addressTypes));
       });
@@ -10,7 +10,7 @@ class AddressTypeApi {
   }
 
   static getAddressTypeById(addressTypeId) {
-    return getPayload(`http://localhost/MartialArts/api/AddressType/${addressTypeId}`, 'GET', 'Address Type')
+    return getPayload(`${process.env.API_HOST}/api/AddressType/${addressTypeId}`, 'GET', 'Address Type')
       .then(addressType => {
       return new Promise((resolve, reject) => {
         resolve(addressType);
@@ -27,12 +27,12 @@ class AddressTypeApi {
       }
 
       if (addressType.addressTypeId) {
-        getPayload(`http://localhost/MartialArts/api/AddressType/${addressType.addressTypeId}`, 'PUT', 'Address Type', addressType)
+        getPayload(`${process.env.API_HOST}/api/AddressType/${addressType.addressTypeId}`, 'PUT', 'Address Type', addressType)
           .then((addressType) => {
           resolve(addressType);
         });
       } else {
-        getPayload('ttp://localhost/MartialArts/api/AddressType', 'POST', 'Address Type', addressType).then((addressType) => {
+        getPayload(`${process.env.API_HOST}/api/AddressType`, 'POST', 'Address Type', addressType).then((addressType) => {
           resolve(addressType);
         });
       }
@@ -41,7 +41,7 @@ class AddressTypeApi {
 
   static deleteAddressType(addressType) {
     return new Promise((resolve, reject) => {
-      getPayload(`http://localhost/MartialArts/api/AddressType/${addressType.addressTypeId}`, 'PUT', 'Address Type', addressType);
+      getPayload(`${process.env.API_HOST}/api/AddressType/${addressType.addressTypeId}`, 'PUT', 'Address Type', addressType);
       resolve();
     });
   }
