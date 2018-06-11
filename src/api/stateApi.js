@@ -2,7 +2,7 @@ import { getPayload } from './callApi';
 
 class StateApi {
   static getAllStates() {
-    return getPayload('http://localhost/MartialArts/api/State', 'GET', 'State').then(states => {
+    return getPayload(`${process.env.API_HOST}/api/State`, 'GET', 'State').then(states => {
       return new Promise((resolve, reject) => {
         resolve(Object.assign([], states));
       });
@@ -10,7 +10,7 @@ class StateApi {
   }
 
   static getStateById(stateId) {
-    return getPayload(`http://localhost/MartialArts/api/State/${stateId}`, 'GET', 'State')
+    return getPayload(`${process.env.API_HOST}/api/State/${stateId}`, 'GET', 'State')
       .then(state => {
         return new Promise((resolve, reject) => {
           resolve(state);
@@ -27,12 +27,12 @@ class StateApi {
       }
 
       if (state.stateId) {
-        getPayload(`http://localhost/MartialArts/api/State/${state.stateId}`, 'PUT', 'State', state)
+        getPayload(`${process.env.API_HOST}/api/State/${state.stateId}`, 'PUT', 'State', state)
           .then((state) => {
             resolve(state);
           });
       } else {
-        getPayload('ttp://localhost/MartialArts/api/State', 'POST', 'State', state).then((state) => {
+        getPayload(`${process.env.API_HOST}/api/State`, 'POST', 'State', state).then((state) => {
           resolve(state);
         });
       }
@@ -41,7 +41,7 @@ class StateApi {
 
   static deleteState(state) {
     return new Promise((resolve, reject) => {
-      getPayload(`http://localhost/MartialArts/api/State/${state.stateId}`, 'PUT', 'State', state);
+      getPayload(`${process.env.API_HOST}/api/State/${state.stateId}`, 'PUT', 'State', state);
       resolve();
     });
   }

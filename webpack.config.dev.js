@@ -1,6 +1,12 @@
 import webpack from 'webpack';
 import path from 'path';
 
+<<<<<<< HEAD
+=======
+const GLOBALS = {
+  'process.env.API_HOST': JSON.stringify('http://localhost/NextCare')
+};
+>>>>>>> 631c8ba3c5bc29ddd25690074b7f83bce8d6c93c
 
 export default {
   debug: true,
@@ -22,7 +28,8 @@ export default {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin(GLOBALS)
   ],
   module: {
     loaders: [

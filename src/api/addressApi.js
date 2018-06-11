@@ -1,107 +1,8 @@
-const getAddressByIdApi = (addressId) => {
-  const url = `http://localhost/MartialArts/api/address/${addressId}`;
-  return fetch(url, {
-    mode: 'cors',
-    method: 'GET',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
-    }
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw new Error('Address by id response was not OK.');
-    }
-  }).then((data) => {
-    return data;
-  });
-};
-
-const getAddressApi = () => {
-  const url = 'http://localhost/MartialArts/api/address';
-  return fetch(url, {
-    mode: 'cors',
-    method: 'GET',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
-    }
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw new Error('Address response was not OK.');
-    }
-  }).then((data) => {
-    return data;
-  });
-};
-
-const putAddressApi = (address) => {
-  const url = `http://localhost/MartialArts/api/address/${address.addressId}`;
-  return fetch(url, {
-    mode: 'cors',
-    method: 'PUT',
-    body: JSON.stringify(address),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw new Error('Address response was not OK.');
-    }
-  }).then((data) => {
-    return data;
-  });
-};
-
-const deleteAddressApi = (addressId) => {
-  const url = `http://localhost/MartialArts/api/Address/${addressId}`;
-  return fetch(url, {
-    mode: 'cors',
-    method: 'DELETE',
-    body: JSON.stringify(addressId),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw new Error('Address response was not OK.');
-    }
-  }).then((data) => {
-    return data;
-  });
-};
-
-const postAddressApi = (address) => {
-  const url = 'http://localhost/MartialArts/api/address';
-  return fetch(url, {
-    mode: 'cors',
-    method: 'POST',
-    body: JSON.stringify(address),
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
-    }
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw new Error('Address response was not OK.');
-    }
-  }).then((data) => {
-    return data;
-  });
-};
+import {getPayload} from './callApi';
 
 class AddressApi {
   static getAllAddresses() {
-    return getAddressApi().then(addresses => {
+    return getPayload(`${process.env.API_HOST}/api/Address`, 'GET', 'Address').then(addresses => {
       return new Promise((resolve, reject) => {
         resolve(Object.assign([], addresses));
       });
@@ -109,7 +10,7 @@ class AddressApi {
   }
 
   static getAddressById(addressId) {
-    return getAddressByIdApi(addressId).then(address => {
+    return getPayload(`${process.env.API_HOST}/api/Address/${addressId}`, 'GET', 'Address').then(address => {
       return new Promise((resolve, reject) => {
         resolve(address);
       });
@@ -133,11 +34,13 @@ class AddressApi {
       }
 
       if (address.addressId) {
-        putAddressApi(address).then((address) => {
+        getPayload(`${process.env.API_HOST}/api/Address/${address.addressId}`, 'PUT', 'Address', address)
+          .then((address) => {
           resolve(address);
         });
       } else {
-        postAddressApi(address).then((address) => {
+        getPayload(`${process.env.API_HOST}/api/Address/${address.addressId}`, 'POST', 'Address', address)
+          .then((address) => {
           resolve(address);
         });
       }
@@ -146,7 +49,7 @@ class AddressApi {
 
   static deleteAddress(address) {
     return new Promise((resolve, reject) => {
-      deleteAddressApi(address.addressId);
+      getPayload(`${process.env.API_HOST}/api/Address/${address.addressId}`, 'DELETE', 'Address');
       resolve();
     });
   }
