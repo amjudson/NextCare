@@ -1,6 +1,5 @@
 import webpack from 'webpack';
 import path from 'path';
-import less from 'less';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const GLOBALS = {
@@ -32,7 +31,7 @@ export default {
   module: {
     loaders: [
       { test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel'] },
-    
+
       { test: /(\.css)$/, loader: ExtractTextPlugin.extract("css?sourceMap") },
       { test: /\.less$/, use: [{loader: "style-loader"},
       {

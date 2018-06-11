@@ -1,12 +1,9 @@
 import webpack from 'webpack';
 import path from 'path';
 
-<<<<<<< HEAD
-=======
 const GLOBALS = {
   'process.env.API_HOST': JSON.stringify('http://localhost/NextCare')
 };
->>>>>>> 631c8ba3c5bc29ddd25690074b7f83bce8d6c93c
 
 export default {
   debug: true,
@@ -40,7 +37,7 @@ export default {
       { test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000' },
       { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream' },
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' }
-      
+
     ]
   }
 };
