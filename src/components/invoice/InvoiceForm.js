@@ -16,7 +16,7 @@ class InvoiceForm extends Component {
       <button
         type="submit"
         disabled={saving}
-        className="btn btn-primary btn-lg mr-1"
+        className="btn nextcareBtn"
         onClick={onSave}>
         {saving ? 'Saving...' : 'Save'}
       </button>
@@ -26,7 +26,7 @@ class InvoiceForm extends Component {
       <button
         type="submit"
         disabled={deleting}
-        className="btn btn-primary btn-lg mr-1"
+        className="btn nextcareBtn"
         onClick={onDelete}>
         {deleting ? 'Deleting...' : 'Delete'}
       </button>
@@ -35,29 +35,30 @@ class InvoiceForm extends Component {
     const disableText = true;
     const disableSelect = true;
     return (
-      <div className="container">
-        <h1>Manage Invoice</h1>
+      <div className="container-fluid">
+      <div className="row">
+        <div className = "pageHeaders">
+            <h2>Manage Invoice</h2>
+        </div>
+        </div>
         <div className="row">
-          <div className="col-lg-3">
-            <TextInput
-              disabled={disableText}
-              name="title"
-              label="Title"
-              value={invoice.title}
-              onChange={onChange}
-              error={errors.title} />
+          <div className="invoiceTitle">
+          <h3>
+          {invoice.title}
+          </h3>
           </div>
         </div>
         <InvoiceItemList invoice={invoice} />
         <div className="row mt-3">
           {saveButton}
           {deleteButton}
-          <button className="btn btn-primary btn-lg mr-3"
+          <button className="btn nextcareBtn"
             type="submit" onClick={returnToPreviousPage}>
             Back
         </button>
         </div>
       </div>
+     
     );
   }
 }

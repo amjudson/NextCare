@@ -6,25 +6,24 @@ import LoadingDots from './LoadingDots';
 class Navigation extends PureComponent {
   render() {
     const loading = this.props.loading;
-    return (
+    return ( 
       <div className="sidebar">
         <nav className="sidebar-nav">
           <ul className="nav mt-8">
-            <li className="nav-title">NextCARE</li>
             <li className="nav-item">
-              <IndexLink to="/" className="nav-link">Home</IndexLink>
+              <IndexLink to="/" className="nav-link"><i className="fas fa-home"></i> Home </IndexLink>
             </li>
             <li className="nav-item">
-              <Link to="/accounts" className="nav-link">Accounts</Link>
+              <Link to="/accounts" className="nav-link"><i className="fas fa-user"></i> Accounts</Link>
             </li>
             <li className="nav-item">
-              <Link to="/invoices" className="nav-link">Invoices</Link>
+              <Link to="/invoices" className="nav-link"><i className="fas fa-file-alt"></i> Invoices </Link>
             </li>
             <li className="nav-item">
-              <Link to="/about" className="nav-link">Messages</Link>
+              <Link to="/about" className="nav-link"><i className="fas fa-envelope-square"></i> Messages </Link>
             </li>
             <li className="nav-item">
-              <Link to="/about" className="nav-link">Room Feeds</Link>
+              <Link to="/about" className="nav-link"><i className="fas fa-seedling"></i> Room Feeds </Link>
             </li>
           </ul>
           {loading && <LoadingDots interval={100} dots={20} />}

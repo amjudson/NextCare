@@ -7,43 +7,85 @@ class HomePage extends React.Component {
       <div className="container-fluid">
         <div className="animated fadeIn">
           <div className="row">
-            <div className="col-6 col-lg-4">
-              <div className="card">
-                <div className="card-body p-3 d-flex align-items-center">
-                  <i className="fa fa-cogs bg-primary p-3 font-2xl mr-3"></i>
-                  <div>
-                    <div className="text-value-sm text-primary">
+          <div className="col-sm-6 col-lg-3">
+              <div className="card text-white blueBox">
+                <div className="card-body pb-0">
+                  <div className="btn-group float-right">
+                    <button type="button" className="btn btn-transparent dropdown-toggle p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i className="icon-settings"></i>
+                    </button>
+                    <div className="dropdown-menu dropdown-menu-right">
+                      <a className="dropdown-item" href="#">Action</a>
+                      <a className="dropdown-item" href="#">Another action</a>
+                      <a className="dropdown-item" href="#">Something else here</a>
                     </div>
-                    <div className="text-muted text-uppercase font-weight-bold small">Income</div>
-                    <Link to="about" className="btn btn-info">Learn More</Link>
                   </div>
+                  <div className="text-value">9.823</div>
+                  <div>Members online</div>
+                </div>
+                <div className="chart-wrapper mt-3 mx-3" >
+                  <canvas id="card-chart1" className="chart" ></canvas>
                 </div>
               </div>
             </div>
-            <div className="col-6 col-lg-4">
-              <div className="card">
-                <div className="card-body p-3 d-flex align-items-center">
-                  <i className="fa fa-cogs bg-primary p-3 font-2xl mr-3"></i>
-                  <div>
-                    <div className="text-value-sm text-primary">$1.999,50</div>
-                    <div className="text-muted text-uppercase font-weight-bold small">Income</div>
-                    <Link to="about" className="btn btn-info">Learn More</Link>
-                  </div>
+            <div className="col-sm-6 col-lg-3">
+              <div className="card text-white greenBox">
+                <div className="card-body pb-0">
+                  <button type="button" className="btn btn-transparent p-0 float-right">
+                    <i className="icon-location-pin"></i>
+                  </button>
+                  <div className="text-value">9.823</div>
+                  <div>Members online</div>
+                </div>
+                <div className="chart-wrapper mt-3 mx-3" >
+                  <canvas id="card-chart2" className="chart" ></canvas>
                 </div>
               </div>
             </div>
-            <div className="col-6 col-lg-4">
-              <div className="card">
-                <div className="card-body p-3 d-flex align-items-center">
-                  <i className="fa fa-cogs bg-primary p-3 font-2xl mr-3"></i>
-                  <div>
-                    <div className="text-value-sm text-primary">$1.999,50</div>
-                    <div className="text-muted text-uppercase font-weight-bold small">Income</div>
-                    <Link to="about" className="btn btn-info">Learn More</Link>
+            <div className="col-sm-6 col-lg-3">
+              <div className="card text-white pinkBox">
+                <div className="card-body pb-0">
+                  <div className="btn-group float-right">
+                    <button type="button" className="btn btn-transparent dropdown-toggle p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i className="icon-settings"></i>
+                    </button>
+                    <div className="dropdown-menu dropdown-menu-right">
+                      <a className="dropdown-item" href="#">Action</a>
+                      <a className="dropdown-item" href="#">Another action</a>
+                      <a className="dropdown-item" href="#">Something else here</a>
+                    </div>
                   </div>
+                  <div className="text-value">9.823</div>
+                  <div>Members online</div>
+                </div>
+                <div className="chart-wrapper mt-3" >
+                  <canvas id="card-chart3" className="chart" ></canvas>
                 </div>
               </div>
             </div>
+            <div className="col-sm-6 col-lg-3">
+              <div className="card text-white orangeBox">
+                <div className="card-body pb-0">
+                  <div className="btn-group float-right">
+                    <button type="button" className="btn btn-transparent dropdown-toggle p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i className="icon-settings"></i>
+                    </button>
+                    <div className="dropdown-menu dropdown-menu-right">
+                      <a className="dropdown-item" href="#">Action</a>
+                      <a className="dropdown-item" href="#">Another action</a>
+                      <a className="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                  <div className="text-value">9.823</div>
+                  <div>Members online</div>
+                </div>
+                <div className="chart-wrapper mt-3 mx-3" >
+                  <canvas id="card-chart4" className="chart" ></canvas>
+                </div>
+              </div>
+            </div>
+
+
           </div>
         </div>
       </div>

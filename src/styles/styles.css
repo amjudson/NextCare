@@ -13,6 +13,10 @@ body
     margin-top:80px;
     margin-left:220px !important;
 }
+.sidebar
+{
+  overflow:hidden !important;
+}
 .sidebar-nav
 {
   padding-left:10px;
@@ -22,51 +26,27 @@ body
 div{
     white-space: nowrap;
 }
-.pageHeaders
-{
-    display:flex;
-    width:100%;
-    margin-bottom:20px;
-    border-bottom:1px dotted #cccccc;
-}
+
 .tableHeader
 {
     display:flex;
     width:100%;
     margin-bottom:10px;
-
 }
 
-.list-group-item:nth-child(odd) {
-  background-color: rgb(191, 210, 211);
-}
 
-.list-group-item:nth-child(even) {
-  background-color: rgb(223, 232, 233);
-}
 
-.row-detail {
-  border-style: solid;
-  border-color: black;
-  border-left-width: 0px;
-  border-right-width: 0px;
-  border-top-width: 0px;
-  border-bottom-width: 1px;
-  /* background-color: #CCC; */
-}
+
 
 .item-detail {
-  color: black;
+ 
   margin-top: 10px;
   margin-bottom: 5px;
-  font-size: large;
+  font-size: 1em;
 }
 
 .number-detail {
   text-align: right;
 }
 
-.total-line {
-  font-weight: bold;
-  background-color: darkseagreen;
-}
+

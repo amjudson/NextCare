@@ -36,7 +36,7 @@ class InvoicePage extends React.Component {
               <input
                 type="submit"
                 value="Add Invoice"
-                className="btn btn-secondary"
+                className="btn nextcareBtn"
                 onClick={this.redirectToAddInvoicePage}
               />
               </div>

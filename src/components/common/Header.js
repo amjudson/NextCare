@@ -15,17 +15,7 @@ class Header extends PureComponent {
         <button className="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <ul className="nav navbar-nav d-md-down-none">
-          <li className="nav-item px-3">
-            <a className="nav-link" href="#">Dashboard</a>
-          </li>
-          <li className="nav-item px-3">
-            <a className="nav-link" href="#">Users</a>
-          </li>
-          <li className="nav-item px-3">
-            <a className="nav-link" href="#">Settings</a>
-          </li>
-        </ul>
+      
         <ul className="nav navbar-nav ml-auto">
           <li className="nav-item d-md-down-none">
             <a className="nav-link" href="#">

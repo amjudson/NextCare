@@ -34,9 +34,18 @@ class AccountForm extends Component {
     const disableText = true;
     const disableSelect = true;
     return (
-      <div className="container">
+      <div className="container-fluid">
+        <div className="row">
+          <div className = "pageHeaders">
+              <div className="col-md-4">
+                  <h2>Account Details</h2>
+              </div>
+          </div>
+        </div>
+        
+        
+        
         <form>
-          <h1>Manage Account</h1>
           <div className="row">
             <div className="col-lg-3">
               <TextInput

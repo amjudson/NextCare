@@ -33,7 +33,7 @@ class AccountPage extends React.Component {
                 <h2>Accounts</h2>
             </div>
             <div className="col-md-8 text-right">
-                <input type="submit" value="Add Account" className="btn btn-secondary" onClick={this.redirectToAddAccountPage} />
+                <input type="submit" value="Add Account" className="btn nextcareBtn" onClick={this.redirectToAddAccountPage} />
             </div>
         </div>
           <AccountList accounts={accounts} />
