@@ -6,7 +6,7 @@ import LoadingDots from './LoadingDots';
 class Navigation extends PureComponent {
   render() {
     const loading = this.props.loading;
-    return ( 
+    return (
       <div className="sidebar">
         <nav className="sidebar-nav">
           <ul className="nav mt-8">
@@ -18,6 +18,9 @@ class Navigation extends PureComponent {
             </li>
             <li className="nav-item">
               <Link to="/invoices" className="nav-link"><i className="fas fa-file-alt"></i> Invoices </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/persons" className="nav-link"><i className="far fa-address-card"></i> Persons </Link>
             </li>
             <li className="nav-item">
               <Link to="/about" className="nav-link"><i className="fas fa-envelope-square"></i> Messages </Link>
