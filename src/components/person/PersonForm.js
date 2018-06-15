@@ -44,7 +44,6 @@ class PersonForm extends Component {
           <div className="row">
             <div className="col-sm-2">
               <SelectInput
-                defaultOption="Select Sex"
                 name="sex"
                 label="Sex"
                 value={person.sex}
