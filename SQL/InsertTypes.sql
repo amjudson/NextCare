@@ -1,4 +1,4 @@
-USE NextCAREBase;
+USE NextCARE;
 GO
 
 BEGIN TRAN
