@@ -14,13 +14,13 @@ class Navigation extends PureComponent {
               <IndexLink to="/" className="nav-link"><i className="fas fa-home"></i> Home </IndexLink>
             </li>
             <li className="nav-item">
-              <Link to="/accounts" className="nav-link"><i className="fas fa-user"></i> Accounts</Link>
+              <Link to="/accounts" className="nav-link"><i className="far fa-address-card"></i> Accounts</Link>
             </li>
             <li className="nav-item">
               <Link to="/invoices" className="nav-link"><i className="fas fa-file-alt"></i> Invoices </Link>
             </li>
             <li className="nav-item">
-              <Link to="/persons" className="nav-link"><i className="far fa-address-card"></i> Persons </Link>
+              <Link to="/persons" className="nav-link"><i className="fas fa-user"></i> Persons </Link>
             </li>
             <li className="nav-item">
               <Link to="/about" className="nav-link"><i className="fas fa-envelope-square"></i> Messages </Link>
