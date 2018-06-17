@@ -1,4 +1,4 @@
-USE NextCAREBase;
+USE NextCARE;
 GO
 
 DROP TABLE [dbo].[StudentAddress];

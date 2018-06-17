@@ -1,4 +1,4 @@
-USE NextCAREBase;
+USE NextCARE;
 GO
 
 BEGIN TRAN
@@ -71,6 +71,15 @@ INSERT INTO StudentType (StudentTypeId, Description) VALUES(1, 'Toddler');
 INSERT INTO StudentType (StudentTypeId, Description) VALUES(2, 'Kindegarden');
 INSERT INTO StudentType (StudentTypeId, Description) VALUES(3, 'Grade School');
 INSERT INTO StudentType (StudentTypeId, Description) VALUES(4, 'Old');
+SET IDENTITY_INSERT StudentType OFF;
+GO
+
+SET IDENTITY_INSERT InvoiceType ON;
+GO
+INSERT INTO InvoiceType (InvoiceTypeId, Description) VALUES(1, 'Daycare fee');
+INSERT INTO InvoiceType (InvoiceTypeId, Description) VALUES(2, 'Pickup charge');
+INSERT INTO InvoiceType (InvoiceTypeId, Description) VALUES(3, 'Extended stay');
+INSERT INTO InvoiceType (InvoiceTypeId, Description) VALUES(4, 'Other');
 SET IDENTITY_INSERT StudentType OFF;
 GO
 --ROLLBACK TRAN
