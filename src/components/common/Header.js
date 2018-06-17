@@ -4,8 +4,26 @@ import { Link, IndexLink } from 'react-router';
 import LoadingDots from './LoadingDots';
 import ToggleAsideButton from './ToggleAsideButton';
 import ToggleNavButton from './ToggleNavButton';
-
+import ToggleNotificationsButton from './ToggleNotificationsButton';
+import HeaderNotifications from './HeaderNotifications';
 class Header extends PureComponent {
+
+  constructor(props) {
+    super(props)
+    this.state=
+    {
+      toggleNotifications: 'dropdown-menu dropdown-menu-right dropdown-menu-lg'
+    }
+    this.toggleNotificationsMenu = this.toggleNotificationsMenu.bind(this);
+  }
+
+  toggleNotificationsMenu() {
+   
+    this.state.toggleNotifications === "dropdown-menu dropdown-menu-right dropdown-menu-lg" ? this.setState({toggleNotifications: "dropdown-menu dropdown-menu-right dropdown-menu-lg show"}) : this.setState({toggleNotifications: "dropdown-menu dropdown-menu-right dropdown-menu-lg"});   
+   console.log(this.state.toggleNotifications);
+  }
+
+
   render() {
     const loading = this.props.loading;
 
@@ -19,72 +37,14 @@ class Header extends PureComponent {
       
         <ul className="nav navbar-nav ml-auto">
           <li className="nav-item d-md-down-none">
-            <a className="nav-link" href="#">
-              <i className="far fa-bell"></i>
-              <span className="badge badge-pill badge-danger">5</span>
-            </a>
-          </li>
-          <li className="nav-item d-md-down-none">
-            <a className="nav-link" href="#">
-              <i className="far fa-list-alt"></i>
-            </a>
-          </li>
-          <li className="nav-item d-md-down-none">
-            <a className="nav-link" href="#">
-              <i className="far fa-envelope-open"></i>
-            </a>
-          </li>
-          <li className="nav-item dropdown">
-            <a className="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-              <img className="img-avatar" src="https://randomuser.me/api/portraits/men/93.jpg" alt="admin@bootstrapmaster.com"></img>
-            </a>
-            <div className="dropdown-menu dropdown-menu-right">
-              <div className="dropdown-header text-center">
-                <strong>Account</strong>
-              </div>
-              <a className="dropdown-item" href="#">
-                <i className="fa fa-bell-o"></i> Updates
-                <span className="badge badge-info">42</span>
-              </a>
-              <a className="dropdown-item" href="#">
-                <i className="fa fa-envelope-o"></i> Messages
-                <span className="badge badge-success">42</span>
-              </a>
-              <a className="dropdown-item" href="#">
-                <i className="fa fa-tasks"></i> Tasks
-                <span className="badge badge-danger">42</span>
-              </a>
-              <a className="dropdown-item" href="#">
-                <i className="fa fa-comments"></i> Comments
-                <span className="badge badge-warning">42</span>
-              </a>
-              <div className="dropdown-header text-center">
-                <strong>Settings</strong>
-              </div>
-              <a className="dropdown-item" href="#">
-                <i className="fa fa-user"></i> Profile</a>
-              <a className="dropdown-item" href="#">
-                <i className="fa fa-wrench"></i> Settings</a>
-              <a className="dropdown-item" href="#">
-                <i className="fa fa-usd"></i> Payments
-                <span className="badge badge-secondary">42</span>
-              </a>
-              <a className="dropdown-item" href="#">
-                <i className="far fa-file"></i> Projects
-                <span className="badge badge-primary">42</span>
-              </a>
-              <div className="divider"></div>
-              <a className="dropdown-item" href="#">
-                <i className="fa fa-shield"></i> Lock Account</a>
-              <a className="dropdown-item" href="#">
-                <i className="fa fa-lock"></i> Logout</a>
-            </div>
+          <ToggleNotificationsButton  toggleNotifications = {this.state.toggleNotifications} toggleNotificationsMenu = {this.toggleNotificationsMenu} /> 
+          <div className={this.state.toggleNotifications} >
+            <HeaderNotifications />
+          </div>  
           </li>
         </ul>
         <ToggleAsideButton  />
-        <button className="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
-          <span className="navbar-toggler-icon"></span>
-        </button>
+       
       </header>
 
     );
@@ -92,7 +52,8 @@ class Header extends PureComponent {
 }
 
 Header.propTypes = {
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  toggleNotifications: PropTypes.string
 };
 
 export default Header;

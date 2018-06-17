@@ -16,9 +16,28 @@ class PersonForm extends Component {
     };
 
     return (
+
       <div className="container-fluid">
+        <div className="row">
+          
+          
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-header">
+                <div className = "pageHeaders">
+                 
+                  <h2>Manage Person</h2>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+         
+
+
+          
+        </div>
         <form>
-          <h1>Manage Person</h1>
           <div className="row">
             <div className="col-lg-3">
               <TextInput
@@ -68,19 +87,18 @@ class PersonForm extends Component {
                 type="submit"
                 disabled={saving}
                 value={saving ? 'Saving...' : 'Save'}
-                className="btn btn-primary btn-lg"
+                className="btn nextcareBtn"
                 onClick={onSave} />
             </div>
             <div className="col-xs-1 mr-1">
-              <button className="btn btn-primary btn-lg"
+              <button className="btn nextcareBtn"
                 type="submit" onClick={returnToPreviousPage}>
                 Back
             </button>
             </div>
-            <div className="col-lg-10" />
           </div>
-        </form>
-      </div>
+      </form>
+    </div>
     );
   }
 }

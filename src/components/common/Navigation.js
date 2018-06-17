@@ -19,9 +19,8 @@ class Navigation extends Component {
     document.body.classList.toggle(css);
     //const textCollapse = this.props.textCollapse;
     //console.log(textCollapse);
-    this.state.textCollapse === "nav-link openNavText" ? this.setState({textCollapse: "nav-link collapseNavText navIconOnly"}) : this.setState({textCollapse: "nav-link openNavText"});
-      
-    console.log(this.state.textCollapse);
+    this.state.textCollapse === "nav-link openNavText" ? this.setState({textCollapse: "nav-link collapseNavText navIconOnly"}) : this.setState({textCollapse: "nav-link openNavText"});   
+    
   }
   render() {
     const loading = this.props.loading;
@@ -31,22 +30,22 @@ class Navigation extends Component {
         <nav className="sidebar-nav">
           <ul className="nav">
             <li className="nav-item">
-              <IndexLink to="/" className={this.state.textCollapse}><i className="fas fa-home fa-2x"></i> <span className = "navSpan">Home</span> </IndexLink>
+              <IndexLink to="/" className={this.state.textCollapse}><i className="fas fa-home fa-2x navIcon"></i> <span className = "navSpan">Home</span> </IndexLink>
             </li>
             <li className="nav-item">
-              <Link to="/accounts" className={this.state.textCollapse}><i className="far fa-address-card fa-2x"></i> <span className = "navSpan">Accounts</span></Link>
+              <Link to="/accounts" className={this.state.textCollapse}><i className="far fa-address-card fa-2x navIcon"></i> <span className = "navSpan">Accounts</span></Link>
             </li>
             <li className="nav-item">
-              <Link to="/invoices" className={this.state.textCollapse}><i className="fas fa-file-alt fa-2x"></i> <span className = "navSpan">Invoices</span> </Link>
+              <Link to="/invoices" className={this.state.textCollapse}><i className="fas fa-file-alt fa-2x navIcon"></i> <span className = "navSpan">Invoices</span> </Link>
             </li>
             <li className="nav-item">
-              <Link to="/persons" className={this.state.textCollapse}><i className="fas fa-user fa-2x"></i> <span className = "navSpan">Persons</span> </Link>
+              <Link to="/persons" className={this.state.textCollapse}><i className="fas fa-user fa-2x navIcon"></i> <span className = "navSpan">Persons</span> </Link>
             </li>
             <li className="nav-item">
-              <Link to="/about" className={this.state.textCollapse}><i className="fas fa-envelope-square fa-2x"></i> <span className = "navSpan">Messages</span> </Link>
+              <Link to="/about" className={this.state.textCollapse}><i className="fas fa-envelope-square fa-2x navIcon"></i> <span className = "navSpan">Messages</span> </Link>
             </li>
             <li className="nav-item">
-              <Link to="/about" className={this.state.textCollapse}><i className="fas fa-seedling fa-2x"></i> <span className = "navSpan">Room Feeds</span> </Link>
+              <Link to="/about" className={this.state.textCollapse}><i className="fas fa-seedling fa-2x navIcon"></i> <span className = "navSpan">Room Feeds</span> </Link>
             </li>
           </ul>
           {loading && <LoadingDots interval={100} dots={20} />}

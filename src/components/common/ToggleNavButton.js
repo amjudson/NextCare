@@ -25,8 +25,7 @@ class ToggleNavButton extends PureComponent {
 }
 
 ToggleNavButton.propTypes = {
- 
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func
 };
 
 export default ToggleNavButton;
