@@ -9,9 +9,9 @@ import { connect } from 'react-redux';
 
 class App extends React.Component {
   render() {
-    
+
     return (
-      <div>      
+      <div>
           <Header loading={this.props.loading} />
           <div className = "app-body">
             <Navigation loading={this.props.loading} textCollapse={this.props.textCollapse} />
@@ -27,14 +27,12 @@ class App extends React.Component {
 
 App.propTypes = {
   children: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired, 
-  
+  loading: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
     loading: state.ajaxCallsInProgress > 0
-   
   };
 }
 
