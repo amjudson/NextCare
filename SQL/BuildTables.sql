@@ -97,14 +97,6 @@ BEGIN
 END
 GO
 
-IF OBJECT_ID('dbo.StudentAddress', 'U') IS NOT NULL
-BEGIN
-  ALTER TABLE dbo.StudentAddress DROP CONSTRAINT FK_StudentAddress_Address
-  ALTER TABLE dbo.StudentAddress DROP CONSTRAINT FK_StudentAddress_Student
-  DROP TABLE dbo.StudentAddress;
-END
-GO
-
 IF OBJECT_ID('dbo.StudentDietary', 'U') IS NOT NULL
 BEGIN
   ALTER TABLE dbo.StudentDietary DROP CONSTRAINT FK_StudentDietary_Dietary
@@ -121,21 +113,6 @@ BEGIN
 END
 GO
 
-IF OBJECT_ID('dbo.StudentEmail', 'U') IS NOT NULL
-BEGIN
-  ALTER TABLE dbo.StudentEmail DROP CONSTRAINT FK_StudentEmail_Email
-  ALTER TABLE dbo.StudentEmail DROP CONSTRAINT FK_StudentEmail_Student
-	DROP TABLE dbo.StudentEmail
-END
-GO
-
-IF OBJECT_ID('dbo.StudentPhone', 'U') IS NOT NULL
-BEGIN
-  ALTER TABLE dbo.StudentPhone DROP CONSTRAINT FK_StudentPhone_Phone
-  ALTER TABLE dbo.StudentPhone DROP CONSTRAINT FK_StudentPhone_Student
-	DROP TABLE dbo.StudentPhone
-END
-GO
 IF OBJECT_ID('dbo.StudentPhoto', 'U') IS NOT NULL
 BEGIN
    ALTER TABLE dbo.StudentPhoto DROP CONSTRAINT FK_StudentPhoto_Photo
@@ -190,6 +167,9 @@ BEGIN
 END
 GO
 IF OBJECT_ID('dbo.AddressType', 'U') IS NOT NULL
+  DROP TABLE dbo.AddressType
+GO
+IF OBJECT_ID('dbo.GradeLevel', 'U') IS NOT NULL
   DROP TABLE dbo.AddressType
 GO
 IF OBJECT_ID('dbo.DocumentType', 'U') IS NOT NULL
@@ -248,7 +228,7 @@ GO
 CREATE TABLE dbo.EmailType(
 	EmailTypeId int IDENTITY(1,1) NOT NULL,
 	Description nvarchar(50) NOT NULL
-CONSTRAINT PK_EmailType PRIMARY KEY CLUSTERED 
+CONSTRAINT PK_EmailType PRIMARY KEY CLUSTERED
 (
 	EmailTypeId ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -256,12 +236,25 @@ CONSTRAINT PK_EmailType PRIMARY KEY CLUSTERED
 GO
 
 /****** Create dbo.GuardianType    Script Date: 6/1/2018 8:46:06 AM ******/
-CREATE TABLE dbo.GuardianType(
-	GuardianTypeId int IDENTITY(1,1) NOT NULL,
-	Description varchar(50) NOT NULL,
- CONSTRAINT PK_GuardianType PRIMARY KEY CLUSTERED 
+CREATE TABLE dbo.GuardianType
+(
+  GuardianTypeId int IDENTITY(1,1) NOT NULL,
+  Description varchar(50) NOT NULL,
+  CONSTRAINT PK_GuardianType PRIMARY KEY CLUSTERED
 (
 	GuardianTypeId ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Create dbo.GradeLevel    Script Date: 6/19/2018 8:46:06 PM ******/
+CREATE TABLE dbo.GradeLevel
+(
+  GradeLevelId int IDENTITY(1,1) NOT NULL,
+  Description varchar(50) NOT NULL,
+  CONSTRAINT PK_GradeLevel PRIMARY KEY CLUSTERED
+(
+	GradeLevelId ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -282,7 +275,7 @@ GO
 CREATE TABLE dbo.PersonType(
 	PersonTypeId int IDENTITY(1,1) NOT NULL,
 	Description varchar(50) NOT NULL,
- CONSTRAINT PK_PersonType PRIMARY KEY CLUSTERED 
+ CONSTRAINT PK_PersonType PRIMARY KEY CLUSTERED
 (
 	PersonTypeId ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -329,7 +322,7 @@ GO
 CREATE TABLE dbo.PhoneType(
 	PhoneTypeId int IDENTITY(1,1) NOT NULL,
 	Description nvarchar(50) NOT NULL,
- CONSTRAINT PK_PhoneType PRIMARY KEY CLUSTERED 
+ CONSTRAINT PK_PhoneType PRIMARY KEY CLUSTERED
 (
 	PhoneTypeId ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -769,33 +762,6 @@ ALTER TABLE dbo.EmergencyContact  WITH CHECK ADD  CONSTRAINT FK_EmergencyContact
 REFERENCES dbo.Student (StudentId)
 GO
 
-/****** Object:  Table dbo.StudentAddress    Script Date: 6/3/2018 2:35:06 PM ******/
-CREATE TABLE dbo.StudentAddress(
-	StudentAddressId int IDENTITY(1,1) NOT NULL,
-	StudentId int NOT NULL,
-	AddressId int NOT NULL,
-	IsPrimary bit NOT NULL,
- CONSTRAINT PK_StudentAddress PRIMARY KEY CLUSTERED
-(
-	StudentAddressId ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-
-ALTER TABLE dbo.StudentAddress  WITH CHECK ADD  CONSTRAINT FK_StudentAddress_Student FOREIGN KEY(StudentId)
-REFERENCES dbo.Student (StudentId)
-GO
-
-ALTER TABLE dbo.StudentAddress CHECK CONSTRAINT FK_StudentAddress_Student
-GO
-
-ALTER TABLE dbo.StudentAddress  WITH CHECK ADD  CONSTRAINT FK_StudentAddress_Address FOREIGN KEY(AddressId)
-REFERENCES dbo.Address (AddressId)
-GO
-
-ALTER TABLE dbo.StudentAddress CHECK CONSTRAINT FK_StudentAddress_Address
-GO
-
 /****** Object:  Table dbo.StudentDietary    Script Date: 6/1/2018 8:40:57 AM ******/
 CREATE TABLE dbo.StudentDietary
 (
@@ -849,33 +815,6 @@ REFERENCES dbo.Document (DocumentId)
 GO
 
 ALTER TABLE dbo.StudentDocument CHECK CONSTRAINT FK_StudentDocument_Document
-GO
-
-/****** Object:  Table dbo.StudentEmail    Script Date: 6/3/2018 2:35:06 PM ******/
-CREATE TABLE dbo.StudentEmail(
-	StudentEmailId int IDENTITY(1,1) NOT NULL,
-	StudentId int NOT NULL,
-	EmailId int NOT NULL,
-	IsPrimary bit NOT NULL,
- CONSTRAINT PK_StudentEmail PRIMARY KEY CLUSTERED
-(
-	StudentEmailId ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-
-ALTER TABLE dbo.StudentEmail  WITH CHECK ADD  CONSTRAINT FK_StudentEmail_Student FOREIGN KEY(StudentId)
-REFERENCES dbo.Student (StudentId)
-GO
-
-ALTER TABLE dbo.StudentEmail CHECK CONSTRAINT FK_StudentEmail_Student
-GO
-
-ALTER TABLE dbo.StudentEmail  WITH CHECK ADD  CONSTRAINT FK_StudentEmail_Email FOREIGN KEY(EmailId)
-REFERENCES dbo.Email (EmailId)
-GO
-
-ALTER TABLE dbo.StudentEmail CHECK CONSTRAINT FK_StudentEmail_Email
 GO
 
 /****** Object:  Table dbo.StudentInsurance    Script Date: 6/3/2018 2:35:06 PM ******/

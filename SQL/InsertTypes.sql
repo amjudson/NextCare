@@ -11,6 +11,15 @@ INSERT INTO AddressType	(AddressTypeId, Description) VALUES(4, 'Other');
 SET IDENTITY_INSERT dbo.AddressType OFF;
 GO
 
+SET IDENTITY_INSERT dbo.GradeLevel ON;
+GO
+INSERT INTO GradeLevel	(GradeLevelId, Description) VALUES(1, 'Pre-school');
+INSERT INTO GradeLevel	(GradeLevelId, Description) VALUES(2, 'Grade-school');
+INSERT INTO GradeLevel	(GradeLevelId, Description) VALUES(3, 'Home school');
+INSERT INTO GradeLevel	(GradeLevelId, Description) VALUES(4, 'Other');
+SET IDENTITY_INSERT dbo.GradeLevel OFF;
+GO
+
 SET IDENTITY_INSERT EmailType ON;
 GO
 INSERT INTO EmailType (EmailTypeId, Description) VALUES(1, 'Home');
