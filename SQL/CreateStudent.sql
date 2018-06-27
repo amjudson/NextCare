@@ -19,7 +19,7 @@ CREATE TABLE dbo.Student(
 	StudentId int IDENTITY(1,1) NOT NULL,
 	PersonId int NOT NULL,
   StudentTypeId int NOT NULL,
-	GradeClassLevelId int NOT NULL,
+	GradeLevelId int NOT NULL,
   Alias nvarchar NULL,
   PhysicianId int NOT NULL,
  CONSTRAINT PK_Student PRIMARY KEY CLUSTERED
@@ -31,6 +31,13 @@ GO
 
 ALTER TABLE dbo.Student  WITH CHECK ADD  CONSTRAINT FK_Student_StudentType FOREIGN KEY(StudentTypeId)
 REFERENCES dbo.StudentType (StudentTypeId)
+GO
+
+ALTER TABLE dbo.Student CHECK CONSTRAINT FK_Student_StudentType
+GO
+
+ALTER TABLE dbo.Student  WITH CHECK ADD  CONSTRAINT FK_Student_GradeLevel FOREIGN KEY(GradeLevelId)
+REFERENCES dbo.GradeLevel (GradeLevelId)
 GO
 
 ALTER TABLE dbo.Student CHECK CONSTRAINT FK_Student_StudentType

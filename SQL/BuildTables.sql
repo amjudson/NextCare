@@ -142,6 +142,7 @@ GO
 IF OBJECT_ID('dbo.Student', 'U') IS NOT NULL
 BEGIN
   ALTER TABLE dbo.Student DROP CONSTRAINT FK_Student_StudentType
+  ALTER TABLE dbo.Student DROP CONSTRAINT FK_Student_GradeLevel
 	DROP TABLE dbo.Student
 END
 GO
@@ -198,6 +199,26 @@ IF OBJECT_ID('dbo.StudentType', 'U') IS NOT NULL
 GO
 IF OBJECT_ID('dbo.PhoneType', 'U') IS NOT NULL
 	DROP TABLE dbo.PhoneType
+GO
+
+IF OBJECT_ID('dbo.USStates', 'U') IS NOT NULL
+BEGIN
+  DROP TABLE dbo.USStates
+END
+GO
+
+/****** Create dbo.USStates    Script Date: 6/26/2018 7:38:21 PM ******/
+CREATE TABLE [dbo].[USStates]
+(
+  [StateId] [int] IDENTITY(1,1) NOT NULL,
+  [Abbreviation] [nvarchar](2) NULL,
+  [Name] [nvarchar](50) NULL,
+  CONSTRAINT [PK_dbo.States] PRIMARY KEY CLUSTERED
+(
+	[StateId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
 GO
 
 /****** Create dbo.AddressType    Script Date: 6/1/2018 8:38:01 AM ******/
@@ -721,7 +742,7 @@ CREATE TABLE dbo.Student(
 	StudentId int IDENTITY(1,1) NOT NULL,
 	PersonId int NOT NULL,
   StudentTypeId int NOT NULL,
-	GradeClassLevelId int NOT NULL,
+	GradeLevelId int NOT NULL,
   Alias nvarchar NULL,
   PhysicianId int NOT NULL,
  CONSTRAINT PK_Student PRIMARY KEY CLUSTERED
@@ -733,6 +754,13 @@ GO
 
 ALTER TABLE dbo.Student  WITH CHECK ADD  CONSTRAINT FK_Student_StudentType FOREIGN KEY(StudentTypeId)
 REFERENCES dbo.StudentType (StudentTypeId)
+GO
+
+ALTER TABLE dbo.Student CHECK CONSTRAINT FK_Student_StudentType
+GO
+
+ALTER TABLE dbo.Student  WITH CHECK ADD  CONSTRAINT FK_Student_GradeLevel FOREIGN KEY(GradeLevelId)
+REFERENCES dbo.GradeLevel (GradeLevelId)
 GO
 
 ALTER TABLE dbo.Student CHECK CONSTRAINT FK_Student_StudentType
