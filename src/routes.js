@@ -25,11 +25,3 @@ export default (
     <Route path="about" component={AboutPage} />
   </Route>
 );
-
-/*
-import CoursesPage from './components/course/CoursesPage';
-import ManageCoursePage from './components/course/ManageCoursePage';
-
-    <Route path="academy" component={ManageAcademyPage} />
-    <Route path="academy/:id" component={ManageAcademyPage} />
-*/
