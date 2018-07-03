@@ -11,7 +11,7 @@ const composeEnhancers =
 
 const enhancer = composeEnhancers(
   applyMiddleware(thunk, reduxImmutableStateInvariant())
-)
+);
 
 export default function configureStore(initialState) {
   return createStore(
