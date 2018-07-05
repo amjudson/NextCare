@@ -1,4 +1,4 @@
-import {payload, results} from './fetchApi';
+import {results} from './fetchApi';
 
 class personApi {
   static getAllPersons() {
@@ -22,12 +22,12 @@ class personApi {
       }
 
       if (person.personId) {
-        payload(`${process.env.API_HOST}/api/Person/${person.personId}`, 'PUT', 'Person', person)
+        results(`${process.env.API_HOST}/api/Person/${person.personId}`, 'PUT', 'Person', person)
           .then((person) => {
             resolve(person);
           });
       } else {
-        payload(`${process.env.API_HOST}/api/Person`, 'POST', 'Person', person).then((person) => {
+        results(`${process.env.API_HOST}/api/Person`, 'POST', 'Person', person).then((person) => {
           resolve(person);
         });
       }
@@ -36,7 +36,7 @@ class personApi {
 
   static deletePerson(person) {
     return new Promise((resolve, reject) => {
-      payload(`${process.env.API_HOST}/api/Person/${person.personId}`, 'DELETE', 'State', person);
+      results(`${process.env.API_HOST}/api/Person/${person.personId}`, 'DELETE', 'State', person);
       resolve();
     });
   }

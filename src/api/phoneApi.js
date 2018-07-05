@@ -2,7 +2,7 @@ import {payload, results} from './fetchApi';
 
 class PhoneApi {
   static getAllPhones() {
-    return results(`${process.env.API_HOST}/api/Phone`, 'GET').then(phones => {
+    return results(`${process.env.API_HOST}/api/Phone`, 'GET', 'Phone').then(phones => {
       return new Promise((resolve, reject) => {
         resolve(Object.assign([], phones));
       });
@@ -10,7 +10,7 @@ class PhoneApi {
   }
 
   static getPhoneById(phoneId) {
-    return results(`${process.env.API_HOST}/api/Phone/${phoneId}`, 'GET')
+    return results(`${process.env.API_HOST}/api/Phone/${phoneId}`, 'GET', 'Phone')
       .then(phone => {
         return new Promise((resolve, reject) => {
           resolve(phone);
@@ -27,12 +27,12 @@ class PhoneApi {
       }
 
       if (phone.phoneId) {
-        results(`${process.env.API_HOST}/api/Phone/${phone.phoneId}`, 'PUT')
+        results(`${process.env.API_HOST}/api/Phone/${phone.phoneId}`, 'PUT', 'Phone', phone)
           .then((phone) => {
             resolve(phone);
           });
       } else {
-        results(`${process.env.API_HOST}/api/Phone`, 'POST').then((phone) => {
+        results(`${process.env.API_HOST}/api/Phone`, 'POST', 'Phone', phone).then((phone) => {
           resolve(phone);
         });
       }
@@ -41,7 +41,7 @@ class PhoneApi {
 
   static deletePhone(phone) {
     return new Promise((resolve, reject) => {
-      results(`${process.env.API_HOST}/api/Phone/${phone.phoneId}`, 'PUT');
+      results(`${process.env.API_HOST}/api/Phone/${phone.phoneId}`, 'DELETE', 'Phone', phone);
       resolve();
     });
   }

@@ -2,7 +2,7 @@ import {payload, results} from './fetchApi';
 
 class AddressApi {
   static getAllAddresses() {
-    return results(`${process.env.API_HOST}/api/Address`, 'GET').then(addresses => {
+    return results(`${process.env.API_HOST}/api/Address`, 'GET', 'Address').then(addresses => {
       return new Promise((resolve, reject) => {
         resolve(Object.assign([], addresses));
       });
@@ -10,7 +10,7 @@ class AddressApi {
   }
 
   static getAddressById(addressId) {
-    return results(`${process.env.API_HOST}/api/Address/${addressId}`, 'GET').then(address => {
+    return results(`${process.env.API_HOST}/api/Address/${addressId}`, 'GET', 'Address').then(address => {
       return new Promise((resolve, reject) => {
         resolve(address);
       });
@@ -34,12 +34,12 @@ class AddressApi {
       }
 
       if (address.addressId) {
-        results(`${process.env.API_HOST}/api/Address/${address.addressId}`, 'PUT')
+        results(`${process.env.API_HOST}/api/Address/${address.addressId}`, 'PUT', 'Address', address)
           .then((address) => {
           resolve(address);
         });
       } else {
-        results(`${process.env.API_HOST}/api/Address/${address.addressId}`, 'POST')
+        results(`${process.env.API_HOST}/api/Address/${address.addressId}`, 'POST', 'Address', address)
           .then((address) => {
           resolve(address);
         });
@@ -49,7 +49,7 @@ class AddressApi {
 
   static deleteAddress(address) {
     return new Promise((resolve, reject) => {
-      results(`${process.env.API_HOST}/api/Address/${address.addressId}`, 'DELETE');
+      results(`${process.env.API_HOST}/api/Address/${address.addressId}`, 'DELETE', 'Address', address);
       resolve();
     });
   }

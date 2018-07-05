@@ -19,17 +19,19 @@ export const payload = (url, method, caller, body) => {
   });
 };
 
-export const results = (url, method) => {
+export const results = (url, method, caller, body) => {
+  const data = JSON.stringify(body);
   return new Promise(function (resolve, reject) {
     let request = new XMLHttpRequest();
     request.open(method, url, true);
     request.overrideMimeType("application/json");
+    request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     request.onload = function () {
       if (request.status >= 200 && request.status < 400) {
         resolve(JSON.parse(request.response));
       }
     };
 
-    request.send();
+    request.send(data);
   });
 };

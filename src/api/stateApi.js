@@ -2,7 +2,7 @@ import { payload, results } from './fetchApi';
 
 class StateApi {
   static getAllStates() {
-    return results(`${process.env.API_HOST}/api/State`, 'GET').then(states => {
+    return results(`${process.env.API_HOST}/api/State`, 'GET', 'State').then(states => {
       return new Promise((resolve, reject) => {
         resolve(Object.assign([], states));
       });
@@ -10,7 +10,7 @@ class StateApi {
   }
 
   static getStateById(stateId) {
-    return results(`${process.env.API_HOST}/api/State/${stateId}`, 'GET')
+    return results(`${process.env.API_HOST}/api/State/${stateId}`, 'GET', 'State')
       .then(state => {
         return new Promise((resolve, reject) => {
           resolve(state);
@@ -27,12 +27,12 @@ class StateApi {
       }
 
       if (state.stateId) {
-        results(`${process.env.API_HOST}/api/State/${state.stateId}`, 'PUT')
+        results(`${process.env.API_HOST}/api/State/${state.stateId}`, 'PUT', 'State', state)
           .then((state) => {
             resolve(state);
           });
       } else {
-        results(`${process.env.API_HOST}/api/State`, 'POST').then((state) => {
+        results(`${process.env.API_HOST}/api/State`, 'POST', 'State', state).then((state) => {
           resolve(state);
         });
       }
@@ -41,7 +41,7 @@ class StateApi {
 
   static deleteState(state) {
     return new Promise((resolve, reject) => {
-      results(`${process.env.API_HOST}/api/State/${state.stateId}`, 'DELETE');
+      results(`${process.env.API_HOST}/api/State/${state.stateId}`, 'DELETE', 'State', state);
       resolve();
     });
   }
