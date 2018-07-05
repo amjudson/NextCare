@@ -1,8 +1,8 @@
-import {getPayload} from './callApi';
+import {payload, results} from './fetchApi';
 
 class AddressApi {
   static getAllAddresses() {
-    return getPayload(`${process.env.API_HOST}/api/Address`, 'GET', 'Address').then(addresses => {
+    return results(`${process.env.API_HOST}/api/Address`, 'GET').then(addresses => {
       return new Promise((resolve, reject) => {
         resolve(Object.assign([], addresses));
       });
@@ -10,7 +10,7 @@ class AddressApi {
   }
 
   static getAddressById(addressId) {
-    return getPayload(`${process.env.API_HOST}/api/Address/${addressId}`, 'GET', 'Address').then(address => {
+    return results(`${process.env.API_HOST}/api/Address/${addressId}`, 'GET').then(address => {
       return new Promise((resolve, reject) => {
         resolve(address);
       });
@@ -34,12 +34,12 @@ class AddressApi {
       }
 
       if (address.addressId) {
-        getPayload(`${process.env.API_HOST}/api/Address/${address.addressId}`, 'PUT', 'Address', address)
+        results(`${process.env.API_HOST}/api/Address/${address.addressId}`, 'PUT')
           .then((address) => {
           resolve(address);
         });
       } else {
-        getPayload(`${process.env.API_HOST}/api/Address/${address.addressId}`, 'POST', 'Address', address)
+        results(`${process.env.API_HOST}/api/Address/${address.addressId}`, 'POST')
           .then((address) => {
           resolve(address);
         });
@@ -49,7 +49,7 @@ class AddressApi {
 
   static deleteAddress(address) {
     return new Promise((resolve, reject) => {
-      getPayload(`${process.env.API_HOST}/api/Address/${address.addressId}`, 'DELETE', 'Address');
+      results(`${process.env.API_HOST}/api/Address/${address.addressId}`, 'DELETE');
       resolve();
     });
   }

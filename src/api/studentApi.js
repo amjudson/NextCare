@@ -1,8 +1,8 @@
-import { getPayload } from './callApi';
+import { payload, results } from './fetchApi';
 
 class studentApi {
   static getAllStudents() {
-    return getPayload(`${process.env.API_HOST}/api/Student`, 'GET', 'Student').then(students => {
+    return results(`${process.env.API_HOST}/api/Student`, 'GET').then(students => {
       return new Promise((resolve, reject) => {
         resolve(Object.assign([], students));
       });
@@ -10,7 +10,7 @@ class studentApi {
   }
 
   static getStudentById(studentId) {
-    return getPayload(`${process.env.API_HOST}/api/Student/${studentId}`, 'GET', 'Student').then(student => {
+    return results(`${process.env.API_HOST}/api/Student/${studentId}`, 'GET').then(student => {
       return new Promise((resolve, reject) => {
         resolve(student);
       });
@@ -34,11 +34,11 @@ class studentApi {
       }
 
       if (student.studentId) {
-        getPayload(`${process.env.API_HOST}/api/Student/${student.studentId}`, 'PUT', 'Student', student).then((student) => {
+        results(`${process.env.API_HOST}/api/Student/${student.studentId}`, 'PUT').then((student) => {
           resolve(student);
         }).catch((message) => console.log('Student ERROR:', message)); // eslint-disable-line no-console
       } else {
-        getPayload(`${process.env.API_HOST}/api/Student`, 'POST', 'Student', student).then((student) => {
+        results(`${process.env.API_HOST}/api/Student`, 'POST').then((student) => {
           resolve(student);
         }).catch((message) => console.log('Student ERROR:', message)); // eslint-disable-line no-console
       }
@@ -47,7 +47,7 @@ class studentApi {
 
   static deleteStudent(student) {
     return new Promise((resolve, reject) => {
-      getPayload(`${process.env.API_HOST}/api/student/${student.studentId}`, 'DELETE', 'Academy', student.studentId);
+      results(`${process.env.API_HOST}/api/Student/${student.studentId}`, 'DELETE');
       resolve();
     });
   }

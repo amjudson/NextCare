@@ -1,5 +1,5 @@
 import action from './mirrorActions';
-import personApi from '../api/mockPerson';
+import personApi from '../api/personApi';
 import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions';
 
 export function loadPersonsSuccess(persons) {

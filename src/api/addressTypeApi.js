@@ -1,8 +1,8 @@
-import { getPayload } from './callApi';
+import {payload, results} from './fetchApi';
 
 class AddressTypeApi {
   static getAllAddressTypes() {
-    return getPayload(`${process.env.API_HOST}/api/AddressType`, 'GET', 'Address Type').then(addressTypes => {
+    return results(`${process.env.API_HOST}/api/AddressType`).then(addressTypes => {
       return new Promise((resolve, reject) => {
         resolve(Object.assign([], addressTypes));
       });
@@ -10,7 +10,7 @@ class AddressTypeApi {
   }
 
   static getAddressTypeById(addressTypeId) {
-    return getPayload(`${process.env.API_HOST}/api/AddressType/${addressTypeId}`, 'GET', 'Address Type')
+    return results(`${process.env.API_HOST}/api/AddressType/${addressTypeId}`)
       .then(addressType => {
       return new Promise((resolve, reject) => {
         resolve(addressType);
@@ -27,12 +27,12 @@ class AddressTypeApi {
       }
 
       if (addressType.addressTypeId) {
-        getPayload(`${process.env.API_HOST}/api/AddressType/${addressType.addressTypeId}`, 'PUT', 'Address Type', addressType)
+        results(`${process.env.API_HOST}/api/AddressType/${addressType.addressTypeId}`, 'PUT')
           .then((addressType) => {
           resolve(addressType);
         });
       } else {
-        getPayload(`${process.env.API_HOST}/api/AddressType`, 'POST', 'Address Type', addressType).then((addressType) => {
+        results(`${process.env.API_HOST}/api/AddressType`, 'POST').then((addressType) => {
           resolve(addressType);
         });
       }
@@ -41,7 +41,7 @@ class AddressTypeApi {
 
   static deleteAddressType(addressType) {
     return new Promise((resolve, reject) => {
-      getPayload(`${process.env.API_HOST}/api/AddressType/${addressType.addressTypeId}`, 'PUT', 'Address Type', addressType);
+      results(`${process.env.API_HOST}/api/AddressType/${addressType.addressTypeId}`, 'PUT');
       resolve();
     });
   }

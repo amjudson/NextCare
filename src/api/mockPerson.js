@@ -71,7 +71,7 @@ const generateId = (persons) => {
   return Math.max.apply(Math, persons.map((s) => { return s.personId; })) + 1;
 };
 
-class personApi {
+class mockPersonApi {
   static getAllPersons() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -124,4 +124,4 @@ class personApi {
   }
 }
 
-export default personApi;
+export default mockPersonApi;
