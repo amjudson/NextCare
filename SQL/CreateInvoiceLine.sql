@@ -21,7 +21,7 @@ CREATE TABLE dbo.InvoiceLine
   InvoiceId int NOT NULL,
   Paid bit NOT NULL,
   Quantity int NOT NULL,
-  Cost DECIMAL NOT NULL,
+  Cost DECIMAL(10,2) NOT NULL,
   Description nvarchar(512) NOT NULL,
   CONSTRAINT PK_InvoiceLine PRIMARY KEY CLUSTERED
 (

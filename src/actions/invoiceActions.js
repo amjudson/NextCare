@@ -3,7 +3,6 @@ import InvoiceApi from '../api/invoiceApi';
 import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions';
 
 export function loadInvoicesSuccess(invoices) {
-  console.log('INVOICES:', invoices);
   return {
     type: action.LOAD_INVOICES_SUCCESS,
     invoices

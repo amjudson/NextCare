@@ -19,7 +19,6 @@ class InvoiceList extends Component {
 
   render () {
     const invoice = this.props.invoice;
-    console.log('INVOICE:', invoice);
     const totLine = {description: 'Total', total: this.buildTotalLine(invoice), quantity: 0, cost: 0};
     return (
       <div className="container-fluid">
