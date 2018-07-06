@@ -6,7 +6,7 @@ import toastr from 'toastr';
 class InvoiceList extends Component {
   buildTotalLine(invoice) {
     let tot = 0;
-    tot = invoice.invoiceLine.map(item => {
+    tot = invoice.invoiceLines.map(item => {
       return item.cost * item.quantity;
     });
 
@@ -19,6 +19,7 @@ class InvoiceList extends Component {
 
   render () {
     const invoice = this.props.invoice;
+    console.log('INVOICE:', invoice);
     const totLine = {description: 'Total', total: this.buildTotalLine(invoice), quantity: 0, cost: 0};
     return (
       <div className="container-fluid">
@@ -27,7 +28,7 @@ class InvoiceList extends Component {
           <div className="col-sm-2">Quantity</div>
           <div className="col-sm-2 ml-3">Cost Per</div>
         </div>
-        {invoice.invoiceLine.map(line =>
+        {invoice.invoiceLines.map(line =>
           <InvoiceItemListRow key={line.invoiceLineId} line={line} />
         )}
         <InvoiceItemListRow key="99999" line={totLine} />

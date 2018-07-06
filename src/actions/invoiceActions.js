@@ -1,8 +1,9 @@
 import action from './mirrorActions';
-import InvoiceApi from '../api/mockInvoiceApi';
+import InvoiceApi from '../api/invoiceApi';
 import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions';
 
 export function loadInvoicesSuccess(invoices) {
+  console.log('INVOICES:', invoices);
   return {
     type: action.LOAD_INVOICES_SUCCESS,
     invoices
@@ -77,7 +78,6 @@ export function loadInvoices() {
   return function (dispatch) {
     dispatch(beginAjaxCall());
     try {
-      //console.log(ApiInvoice);
       return InvoiceApi.getAllInvoices().then(invoices => {
         dispatch(loadInvoicesSuccess(invoices));
       });

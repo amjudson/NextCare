@@ -88,7 +88,10 @@ GO
 INSERT INTO InvoiceType (InvoiceTypeId, Description) VALUES(1, 'Daycare fee');
 INSERT INTO InvoiceType (InvoiceTypeId, Description) VALUES(2, 'Pickup charge');
 INSERT INTO InvoiceType (InvoiceTypeId, Description) VALUES(3, 'Extended stay');
-INSERT INTO InvoiceType (InvoiceTypeId, Description) VALUES(4, 'Other');
+INSERT INTO InvoiceType (InvoiceTypeId, Description) VALUES(4, 'Outing');
+INSERT INTO InvoiceType (InvoiceTypeId, Description) VALUES(5, 'Special Event');
+INSERT INTO InvoiceType (InvoiceTypeId, Description) VALUES(6, 'Food');
+INSERT INTO InvoiceType (InvoiceTypeId, Description) VALUES(7, 'Other');
 SET IDENTITY_INSERT StudentType OFF;
 GO
 --ROLLBACK TRAN
