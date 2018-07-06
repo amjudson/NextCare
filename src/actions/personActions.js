@@ -16,6 +16,20 @@ export function loadPersonsFailed(message) {
   };
 }
 
+export function loadPersonSuccess(person) {
+  return {
+    type: action.LOAD_PERSON_SUCCESS,
+    person
+  };
+}
+
+export function loadPersonFailed(message) {
+  return {
+    type: action.LOAD_PERSON_FAILED,
+    message
+  };
+}
+
 export function createPersonSuccess(person) {
   return {
     type: action.CREATE_PERSON_SUCCESS,
@@ -53,6 +67,19 @@ export function loadPersons() {
       });
     } catch (error) {
       return dispatch(loadPersonsFailed(error.message));
+    }
+  };
+}
+
+export function loadPerson(personId) {
+  return function (dispatch) {
+    dispatch(beginAjaxCall());
+    try {
+      return personApi.getPerson(personId).then(person => {
+        dispatch(loadPersonSuccess(person));
+      })
+    } catch (error) {
+      return dispatch(loadPersonFailed(error.message));
     }
   };
 }

@@ -9,6 +9,14 @@ class personApi {
     });
   }
 
+  static getPerson(personId) {
+    return results(`${process.env.API_HOST}/api/Person`, 'GET', 'Person').then(persons => {
+      return new Promise((resolve, reject) => {
+        resolve(Object.assign([], persons));
+      });
+    });
+  }
+
   static savePerson(person) {
     person = Object.assign({}, person); // to avoid manipulating object passed in.
     return new Promise((resolve, reject) => {

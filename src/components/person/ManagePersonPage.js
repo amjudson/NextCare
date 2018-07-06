@@ -27,7 +27,8 @@ class ManagePersonPage extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.person.personId != nextProps.person.personId) {
       // necessary to populate form whene existing person is loaded directly.
-      this.setState({ person: Object.assign({}, nextProps.person) });
+      let person = this.props.actions.loadPerson(nextProps.person.personId);
+      this.setState({ person: Object.assign({}, person) });
     }
   }
 
