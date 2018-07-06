@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as invoiceActions from '../../actions/invoiceActions';
+import * as TotalInvoiceActions from '../../actions/totalInvoiceActions';
 import InvoiceForm from '../invoice/InvoiceForm';
 import toastr from 'toastr';
 
@@ -11,7 +11,7 @@ class ManageInvoicePage extends React.Component {
     super(props, context);
 
     this.state = {
-      invoice: Object.assign({}, this.props.invoice),
+      totalInvoice: Object.assign({}, this.props.totalInvoice),
       errors: {},
       saving: false,
       deleting: false
@@ -25,9 +25,9 @@ class ManageInvoicePage extends React.Component {
 
   updateInvoiceState(event) {
     const field = event.target.name;
-    let invoice = this.state.invoice;
-    invoice[field] = event.target.value;
-    return this.setState({ invoice: invoice });
+    let totalInvoice = this.state.totalInvoice;
+    totalInvoice[field] = event.target.value;
+    return this.setState({totalInvoice: totalInvoice });
   }
 
   invoiceFormIsValid() {
@@ -45,7 +45,7 @@ class ManageInvoicePage extends React.Component {
     }
 
     this.setState({ saving: true });
-    this.props.actions.saveInvoice(this.state.invoice)
+    this.props.actions.saveInvoice(this.state.totalInvoice)
       .then(() => this.redirect())
       .catch(error => {
         this.setState({ saving: false });
@@ -62,7 +62,7 @@ class ManageInvoicePage extends React.Component {
   deleteInvoiceInner(event) {
     event.preventDefault();
     this.setState({ deleting: true });
-    this.props.actions.deleteInvoice(this.state.invoice)
+    this.props.actions.deleteInvoice(this.state.totalInvoice)
       .then(() => { this.redirectDelete(); })
       .catch(error => {
         this.setState({ deleting: false });
@@ -82,7 +82,7 @@ class ManageInvoicePage extends React.Component {
         onChange={this.updateInvoiceState}
         onSave={this.saveInvoice}
         onDelete={this.deleteInvoiceInner}
-        invoice={this.state.invoice}
+        totalInvoice={this.state.totalInvoice}
         errors={this.state.errors}
         saving={this.state.saving}
         deleting={this.deleting}
@@ -92,7 +92,7 @@ class ManageInvoicePage extends React.Component {
 }
 
 ManageInvoicePage.propTypes = {
-  invoice: PropTypes.object.isRequired,
+  totalInvoice: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 };
 
@@ -101,38 +101,38 @@ ManageInvoicePage.contextTypes = {
   router: PropTypes.object
 };
 
-function getInvoiceById(invoices, id) {
-  const invoice = invoices.filter(invoice => invoice.invoiceId == id);
-  if (invoice) return invoice[0]; // since filter returns an array, have to grab the first.
+function getTotalInvoiceById(totalInvoices, id) {
+  const totalInvoice = totalInvoices.filter(totalInvoice => totalInvoice.invoiceId == id);
+  if (totalInvoice) return totalInvoice[0]; // since filter returns an array, have to grab the first.
   return null;
 }
 
 function mapStateToProps(state, ownProps) {
   const invoiceId = ownProps.params.id; // from the path '/invoice/:id'
 
-  let invoice = {
+  let totalInvoice = {
     invoiceId: 0,
     invoiceTypeId: 0,
     invoiceNumber: '',
     paid: false,
     description: '',
-    invoiceLine: [
+    invoiceLines: [
       {invoiceLineId: 0, description: '', quantity: 0, cost: 0.00, paid: false}
     ]
   };
 
-  if (invoiceId && state.invoices.length > 0) {
-    invoice = getInvoiceById(state.invoices, invoiceId);
+  if (invoiceId && state.totalInvoices.length > 0) {
+    totalInvoice = getTotalInvoiceById(state.totalInvoices, invoiceId);
   }
 
   return {
-    invoice: invoice
+    totalInvoice: totalInvoice
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(invoiceActions, dispatch)
+    actions: bindActionCreators(TotalInvoiceActions, dispatch)
   };
 }
 

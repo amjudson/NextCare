@@ -5,7 +5,7 @@ import toastr from 'toastr';
 
 class InvoiceList extends Component {
   render() {
-    const invoices = this.props.invoices;
+    const totalInvoices = this.props.totalInvoices;
     return (
       <div className="col-md-12">
         <div className="tableHeader">
@@ -17,9 +17,9 @@ class InvoiceList extends Component {
           </div>
         </div>
         <div className="list-group">
-          {invoices.map(invoice =>
-            <InvoiceListRow key={invoice.invoiceId}
-              invoice={invoice} />
+          {totalInvoices.map(totalInvoice =>
+            <InvoiceListRow key={totalInvoice.invoiceId}
+              totalInvoice={totalInvoice} />
           )}
         </div>
       </div>
@@ -28,7 +28,7 @@ class InvoiceList extends Component {
 }
 
 InvoiceList.propTypes = {
-  invoices: PropTypes.array.isRequired
+  totalInvoices: PropTypes.array.isRequired
 };
 
 export default InvoiceList;

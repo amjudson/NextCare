@@ -6,6 +6,7 @@ export default {
   addresses: [],
   addressTypes: [],
   invoices: [],
+  totalInvoices: [],
   persons: [],
   ajaxCallsInProgress: 0
 };

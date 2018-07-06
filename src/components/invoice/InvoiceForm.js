@@ -7,12 +7,12 @@ import InvoiceItemList from './InvoiceItemList';
 
 class InvoiceForm extends Component {
   render() {
-    const {invoice, onSave, onDelete, onChange, saving, deleting, errors} = this.props;
+    const {totalInvoice, onSave, onDelete, onChange, saving, deleting, errors} = this.props;
     const returnToPreviousPage = () => {
       browserHistory.push('/invoices');
     };
 
-    const saveButton = invoice.invoiceId < 0 ? (
+    const saveButton = totalInvoice.invoiceId < 0 ? (
       <button
         type="submit"
         disabled={saving}
@@ -22,7 +22,7 @@ class InvoiceForm extends Component {
       </button>
     ) : '';
 
-    const deleteButton = invoice.invoiceId < 0 ? (
+    const deleteButton = totalInvoice.invoiceId < 0 ? (
       <button
         type="submit"
         disabled={deleting}
@@ -44,11 +44,11 @@ class InvoiceForm extends Component {
         <div className="row">
           <div className="invoiceTitle">
           <h3>
-          {invoice.title}
+              {totalInvoice.title}
           </h3>
           </div>
         </div>
-        <InvoiceItemList invoice={invoice} />
+        <InvoiceItemList totalInvoice={totalInvoice} />
         <div className="row mt-3">
           {saveButton}
           {deleteButton}
@@ -58,13 +58,13 @@ class InvoiceForm extends Component {
         </button>
         </div>
       </div>
-     
+
     );
   }
 }
 
 InvoiceForm.propTypes = {
-  invoice: PropTypes.object.isRequired,
+  totalInvoice: PropTypes.object.isRequired,
   onSave: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,

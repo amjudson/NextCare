@@ -6,12 +6,12 @@ import CommonButton from '../common/CommonButton';
 class InvoiceListRow extends Component {
   render()
    {
-    const invoice = this.props.invoice;
+    const totalInvoice = this.props.totalInvoice;
     return (
-      <Link className="list-group-item list-group-item-action flex-column align-items-start" to={'/invoice/' + invoice.invoiceId}>
+      <Link className="list-group-item list-group-item-action flex-column align-items-start" to={'/invoice/' + totalInvoice.invoiceId}>
         <div className="row">
-          <div className="col-sm-2">{invoice.invoiceId}</div>
-          <div className="col-md-10">{invoice.description}</div>
+          <div className="col-sm-2">{totalInvoice.invoiceId}</div>
+          <div className="col-md-10">{totalInvoice.description}</div>
         </div>
       </Link>
     );
@@ -19,7 +19,7 @@ class InvoiceListRow extends Component {
 }
 
 InvoiceListRow.propTypes = {
-  invoice: PropTypes.object.isRequired
+  totalInvoice: PropTypes.object.isRequired
 };
 
 export default InvoiceListRow;

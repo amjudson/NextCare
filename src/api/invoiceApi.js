@@ -2,7 +2,7 @@ import {results} from './fetchApi';
 
 class invoiceApi {
   static getAllInvoices() {
-    return results(`${process.env.API_HOST}/api/TotalInvoice`, 'GET', 'Invoice').then(invoices => {
+    return results(`${process.env.API_HOST}/api/Invoice`, 'GET', 'Invoice').then(invoices => {
       return new Promise((resolve, reject) => {
         resolve(Object.assign([], invoices));
       });
@@ -10,7 +10,7 @@ class invoiceApi {
   }
 
   static getInvoiceById(invoiceId) {
-    return results(`${process.env.API_HOST}/api/TotalInvoice/${invoiceId}`, 'GET', 'Invoice')
+    return results(`${process.env.API_HOST}/api/Invoice/${invoiceId}`, 'GET', 'Invoice')
       .then(invoice => {
         return new Promise((resolve, reject) => {
           resolve(invoice);
@@ -23,7 +23,7 @@ class invoiceApi {
     return new Promise((resolve, reject) => {
       const mininvoiceNameLength = 2;
       if (invoice.invoiceId) {
-        results(`${process.env.API_HOST}/api/TotalInvoice/${invoice.invoiceId}`, 'PUT', 'Invoice', invoice)
+        results(`${process.env.API_HOST}/api/Invoice/${invoice.invoiceId}`, 'PUT', 'Invoice', invoice)
           .then((invoice) => {
             resolve(invoice);
           });
@@ -37,7 +37,7 @@ class invoiceApi {
 
   static deleteInvoice(invoice) {
     return new Promise((resolve, reject) => {
-      results(`${process.env.API_HOST}/api/TotalInvoice/${invoice.invoiceId}`, 'DELETE', 'State', invoice);
+      results(`${process.env.API_HOST}/api/Invoice/${invoice.invoiceId}`, 'DELETE', 'Invoice', invoice);
       resolve();
     });
   }

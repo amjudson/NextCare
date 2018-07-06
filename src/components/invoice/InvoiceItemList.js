@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import InvoiceItemListRow from './InvoiceItemListRow';
 import toastr from 'toastr';
 
-class InvoiceList extends Component {
-  buildTotalLine(invoice) {
+class InvoiceItemList extends Component {
+  buildTotalLine(totalInvoice) {
     let tot = 0;
-    tot = invoice.invoiceLines.map(item => {
+    tot = totalInvoice.invoiceLines.map(item => {
       return item.cost * item.quantity;
     });
 
@@ -18,8 +18,8 @@ class InvoiceList extends Component {
   }
 
   render () {
-    const invoice = this.props.invoice;
-    const totLine = {description: 'Total', total: this.buildTotalLine(invoice), quantity: 0, cost: 0};
+    const totalInvoice = this.props.totalInvoice;
+    const totLine = {description: 'Total', total: this.buildTotalLine(totalInvoice), quantity: 0, cost: 0};
     return (
       <div className="container-fluid">
         <div className="row row-title">
@@ -27,7 +27,7 @@ class InvoiceList extends Component {
           <div className="col-sm-2">Quantity</div>
           <div className="col-sm-2 ml-3">Cost Per</div>
         </div>
-        {invoice.invoiceLines.map(line =>
+        {totalInvoice.invoiceLines.map(line =>
           <InvoiceItemListRow key={line.invoiceLineId} line={line} />
         )}
         <InvoiceItemListRow key="99999" line={totLine} />
@@ -36,8 +36,8 @@ class InvoiceList extends Component {
   }
 }
 
-InvoiceList.propTypes = {
-  invoice: PropTypes.object.isRequired
+InvoiceItemList.propTypes = {
+  totalInvoice: PropTypes.object.isRequired
 };
 
-export default InvoiceList;
+export default InvoiceItemList;

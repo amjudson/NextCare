@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import InvoiceList from './InvoiceList';
-import * as InvoiceActions from '../../actions/invoiceActions';
+import * as TotalInvoiceActions from '../../actions/totalInvoiceActions';
 import { browserHistory } from 'react-router';
 import toastr from 'toastr';
 
@@ -24,7 +24,7 @@ class InvoicePage extends React.Component {
   }
 
   render() {
-    const {invoices} = this.props; // fas fa-plus-square
+    const totalInvoices = this.props.totalInvoices; // fas fa-plus-square
     return (
       <div className="container-fluid">
         <div className="row">
@@ -41,7 +41,7 @@ class InvoicePage extends React.Component {
               />
               </div>
           </div>
-            <InvoiceList invoices={invoices} />
+          <InvoiceList totalInvoices={totalInvoices} />
         </div>
       </div>
     );
@@ -49,19 +49,19 @@ class InvoicePage extends React.Component {
 }
 
 InvoicePage.propTypes = {
-  invoices: PropTypes.array.isRequired,
+  totalInvoices: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    invoices: state.invoices
+    totalInvoices: state.totalInvoices
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(InvoiceActions, dispatch)
+    actions: bindActionCreators(TotalInvoiceActions, dispatch)
   };
 }
 
