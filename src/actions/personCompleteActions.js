@@ -49,7 +49,7 @@ export function loadPersonComplete(personId) {
     try {
       return personCompleteApi.getPersonComplete(personId).then(personComplete => {
         dispatch(loadPersonCompleteSuccess(personComplete));
-      })
+      });
     } catch (error) {
       return dispatch(loadPersonCompleteFailed(error.message));
     }
