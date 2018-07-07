@@ -30,7 +30,7 @@ export function loadPersonCompleteFailed(message) {
   };
 }
 
-export function loadPersons() {
+export function loadPersonCompletes() {
   return function (dispatch) {
     dispatch(beginAjaxCall());
     try {
@@ -43,7 +43,7 @@ export function loadPersons() {
   };
 }
 
-export function loadPerson(personId) {
+export function loadPersonComplete(personId) {
   return function (dispatch) {
     dispatch(beginAjaxCall());
     try {
