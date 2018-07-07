@@ -10,7 +10,7 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 class PersonForm extends Component {
   render() {
-    const {person, sexes, onSave, onChange, saving, errors, dobChange} = this.props;
+    const {personComplete, sexes, onSave, onChange, saving, errors, dobChange} = this.props;
     const returnToPreviousPage = () => {
       browserHistory.push('/persons');
     };
@@ -20,7 +20,7 @@ class PersonForm extends Component {
 <div className="container-fluid mainPage">
         <div className="row">
           <div className = "pageHeaders">
-              <div className="col-md-6">   
+              <div className="col-md-6">
               <h2>Manage Person</h2>
               </div>
           </div>
@@ -32,7 +32,7 @@ class PersonForm extends Component {
                 name="prefix"
                 label="Prefix"
                 placeholder="Prefix"
-                value={person.prefix}
+                value={personComplete.person.prefix}
                 onChange={onChange}
                 addClass="medium-textbox"
                 error={errors.prefix} />
@@ -42,7 +42,7 @@ class PersonForm extends Component {
                 name="firstName"
                 label="First Name"
                 placeholder="Enter First Name"
-                value={person.firstName}
+                value={personComplete.person.firstName}
                 onChange={onChange}
                 addClass="medium-textbox"
                 error={errors.firstName} />
@@ -52,7 +52,7 @@ class PersonForm extends Component {
                 name="middleName"
                 label="Middle Initial"
                 placeholder=""
-                value={person.middleName}
+                value={personComplete.person.middleName}
                 onChange={onChange}
                 addClass="medium-textbox"
                 error={errors.middleName} />
@@ -62,7 +62,7 @@ class PersonForm extends Component {
                 name="lastName"
                 label="Last Name"
                 placeholder="Enter Last Name"
-                value={person.lastName}
+                value={personComplete.person.lastName}
                 onChange={onChange}
                 addClass="medium-textbox"
                 error={errors.lastName} />
@@ -72,7 +72,7 @@ class PersonForm extends Component {
                 name="sufix"
                 label="Sufix"
                 placeholder="Enter Sufix"
-                value={person.sufix}
+                value={personComplete.person.sufix}
                 onChange={onChange}
                 addClass="medium-textbox"
                 error={errors.sufix} />
@@ -84,11 +84,11 @@ class PersonForm extends Component {
                 name="alias"
                 label="Alias"
                 placeholder=""
-                value={person.alias}
+                value={personComplete.person.alias}
                 onChange={onChange}
                 addClass="medium-textbox"
                 error={errors.alias} />
-            
+
             </div>
           </div>
           <div className = "row">
@@ -96,7 +96,7 @@ class PersonForm extends Component {
               <SelectInput
                 name="sex"
                 label="Sex"
-                value={person.sex}
+                value={personComplete.person.sex}
                 options={sexes}
                 onChange={onChange}
                 error={errors.sex} />
@@ -105,29 +105,29 @@ class PersonForm extends Component {
             <label htmlFor="dateOfBirth">Date of Birth</label>
               <DatePicker name="dateOfBirth"
                 className="date-text-box form-control medium-textbox"
-                selected={moment(person.dateOfBirth)}
+                selected={moment(personComplete.person.dateOfBirth)}
                 onChange={dobChange}
               />
             </div>
           </div>
           <div className="row">
-           
+
            <div className="col-lg-3">
             <TextInput
               name="socialSecurityNumber"
               label="Social Security Number"
               placeholder="Social Security Number"
-              value={person.socialSecurityNumber}
+                value={personComplete.person.socialSecurityNumber}
               onChange={onChange}
               addClass="medium-textbox"
               error={errors.lastName} />
           </div>
-        
+
           <div className="col-lg-4">
-            
+
           </div>
         </div>
-          <div className="row">  
+          <div className="row">
             <div className="col-lg-4">
             <input
                 type="submit"
@@ -142,24 +142,24 @@ class PersonForm extends Component {
             </button>
             </div>
             <div className="col-lg-4">
-              
+
             </div>
           </div>
-         
+
           <div className="row">
             <div className="col-lg-4">
-             
+
             </div>
             <div className="col-lg-4">
-              
+
             </div>
           </div>
           <div className="row">
             <div className="col-lg-4">
-             
+
             </div>
             <div className="col-lg-4">
-              
+
             </div>
           </div>
         </form>
@@ -169,7 +169,7 @@ class PersonForm extends Component {
 }
 
 PersonForm.propTypes = {
-  person: PropTypes.object.isRequired,
+  personComplete: PropTypes.object.isRequired,
   sexes: PropTypes.array.isRequired,
   onSave: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,

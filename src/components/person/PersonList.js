@@ -4,7 +4,7 @@ import PersonListRow from './PersonListRow';
 
 class PersonList extends Component {
   render() {
-    const {persons} = this.props;
+    const {personCompletes} = this.props;
     return (
       <div className="col-md-12">
         <div className="tableHeader">
@@ -13,8 +13,8 @@ class PersonList extends Component {
           <div className="col-sm-2">First Name</div>
         </div>
         <div className="list-group">
-        {persons.map(person =>
-          <PersonListRow key={person.personId} person={person} />
+        {personCompletes.map(personComplete =>
+          <PersonListRow key={personComplete.person.personId} personComplete={personComplete} />
           )}
         </div>
       </div>
@@ -23,7 +23,7 @@ class PersonList extends Component {
 }
 
 PersonList.propTypes = {
-  persons: PropTypes.array.isRequired
+  personCompletes: PropTypes.array.isRequired
 };
 
 export default PersonList;

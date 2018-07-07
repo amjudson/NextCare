@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as personActions from '../../actions/personActions';
+import * as personCompleteActions from '../../actions/personCompleteActions';
 import * as phoneActions from '../../actions/phoneActions';
 import PersonForm from './PersonForm';
 import toastr from 'toastr';
@@ -13,7 +13,7 @@ class ManagePersonPage extends React.Component {
     super(props, context);
 
     this.state = {
-      person: Object.assign({}, this.props.person),
+      personComplete: Object.assign({}, this.props.personComplete),
       errors: {},
       saving: false
     };
@@ -25,10 +25,10 @@ class ManagePersonPage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.person.personId != nextProps.person.personId) {
+    if (this.props.personComplete.person.personId != nextProps.personComplete.person.personId) {
       // necessary to populate form whene existing person is loaded directly.
-      let person = this.props.actions.loadPerson(nextProps.person.personId);
-      this.setState({ person: Object.assign({}, person) });
+      let personComplete = this.props.actions.loadPerson(nextProps.personComplete.person.personId);
+      this.setState({personComplete: Object.assign({}, personComplete) });
     }
   }
 
@@ -43,21 +43,21 @@ class ManagePersonPage extends React.Component {
 
   updatePersonState(event) {
     const field = event.target.name;
-    let person = this.state.person;
-    person[field] = event.target.value;
-    return this.setState({ person: person });
+    let personComplete = this.state.personComplete;
+    personComplete.person[field] = event.target.value;
+    return this.setState({personComplete: personComplete });
   }
 
   personFormIsValid() {
     let formIsValid = true;
     let errors = {};
 
-    if (this.state.person.lastName.length < 3) {
+    if (this.state.personComplete.person.lastName.length < 3) {
       errors.lastName = 'Last name must be at least 3 characters.';
       formIsValid = false;
     }
 
-    if (this.state.person.firstName.length < 3) {
+    if (this.state.personComplete.person.firstName.length < 3) {
       errors.firstName = 'First name must be at least 3 characters.';
       formIsValid = false;
     }
@@ -73,7 +73,7 @@ class ManagePersonPage extends React.Component {
     }
 
     this.setState({ saving: true });
-    this.props.actions.savePerson(this.state.person)
+    this.props.actions.savePerson(this.state.personComplete.person)
       .then(() => this.redirect())
       .catch(error => {
         this.setState({ saving: false });
@@ -88,9 +88,9 @@ class ManagePersonPage extends React.Component {
   }
 
   handleDobDateChange(date) {
-    let person = this.state.person;
-    person.dateOfBirth = date.format();
-    return this.setState({ person: person });
+    let personComplete = this.state.personComplete;
+    personComplete.person.dateOfBirth = date.format();
+    return this.setState({personComplete: personComplete });
   }
 
   render() {
@@ -98,7 +98,7 @@ class ManagePersonPage extends React.Component {
       <PersonForm
         onChange={this.updatePersonState}
         onSave={this.savePerson}
-        person={this.state.person}
+        personComplete={this.state.personComplete}
         errors={this.state.errors}
         saving={this.state.saving}
         sexes={this.props.sexes}
@@ -109,7 +109,7 @@ class ManagePersonPage extends React.Component {
 }
 
 ManagePersonPage.propTypes = {
-  person: PropTypes.object.isRequired,
+  personComplete: PropTypes.object.isRequired,
   sexes: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
@@ -119,33 +119,38 @@ ManagePersonPage.contextTypes = {
   router: PropTypes.object
 };
 
-function getPersonById(persons, personId) {
-  const person = persons.filter(person => person.personId == personId);
-  if (person) return person[0]; // since filter returns an array, have to grab the first.
+function getPersonById(personCompletes, personId) {
+  const personComplete = personCompletes.filter(personComplete => personComplete.person.personId == personId);
+  if (personComplete) return personComplete[0]; // since filter returns an array, have to grab the first.
   return null;
 }
 
 function mapStateToProps(state, ownProps) {
   const personId = ownProps.params.id; // from the path '/person/:id'
 
-  let person = {
-    personId: 0,
-    personTypeId: 0,
-    alias: '',
-    dateOfBirth: '1900-01-01T00:00:00',
-    lastName: '',
-    firstName: '',
-    middleName: null,
-    socialSecurityNumber: '',
-    ssnSalt: '',
-    sex: '',
-    raceId: 0,
-    prefix: '',
-    suffix: ''
+  let personComplete = {
+    person: {
+      personId: 0,
+      personTypeId: 0,
+      alias: '',
+      dateOfBirth: '1900-01-01T00:00:00',
+      lastName: '',
+      firstName: '',
+      middleName: null,
+      socialSecurityNumber: '',
+      ssnSalt: '',
+      sex: '',
+      raceId: 0,
+      prefix: '',
+      suffix: ''
+    },
+    addresses: {},
+    emails: {},
+    phones: {}
   };
 
-  if (personId && state.persons.length > 0) {
-    person = getPersonById(state.persons, personId);
+  if (personId && state.personCompletes.length > 0) {
+    personComplete = getPersonById(state.personCompletes, personId);
   }
 
   const sexes = [
@@ -154,14 +159,14 @@ function mapStateToProps(state, ownProps) {
   ];
 
   return {
-    person: person,
+    personComplete: personComplete,
     sexes: sexes
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(personActions, dispatch)
+    actions: bindActionCreators(personCompleteActions, dispatch)
   };
 }
 

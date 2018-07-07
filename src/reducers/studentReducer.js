@@ -4,7 +4,7 @@ import initialState from './initailState';
 export default function studentReducer(state = initialState.students, action) {
   switch (action.type) {
     case actions.LOAD_STUDENTS_SUCCESS:
-      return action.students.sort((student1, student2) => student1.lastName.localeCompare(student2.lastName));
+      return action.students;
     case actions.CREATE_STUDENT_SUCCESS:
       return [
         ...state,
@@ -12,7 +12,7 @@ export default function studentReducer(state = initialState.students, action) {
       ];
     case actions.UPDATE_STUDENT_SUCCESS:
       return [
-        ...state.filter(student => student.studentId !== action.student.studentId).sort((student1, student2) => student1.lastName.localeCompare(student2.lastName)),
+        ...state.filter(student => student.studentId !== action.student.studentId),
         Object.assign({}, action.student)
       ];
     default:
