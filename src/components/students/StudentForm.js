@@ -10,7 +10,7 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 class StudentForm extends Component {
   render() {
-    const {student, studentStatuses, onSave, onChange, saving, errors, startDateChange, dobChange, lastTestDateChange} = this.props;
+    const {student, onSave, onChange, saving, errors, startDateChange, dobChange, lastTestDateChange} = this.props;
     const returnToPreviousPage = () => {
       browserHistory.push('/students');
     };
@@ -47,16 +47,6 @@ class StudentForm extends Component {
                 value={student.beltSize}
                 onChange={onChange}
                 error={errors.beltSize} />
-            </div>
-            <div className="col-md-3">
-              <SelectInput
-                name="studentStatusId"
-                label="Student Status"
-                value={student.studentStatusId.toString()}
-                defaultOption="Select Status"
-                options={studentStatuses}
-                onChange={onChange}
-                error={errors.studentStatusId} />
             </div>
           </div>
           <div className="row">

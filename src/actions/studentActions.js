@@ -16,6 +16,20 @@ export function loadStudentsFailed(message) {
   };
 }
 
+export function loadStudentSuccess(student) {
+  return {
+    type: action.LOAD_STUDENT_SUCCESS,
+    student
+  };
+}
+
+export function loadStudentFailed(message) {
+  return {
+    type: action.LOAD_STUDENT_FAILED,
+    message
+  };
+}
+
 export function createStudentSuccess(student) {
   return {
     type: action.CREATE_STUDENT_SUCCESS,
@@ -53,6 +67,19 @@ export function loadStudents() {
       });
     } catch (error) {
       return dispatch(loadStudentsFailed(error.message));
+    }
+  };
+}
+
+export function loadStudent(studentId) {
+  return function (dispatch) {
+    dispatch(beginAjaxCall());
+    try {
+      return studentApi.getStudentById(studentId).then(student => {
+        dispatch(loadStudentSuccess(student));
+      });
+    } catch (error) {
+      return dispatch(loadStudentFailed(error.message));
     }
   };
 }

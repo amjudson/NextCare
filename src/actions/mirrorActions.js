@@ -36,6 +36,8 @@ const action = keyMirror({
   // student actions
   LOAD_STUDENTS_SUCCESS: null,
   LOAD_STUDENTS_FAILED: null,
+  LOAD_STUDENT_SUCCESS: null,
+  LOAD_STUDENT_FAILED: null,
   CREATE_STUDENT_SUCCESS: null,
   UPDATE_STUDENT_SUCCESS: null,
   CREATE_STUDENT_FAILED: null,

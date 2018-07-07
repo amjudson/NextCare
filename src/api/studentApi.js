@@ -29,10 +29,6 @@ class studentApi {
         reject(`Last Name must be at least ${minstudentNameLength} characters.`);
       }
 
-      if (student.rankId <= 0) {
-        reject('No Rank has been selected.');
-      }
-
       if (student.studentId) {
         results(`${process.env.API_HOST}/api/Student/${student.studentId}`, 'PUT', 'Student', student).then((student) => {
           resolve(student);

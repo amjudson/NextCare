@@ -5,6 +5,7 @@ GO
 IF OBJECT_ID('dbo.Student', 'U') IS NOT NULL
 BEGIN
   ALTER TABLE dbo.Student DROP CONSTRAINT FK_Student_StudentType
+  ALTER TABLE dbo.Student DROP CONSTRAINT FK_Student_GradeLevel
 	DROP TABLE dbo.Student
 END
 GO
@@ -20,7 +21,7 @@ CREATE TABLE dbo.Student(
 	PersonId int NOT NULL,
   StudentTypeId int NOT NULL,
 	GradeLevelId int NOT NULL,
-  Alias nvarchar NULL,
+  Alias nvarchar(30) NULL,
   PhysicianId int NOT NULL,
  CONSTRAINT PK_Student PRIMARY KEY CLUSTERED
 (

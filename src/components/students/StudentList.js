@@ -11,10 +11,9 @@ class StudentList extends Component {
           <div className="col-sm-1">ID</div>
           <div className="col-sm-2">Last Name</div>
           <div className="col-sm-2">First Name</div>
-          <div className="col-sm-5">Phone Number</div>
         </div>
         {students.map(student =>
-          <StudentListRow key={student.studentId} student={student} phones={phones} />
+          <StudentListRow key={student.studentId} student={student} />
         )}
       </div>
     );

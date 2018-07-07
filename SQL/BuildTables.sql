@@ -743,7 +743,7 @@ CREATE TABLE dbo.Student(
 	PersonId int NOT NULL,
   StudentTypeId int NOT NULL,
 	GradeLevelId int NOT NULL,
-  Alias nvarchar NULL,
+  Alias nvarchar(30) NULL,
   PhysicianId int NOT NULL,
  CONSTRAINT PK_Student PRIMARY KEY CLUSTERED
 (

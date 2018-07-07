@@ -18,7 +18,7 @@ class StudentsPage extends React.Component {
   }
 
   render() {
-    const { students, phones, studentStatuses } = this.props;
+    const { students } = this.props;
     return (
       <div>
         <h1>Students</h1>
@@ -28,7 +28,7 @@ class StudentsPage extends React.Component {
           className="btn btn-secondary"
           onClick={this.redirectToAddStudentPage}
         />
-        <StudentList students={students} phones={phones} studentStatuses={studentStatuses} />
+        <StudentList students={students} />
       </div>
     );
   }
@@ -36,18 +36,12 @@ class StudentsPage extends React.Component {
 
 StudentsPage.propTypes = {
   students: PropTypes.array.isRequired,
-  ranks: PropTypes.array.isRequired,
-  phones: PropTypes.array.isRequired,
-  studentStatuses: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    students: state.students,
-    ranks: state.ranks,
-    studentStatuses: state.studentStatuses,
-    phones: state.phones
+    students: state.students
   };
 }
 
