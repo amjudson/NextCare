@@ -10,7 +10,7 @@ class personApi {
   }
 
   static getPerson(personId) {
-    return results(`${process.env.API_HOST}/api/Person`, 'GET', 'Person').then(persons => {
+    return results(`${process.env.API_HOST}/api/Person${personId}`, 'GET', 'Person').then(persons => {
       return new Promise((resolve, reject) => {
         resolve(Object.assign([], persons));
       });
