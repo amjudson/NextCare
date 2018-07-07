@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as personActions from '../../actions/personActions';
+import * as personCompleteActions from '../../actions/personCompleteActions';
 import PersonList from './PersonList';
 import { browserHistory } from 'react-router';
 
@@ -18,7 +18,7 @@ class PersonsPage extends React.Component {
   }
 
   render() {
-    const { persons } = this.props;
+    const { personCompletes } = this.props;
     return (
       <div className="container-fluid">
         <div className="row">
@@ -35,7 +35,7 @@ class PersonsPage extends React.Component {
               />
               </div>
           </div>
-          <PersonList persons={persons} />
+          <PersonList personCompletes={personCompletes} />
         </div>
     </div>
     );
@@ -43,19 +43,19 @@ class PersonsPage extends React.Component {
 }
 
 PersonsPage.propTypes = {
-  persons: PropTypes.array.isRequired,
+  personCompletes: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    persons: state.persons
+    personCompletes: state.personCompletes
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(personActions, dispatch)
+    actions: bindActionCreators(personCompleteActions, dispatch)
   };
 }
 

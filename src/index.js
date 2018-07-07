@@ -1,18 +1,18 @@
 /*eslint-disable import/default */
 import 'babel-polyfill';
 import React from 'react';
-import { render } from 'react-dom';
+import {render} from 'react-dom';
 import configureStore from './store/configureStore';
-import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
+import {Provider} from 'react-redux';
+import {Router, browserHistory} from 'react-router';
 import routes from './routes';
-import { loadStudents } from './actions/studentActions';
-import { loadPhones } from './actions/phoneActions';
+import {loadStudents} from './actions/studentActions';
+import {loadPhones} from './actions/phoneActions';
 import {loadAccounts} from './actions/accountActions';
 import {loadInvoices} from './actions/invoiceActions';
 import {loadTotalInvoices} from './actions/totalInvoiceActions';
-import { loadStates } from './actions/stateActions';
-import { loadAddresses } from './actions/addressActions';
+import {loadStates} from './actions/stateActions';
+import {loadAddresses} from './actions/addressActions';
 import {loadAddressTypes} from './actions/addressTypeActions';
 import {loadPersons} from './actions/personActions';
 import {loadPersonCompletes} from './actions/personCompleteActions';
