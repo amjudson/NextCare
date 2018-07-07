@@ -7,6 +7,8 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import AddNewFieldButton from '../common/AddNewFieldButton';
+import EmergencyContactForm from './EmergencyContactForm';
 
 class PersonForm extends Component {
   render() {
@@ -21,10 +23,103 @@ class PersonForm extends Component {
         <div className="row">
           <div className = "pageHeaders">
               <div className="col-md-6">   
-              <h2>Manage Person</h2>
+              <h2>Manage Student</h2>
               </div>
           </div>
         </div>
+        <div className = "formHeaders">
+            <h3>Student Information</h3>
+        </div>
+        <div className = "row formHolder">
+          <div className = "col-md-2 studentImage">
+            
+              <img src={'http://placehold.it/100x100&text=Student Photo'} className="img-responsive rounded-circle"/>
+           
+          </div>
+        <div className = "col-md-6">
+              <form>
+                <div className="row">
+                  {/* Student Name */}
+                    <div className="col-lg-5">
+                      <TextInput
+                      name="Last Name"
+                      label="Last Name"
+                      placeholder="Last Name"
+                      value=""
+                      onChange={onChange}
+                      addClass="medium-textbox"
+                      error="" />
+                    </div>
+                    <div className="col-lg-5">
+                      <TextInput
+                      name="First Name"
+                      label="First Name"
+                      placeholder="First Name"
+                      value=""
+                      onChange={onChange}
+                      addClass="medium-textbox"
+                      error="" />
+                    </div>
+                    <div className="col-lg-2">
+                      <TextInput
+                      name="MI"
+                      label="MI"
+                      placeholder="MI"
+                      value=""
+                      onChange={onChange}
+                      addClass="medium-textbox"
+                      error="" />
+                    </div>
+                  
+                </div>
+                {/* Student Info */}
+                <div className="row">
+                  <div className="col-lg-2">
+                      <TextInput
+                      name="Age"
+                      label="Age"
+                      placeholder="Age"
+                      value=""
+                      onChange={onChange}
+                      addClass="medium-textbox"
+                      error="" />
+                    </div>
+                    <div className="col-lg-3">
+                      <TextInput
+                      name="Grade"
+                      label="Grade"
+                      placeholder="Grade"
+                      value=""
+                      onChange={onChange}
+                      addClass="medium-textbox"
+                      error="" />
+                    </div>
+                    <div className="col-lg-5">
+                      <TextInput
+                      name="Teacher"
+                      label="Teacher"
+                      placeholder="Teacher"
+                      value=""
+                      onChange={onChange}
+                      addClass="medium-textbox"
+                      error="" />
+                    </div>
+                </div>
+                {/* Emergency Contact */}
+              
+  
+
+                <div className="col-lg-12 emergencyContLabel">
+                  <strong>Emergency Contact #1</strong>
+                </div>
+                <EmergencyContactForm  
+                    onChange={onChange}
+                    error="" />
+              </form>
+            </div>
+         
+        </div>
+        
         <form>
           <div className="row">
           <div className="col-lg-1">
@@ -79,16 +174,20 @@ class PersonForm extends Component {
             </div>
           </div>
           <div className = "row">
-            <div className = "col-lg-3">
+            <div className = "col-lg-3 numberField">
             <TextInput
-                name="alias"
-                label="Alias"
+                name="phone"
+                
                 placeholder=""
-                value={person.alias}
+                value='Phone Number'
                 onChange={onChange}
                 addClass="medium-textbox"
                 error={errors.alias} />
-            
+           
+            <AddNewFieldButton className=""
+                name="addNewField"
+                onClick={returnToPreviousPage} 
+                />
             </div>
           </div>
           <div className = "row">

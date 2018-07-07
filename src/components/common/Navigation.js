@@ -33,14 +33,15 @@ class Navigation extends Component {
               <IndexLink to="/" className={this.state.textCollapse}><i className="fas fa-home fa-2x navIcon"></i> <span className = "navSpan">Home</span> </IndexLink>
             </li>
             <li className="nav-item">
+              <Link to="/persons" className={this.state.textCollapse}><i className="fas fa-user fa-2x navIcon"></i> <span className = "navSpan">Students</span> </Link>
+            </li>
+            <li className="nav-item">
               <Link to="/accounts" className={this.state.textCollapse}><i className="far fa-address-card fa-2x navIcon"></i> <span className = "navSpan">Accounts</span></Link>
             </li>
             <li className="nav-item">
               <Link to="/invoices" className={this.state.textCollapse}><i className="fas fa-file-alt fa-2x navIcon"></i> <span className = "navSpan">Invoices</span> </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/persons" className={this.state.textCollapse}><i className="fas fa-user fa-2x navIcon"></i> <span className = "navSpan">Persons</span> </Link>
-            </li>
+           
             <li className="nav-item">
               <Link to="/about" className={this.state.textCollapse}><i className="fas fa-envelope-square fa-2x navIcon"></i> <span className = "navSpan">Messages</span> </Link>
             </li>

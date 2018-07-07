@@ -8,9 +8,13 @@ class PersonList extends Component {
     return (
       <div className="col-md-12">
         <div className="tableHeader">
-          <div className="col-1">ID</div>
+          
           <div className="col-sm-2">Last Name</div>
           <div className="col-sm-2">First Name</div>
+          <div className="col-sm-2">MI</div>
+          <div className="col-sm-2">Grade Level</div>
+          <div className="col-sm-2">Phone Number</div>
+          <div className="col-sm-2">Insurance</div>
         </div>
         <div className="list-group">
         {persons.map(person =>

@@ -28,10 +28,20 @@
 .pageHeaders h2{
   color:@nc-blue;
 }
+.formHeaders h3{
+  color:@nc-blue;
+  font-size:16px;
+}
+.formHolder
+{
+  border-top:1px solid @nc-lightBlue;
+  width:100%;
+  padding:10px;
+}
 //App Sections (Header, Nav, Main Aside)
 .app-header
 {
-  position:relative !important;
+  position:fixed !important;
 }
 .app-body
 {
@@ -50,9 +60,11 @@
 .mainPage
  {
    background-color:#fff;
-
+    height:85vh;
  }
-
+.main{
+  margin-top:55px;
+}
 ////Side Nav
 .toggleNavButton
 {
@@ -70,6 +82,7 @@
 }
 .sidebar
 {
+  margin-top:55px;
   background-color:@nc-white !important;
   border-right:1px solid @nc-blue;
   -webkit-transition: all .3s; /* Safari */
@@ -182,7 +195,11 @@
   background-color: nc-lightgrey;
   border:1px solid @nc-medgrey;
 } 
-
+//Student Pages
+.numberField
+{
+  display:flex;
+}
 ///Invoice Items//
 .total-line {
   font-weight: bold;

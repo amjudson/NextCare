@@ -24,7 +24,7 @@ class PersonsPage extends React.Component {
         <div className="row">
           <div className = "pageHeaders">
               <div className="col-md-4">
-                  <h2>Person List</h2>
+                  <h2>Students</h2>
               </div>
               <div className="col-md-8 text-right">
               <input
