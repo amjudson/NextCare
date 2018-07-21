@@ -25,6 +25,7 @@ class InvoicePage extends React.Component {
 
   render() {
     const totalInvoices = this.props.totalInvoices; // fas fa-plus-square
+    console.log(totalInvoices + '----');
     return (
       <div className="container-fluid">
         <div className="row">

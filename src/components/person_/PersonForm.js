@@ -19,14 +19,120 @@ class PersonForm extends Component {
 
     return (
 
-      <div className="container-fluid mainPage">
+    <div className="container-fluid mainPage">
       <div className="row">
         <div className = "pageHeaders">
             <div className="col-md-6">   
-            <h2>Person</h2>
+            <h2>Manage Student</h2>
             </div>
         </div>
       </div>
+      <div className = "formHeaders">
+          <h3>Student Information</h3>
+      </div>
+      <div className = "row formHolder">
+        <div className = "col-md-2 studentImage">
+          
+            <img src={'http://placehold.it/100x100&text=Student Photo'} className="img-responsive rounded-circle"/>
+          
+        </div>
+        <div className = "col-md-8">
+              <form>
+                <div className="row">
+                  {/* Student Name */}
+                    <div className="col-lg-5">
+                      <TextInput
+                      name="Last Name"
+                      label="Last Name"
+                      placeholder="Last Name"
+                      value=""
+                      onChange={onChange}
+                      addClass="medium-textbox"
+                      error="" />
+                    </div>
+                    <div className="col-lg-5">
+                      <TextInput
+                      name="First Name"
+                      label="First Name"
+                      placeholder="First Name"
+                      value=""
+                      onChange={onChange}
+                      addClass="medium-textbox"
+                      error="" />
+                    </div>
+                    <div className="col-lg-2">
+                      <TextInput
+                      name="MI"
+                      label="MI"
+                      placeholder="MI"
+                      value=""
+                      onChange={onChange}
+                      addClass="medium-textbox"
+                      error="" />
+                    </div>
+                  
+                </div>
+                {/* Student Info */}
+                <div className="row">
+                  <div className="col-lg-2">
+                      <TextInput
+                      name="Age"
+                      label="Age"
+                      placeholder="Age"
+                      value=""
+                      onChange={onChange}
+                      addClass="medium-textbox"
+                      error="" />
+                    </div>
+                    <div className="col-lg-3">
+                      <TextInput
+                      name="Grade"
+                      label="Grade"
+                      placeholder="Grade"
+                      value=""
+                      onChange={onChange}
+                      addClass="medium-textbox"
+                      error="" />
+                    </div>
+                    <div className="col-lg-5">
+                      <label htmlFor="dateOfBirth">Date of Birth</label>
+                      <DatePicker name="dateOfBirth"
+                      className="date-text-box form-control medium-textbox"
+                      selected={moment(personComplete.person.dateOfBirth)}
+                      onChange={dobChange}
+                      />
+                    </div>
+                    <div className = "col-lg-2">
+                      <SelectInput
+                      name="sex"
+                      label="Sex"
+                      value={personComplete.person.sex}
+                      options={sexes}
+                      onChange={onChange}
+                      error={errors.sex} />
+                      </div>
+                    </div>
+                
+                {/* Emergency Contact */}
+            
+                <div className="col-lg-12 emergencyContLabel">
+                  <h4>Emergency Contact #1</h4>
+                </div>
+                <EmergencyContactForm  
+                    onChange={onChange}
+                    error="" />
+
+                 <div className="col-lg-12 emergencyContLabel">
+                  <h4>Emergency Contact #2</h4>
+                </div>
+                <EmergencyContactForm  
+                    onChange={onChange}
+                    error="" />
+              </form>
+            </div>
+         
+        </div>
+        
         <form>
           <div className="row">
           <div className="col-lg-1">
@@ -84,11 +190,22 @@ class PersonForm extends Component {
             <div className = "col-lg-3 numberField">
             <TextInput
                 name="phone"
+                
                 placeholder=""
                 value='Phone Number'
                 onChange={onChange}
                 addClass="medium-textbox"
                 error={errors.alias} />
+           
+            <AddNewFieldButton className=""
+                name="addNewField"
+                onClick={returnToPreviousPage} 
+                />
+                value={personComplete.person.alias}
+                onChange={onChange}
+                addClass="medium-textbox"
+                error={errors.alias} />
+
             </div>
           </div>
           <div className = "row">

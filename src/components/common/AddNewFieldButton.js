@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class AddNewFieldButton extends Component {
   render() {
     const {name, onClick, content, btnClass} = this.props;
-    const buttonClass = btnClass || 'btn btn-primary';
+    const buttonClass = btnClass || 'btn btn-primary smallAddNew';
     return (
       <div>
         <button className={buttonClass}

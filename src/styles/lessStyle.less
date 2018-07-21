@@ -1,3 +1,5 @@
+
+
 //NextCare Style Colors//
 @nc-blue: #7AABC6;
 @nc-lightBlue: #B8CBD6;
@@ -6,7 +8,7 @@
 
 //Interface Colors//
 @nc-lightgrey: #efefef;
-@nc-medgrey: #BDEDFF;
+@nc-medgrey: #cccccc;
 @nc-white:#fdfdfd;
 
 //Interface Icons
@@ -15,18 +17,33 @@
   color:@nc-blue;
 }
  //Interface
- 
+  h4
+  {
+    font-size:16px !important;
+    color:@nc-blue !important;
+  }
+  //Forms
+  label
+  {
+    font-size:12px !important;
+    color:@nc-blue;
+  }
 ///Header
 
 .pageHeaders{
   display:flex;
   width:100%;
   margin-bottom:20px;
-  border-bottom:1px dotted @nc-medgrey;
+  border-bottom:1px solid @nc-blue;
   margin-top:30px;
 }
 .pageHeaders h2{
   color:@nc-blue;
+}
+
+.form-group
+{
+  margin-bottom:.5rem !important;
 }
 .formHeaders h3{
   color:@nc-blue;
@@ -34,9 +51,26 @@
 }
 .formHolder
 {
-  border-top:1px solid @nc-lightBlue;
+  
   width:100%;
   padding:10px;
+}
+.smallAddNew
+{
+  position:relative;
+  margin-right:0;
+  bottom:6px;
+  width:30px !important;;
+  height:30px !important;
+  padding:4px !important;
+  background-color:#ffffff !important;
+  border:0px !important;
+  color:@nc-blue !important;
+}
+.flexLine
+{
+  display:flex;
+  flex-flow: row nowrap !important;
 }
 //App Sections (Header, Nav, Main Aside)
 .app-header
@@ -228,3 +262,106 @@
 {
   max-height:70px !important;
 }
+//Students//
+.studentImage
+{
+  text-align:center;
+  margin-top:20px;
+}
+
+//InterfaceObj
+//Collapsible
+.Collapsible
+{
+  padding:10px;
+  background-color:@nc-lightgrey;
+  border:1px solid @nc-blue;
+  margin-top:10px;
+  margin-bottom:10px;
+  border-radius:10px;
+}
+.Collapsible__trigger
+{
+    font-size:16px !important;
+    color:@nc-blue !important;
+}
+
+
+ .Collapsible:hover
+ {
+  cursor: pointer;
+ }
+
+.Collapsible__contentInner {
+  padding: 10px;
+  border: 1px solid #ebebeb;
+  border-top: 0; 
+}
+  .Collapsible__contentInner p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 20px; 
+  }
+    
+    .Collapsible__contentInner p:last-child {
+      margin-bottom: 0; 
+    }
+
+.Collapsible__trigger {
+  display: block;
+  position: relative;
+  
+}
+
+  .Collapsible__trigger:after {
+    font-family: 'fontawesome';
+    content: '\f01a';
+    position: absolute;
+    right: 10px;
+    top:0px;
+    display: block;
+    transition: transform 300ms; 
+  }
+  
+    .Collapsible__trigger.is-open:after {
+    transform: rotateZ(180deg); }
+  .Collapsible__trigger.is-disabled {
+    opacity: 0.5;
+ }
+
+.CustomTriggerCSS {
+
+  transition: background-color 200ms ease; 
+}
+
+
+
+.Collapsible__custom-sibling {
+  padding: 5px;
+  font-size: 12px;
+  background-color: #CBB700;
+  color: black; }
+
+
+
+
+
+
+  //Invoices
+  .invoiceHeader
+  {
+    padding-bottom:20px;
+    margin-bottom:20px;
+  }
+  .invoiceTH
+  {
+    border-top:1px solid @nc-medgrey;
+    border-bottom:1px solid @nc-medgrey;
+    padding:10px;
+  }
+  .invoiceTotals
+  {
+    padding:10px;
+    font-weight:bold;
+    font-size:14px;
+  }

@@ -15,7 +15,8 @@ class TextInput extends PureComponent {
     }
 
     return (
-      <div className={wrapperClass}>    
+      <div className={wrapperClass}>   
+       <label htmlFor={name}>{label}</label> 
         <div className="field">
           <input
             disabled={disabled}

@@ -9,8 +9,8 @@ class AccountList extends Component {
       return (
         <div className="col-md-12">
           <div className="tableHeader">
-            <div className="col-sm-2">Customer ID</div>
-            <div className="col-md-10">Customer Name</div>
+            <div className="col-sm-2">Last Name</div>
+            <div className="col-md-2">First Name</div>
           </div>
           <div className="list-group">
             {accounts.map(account =>

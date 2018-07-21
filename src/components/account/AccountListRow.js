@@ -10,8 +10,8 @@ class AccountListRow extends Component {
     return (
       <Link className="list-group-item list-group-item-action flex-column align-items-start" to={'/account/' + account.accountId}>
         <div className="row">
-          <div className="col-sm-2">{account.accountId}</div>
-          <div className="col-md-10">{account.owner.lname}, {account.owner.fname}</div>
+          <div className="col-md-2">{account.owner.lname}, </div>
+          <div className="col-md-2">{account.owner.fname}</div>
         </div>
       </Link>
     );

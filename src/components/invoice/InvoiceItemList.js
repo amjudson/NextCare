@@ -23,9 +23,9 @@ class InvoiceItemList extends Component {
     return (
       <div className="container-fluid">
         <div className="row row-title">
-          <div className="col-lg-2">Item</div>
-          <div className="col-sm-2">Quantity</div>
-          <div className="col-sm-2 ml-3">Cost Per</div>
+          <div className="col-md-2">Item</div>
+          <div className="col-md-2">Quantity</div>
+          <div className="col-md-2">Cost Per</div>
         </div>
         {totalInvoice.invoiceLines.map(line =>
           <InvoiceItemListRow key={line.invoiceLineId} line={line} />
