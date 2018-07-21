@@ -4,26 +4,30 @@ import StudentListRow from './StudentListRow';
 
 class StudentList extends Component {
   render() {
-    const {students, ranks, phones} = this.props;
+    const {personCompletes} = this.props;
     return (
-      <div className="container-fluid">
-        <div className="row row-title">
-          <div className="col-sm-1">ID</div>
+      <div className="col-md-12">
+        <div className="tableHeader">
+          
           <div className="col-sm-2">Last Name</div>
           <div className="col-sm-2">First Name</div>
+          <div className="col-sm-2">MI</div>
+          <div className="col-sm-2">Grade Level</div>
+          <div className="col-sm-2">Phone Number</div>
+          <div className="col-sm-2">Insurance</div>
         </div>
-        {students.map(student =>
-          <StudentListRow key={student.studentId} student={student} />
-        )}
+        <div className="list-group">
+        {personCompletes.map(personComplete =>
+          <StudentListRow key={personComplete.person.personId} personComplete={personComplete} />
+          )}
+        </div>
       </div>
     );
   }
 }
 
 StudentList.propTypes = {
-  students: PropTypes.array.isRequired,
-  ranks: PropTypes.array.isRequired,
-  phones: PropTypes.array.isRequired
+  personCompletes: PropTypes.array.isRequired
 };
 
 export default StudentList;

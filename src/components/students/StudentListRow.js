@@ -3,28 +3,23 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
 class StudentListRow extends Component {
-  phoneText(phone) {
-    if (phone.number !== null) {
-    return (`Id: ${phone.phoneId} Number: ${phone.number}`);
-    }
-    return 'Phone number missing';
-  }
 
   render() {
-    const {student} = this.props;
+    const {personComplete} = this.props;
     return (
-      <Link className="row row-detail" to={'/student/' + student.studentId}>
-        <div className="col-1 item-detail">{student.studentId}</div>
-        <div className="col-sm-2 item-detail">{student.lastName}</div>
-        <div className="col-sm-2 item-detail">{student.firstName}</div>
+      <Link className="list-group-item list-group-item-action flex-column align-items-start" to={'/student/' + personComplete.person.personId} style={{ textDecoration: 'none' }}>
+        <div className="row">
+          <div className="col-1">{personComplete.person.personId}</div>
+          <div className="col-sm-2">{personComplete.person.lastName}</div>
+          <div className="col-sm-2">{personComplete.person.firstName}</div>
+        </div>
       </Link>
     );
   }
 }
 
 StudentListRow.propTypes = {
-  student: PropTypes.object.isRequired,
-  ranks: PropTypes.array.isRequired
+  personComplete: PropTypes.object.isRequired
 };
 
 export default StudentListRow;

@@ -1,96 +1,270 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { browserHistory } from 'react-router';
+import {browserHistory} from 'react-router';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import AddNewFieldButton from '../common/AddNewFieldButton';
+import EmergencyContactForm from './EmergencyContactForm';
 
 class StudentForm extends Component {
   render() {
-    const {student, onSave, onChange, saving, errors, startDateChange, dobChange, lastTestDateChange} = this.props;
+    const {personComplete, sexes, onSave, onChange, saving, errors, dobChange} = this.props;
     const returnToPreviousPage = () => {
       browserHistory.push('/students');
     };
 
     return (
-      <div className="container">
+
+      <div className="container-fluid mainPage">
+        <div className="row">
+          <div className="pageHeaders">
+            <div className="col-md-6">
+              <h2>Manage Student</h2>
+            </div>
+          </div>
+        </div>
+        <div className="formHeaders">
+          <h3>Student Information</h3>
+        </div>
+        <div className="row formHolder">
+          <div className="col-md-2 studentImage">
+
+            <img src={'http://placehold.it/100x100&text=Student Photo'} className="img-responsive rounded-circle" />
+
+          </div>
+          <div className="col-md-6">
+            <form>
+              <div className="row">
+                {/* Student Name */}
+                <div className="col-lg-5">
+                  <TextInput
+                    name="Last Name"
+                    label="Last Name"
+                    placeholder="Last Name"
+                    value=""
+                    onChange={onChange}
+                    addClass="medium-textbox"
+                    error="" />
+                </div>
+                <div className="col-lg-5">
+                  <TextInput
+                    name="First Name"
+                    label="First Name"
+                    placeholder="First Name"
+                    value=""
+                    onChange={onChange}
+                    addClass="medium-textbox"
+                    error="" />
+                </div>
+                <div className="col-lg-2">
+                  <TextInput
+                    name="MI"
+                    label="MI"
+                    placeholder="MI"
+                    value=""
+                    onChange={onChange}
+                    addClass="medium-textbox"
+                    error="" />
+                </div>
+
+              </div>
+              {/* Student Info */}
+              <div className="row">
+                <div className="col-lg-2">
+                  <TextInput
+                    name="Age"
+                    label="Age"
+                    placeholder="Age"
+                    value=""
+                    onChange={onChange}
+                    addClass="medium-textbox"
+                    error="" />
+                </div>
+                <div className="col-lg-3">
+                  <TextInput
+                    name="Grade"
+                    label="Grade"
+                    placeholder="Grade"
+                    value=""
+                    onChange={onChange}
+                    addClass="medium-textbox"
+                    error="" />
+                </div>
+                <div className="col-lg-5">
+                  <TextInput
+                    name="Teacher"
+                    label="Teacher"
+                    placeholder="Teacher"
+                    value=""
+                    onChange={onChange}
+                    addClass="medium-textbox"
+                    error="" />
+                </div>
+              </div>
+              {/* Emergency Contact */}
+
+
+
+              <div className="col-lg-12 emergencyContLabel">
+                <strong>Emergency Contact #1</strong>
+              </div>
+              <EmergencyContactForm
+                onChange={onChange}
+                error="" />
+            </form>
+          </div>
+
+        </div>
+
         <form>
-          <h1>Manage Student</h1>
           <div className="row">
+            <div className="col-lg-1">
+              <TextInput
+                name="prefix"
+                label="Prefix"
+                placeholder="Prefix"
+                value={personComplete.person.prefix}
+                onChange={onChange}
+                addClass="medium-textbox"
+                error={errors.prefix} />
+            </div>
             <div className="col-lg-3">
               <TextInput
                 name="firstName"
                 label="First Name"
-                value={student.firstName}
+                placeholder="Enter First Name"
+                value={personComplete.person.firstName}
                 onChange={onChange}
                 addClass="medium-textbox"
                 error={errors.firstName} />
             </div>
-            <div className="col-lg-3 ml-2">
+            <div className="col-lg-1">
+              <TextInput
+                name="middleName"
+                label="Middle Initial"
+                placeholder=""
+                value={personComplete.person.middleName}
+                onChange={onChange}
+                addClass="medium-textbox"
+                error={errors.middleName} />
+            </div>
+            <div className="col-lg-3">
               <TextInput
                 name="lastName"
                 label="Last Name"
-                value={student.lastName}
+                placeholder="Enter Last Name"
+                value={personComplete.person.lastName}
                 onChange={onChange}
                 addClass="medium-textbox"
                 error={errors.lastName} />
             </div>
-          </div>
-          <div className="row">
-            <div className="col-sm-2">
+            <div className="col-lg-1">
               <TextInput
-                name="beltSize"
-                label="Belt Size"
-                value={student.beltSize}
+                name="sufix"
+                label="Sufix"
+                placeholder="Enter Sufix"
+                value={personComplete.person.sufix}
                 onChange={onChange}
-                error={errors.beltSize} />
+                addClass="medium-textbox"
+                error={errors.sufix} />
             </div>
           </div>
           <div className="row">
-            <div className="col-xs-1 m-2">
-              <label htmlFor="lastTestingDate">Last Testing Date</label>
-              <DatePicker name="lastTestingDate"
-                className="date-text-box"
-                selected={moment(student.lastTestingDate)}
-                onChange={lastTestDateChange}
+            <div className="col-lg-3 numberField">
+              <TextInput
+                name="phone"
+
+                placeholder=""
+                value="Phone Number"
+                onChange={onChange}
+                addClass="medium-textbox"
+                error={errors.alias} />
+
+              <AddNewFieldButton className=""
+                name="addNewField"
+                onClick={returnToPreviousPage}
               />
+              value={personComplete.person.alias}
+              onChange={onChange}
+              addClass="medium-textbox"
+                error={errors.alias} />
+
             </div>
-            <div className="col-xs-1 m-2">
-              <label htmlFor="startDate">Start Date</label>
-              <DatePicker name="startDate"
-                className="date-text-box"
-                selected={moment(student.startDate)}
-                onChange={startDateChange}
-              />
+          </div>
+          <div className="row">
+            <div className="col-lg-1">
+              <SelectInput
+                name="sex"
+                label="Sex"
+                value={personComplete.person.sex}
+                options={sexes}
+                onChange={onChange}
+                error={errors.sex} />
             </div>
-            <div className="col-xs-1 m-2">
+            <div className="col-lg-4">
               <label htmlFor="dateOfBirth">Date of Birth</label>
               <DatePicker name="dateOfBirth"
-                className="date-text-box"
-                selected={moment(student.dateOfBirth)}
+                className="date-text-box form-control medium-textbox"
+                selected={moment(personComplete.person.dateOfBirth)}
                 onChange={dobChange}
               />
             </div>
           </div>
           <div className="row">
-            <div className="col-xs-1 mr-1">
+
+            <div className="col-lg-3">
+              <TextInput
+                name="socialSecurityNumber"
+                label="Social Security Number"
+                placeholder="Social Security Number"
+                value={personComplete.person.socialSecurityNumber}
+                onChange={onChange}
+                addClass="medium-textbox"
+                error={errors.lastName} />
+            </div>
+
+            <div className="col-lg-4">
+
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-4">
               <input
                 type="submit"
                 disabled={saving}
                 value={saving ? 'Saving...' : 'Save'}
-                className="btn btn-primary btn-lg"
+                className="btn nextcareBtn col-lg-4"
                 onClick={onSave} />
-            </div>
-            <div className="col-xs-1 mr-1">
-              <button className="btn btn-primary btn-lg"
+              &nbsp;
+            <button className="btn nextcareBtn col-lg-4"
                 type="submit" onClick={returnToPreviousPage}>
                 Back
             </button>
             </div>
-            <div className="col-lg-10" />
+            <div className="col-lg-4">
+
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-lg-4">
+
+            </div>
+            <div className="col-lg-4">
+
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-4">
+
+            </div>
+            <div className="col-lg-4">
+
+            </div>
           </div>
         </form>
       </div>
@@ -99,26 +273,13 @@ class StudentForm extends Component {
 }
 
 StudentForm.propTypes = {
-  student: PropTypes.object.isRequired,
-  allRanks: PropTypes.array,
-  studentStatuses: PropTypes.array,
+  personComplete: PropTypes.object.isRequired,
+  sexes: PropTypes.array.isRequired,
   onSave: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  startDateChange: PropTypes.func.isRequired,
   dobChange: PropTypes.func.isRequired,
-  lastTestDateChange: PropTypes.func.isRequired,
   saving: PropTypes.bool,
   errors: PropTypes.object
 };
 
 export default StudentForm;
-
-/*
-        <div className="row">
-          <div className="col-xs-1">
-            <DatePicker
-                selected={Date.now()}
-                onChange={handleChange}/>
-          </div>
-        </div>
-*/

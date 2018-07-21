@@ -9,11 +9,8 @@ import AddNewFieldButton from '../common/AddNewFieldButton';
 class EmergencyContactForm extends Component {
   render() {
     const {person,  onSave, onChange, saving, errors} = this.props;
-   
-
     return (
       <div className="row">
-     
         <div className="col-lg-5">
           <TextInput
           name="Last Name"
@@ -75,8 +72,6 @@ class EmergencyContactForm extends Component {
           error="" />
         </div>
     </div>
-
-       
     );
   }
 }

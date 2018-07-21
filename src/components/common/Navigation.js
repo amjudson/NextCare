@@ -19,8 +19,8 @@ class Navigation extends Component {
     document.body.classList.toggle(css);
     //const textCollapse = this.props.textCollapse;
     //console.log(textCollapse);
-    this.state.textCollapse === "nav-link openNavText" ? this.setState({textCollapse: "nav-link collapseNavText navIconOnly"}) : this.setState({textCollapse: "nav-link openNavText"});   
-    
+    this.state.textCollapse === "nav-link openNavText" ? this.setState({textCollapse: "nav-link collapseNavText navIconOnly"}) : this.setState({textCollapse: "nav-link openNavText"});
+
   }
   render() {
     const loading = this.props.loading;
@@ -41,7 +41,7 @@ class Navigation extends Component {
             <li className="nav-item">
               <Link to="/invoices" className={this.state.textCollapse}><i className="fas fa-file-alt fa-2x navIcon"></i> <span className = "navSpan">Invoices</span> </Link>
             </li>
-           
+
             <li className="nav-item">
               <Link to="/about" className={this.state.textCollapse}><i className="fas fa-envelope-square fa-2x navIcon"></i> <span className = "navSpan">Messages</span> </Link>
             </li>

@@ -7,26 +7,57 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
-import AddNewFieldButton from '../common/AddNewFieldButton';
-import EmergencyContactForm from './EmergencyContactForm';
 
 class PersonForm extends Component {
   render() {
-    const {personComplete, sexes, onSave, onChange, saving, errors, dobChange} = this.props;
+    const {
+      personComplete,
+      sexes,
+      onSave,
+      onChange,
+      saving,
+      errors,
+      dobChange,
+      isBirthday,
+      isSsn
+    } = this.props;
     const returnToPreviousPage = () => {
       browserHistory.push('/persons');
     };
 
-    return (
-
-      <div className="container-fluid mainPage">
-      <div className="row">
-        <div className = "pageHeaders">
-            <div className="col-md-6">   
-            <h2>Person</h2>
-            </div>
-        </div>
+    const birthday = isBirthday ? (
+      <div className="col-lg-4">
+        <label htmlFor="dateOfBirth">Date of Birth</label>
+        <DatePicker name="dateOfBirth"
+          className="date-text-box form-control medium-textbox"
+          selected={moment(personComplete.person.dateOfBirth)}
+          onChange={dobChange}
+        />
       </div>
+    ) : '';
+
+    const ssn = isSsn ? (
+      <div className="col-lg-3">
+        <TextInput
+          name="socialSecurityNumber"
+          label="Social Security Number"
+          placeholder="Social Security Number"
+          value={personComplete.person.socialSecurityNumber}
+          onChange={onChange}
+          addClass="medium-textbox"
+          error={errors.lastName} />
+      </div>
+    ) : '';
+
+    return (
+      <div className="container-fluid mainPage">
+        <div className="row">
+          <div className = "pageHeaders">
+              <div className="col-md-6">
+              <h2>Manage Person</h2>
+              </div>
+          </div>
+        </div>
         <form>
           <div className="row">
           <div className="col-lg-1">
@@ -81,14 +112,16 @@ class PersonForm extends Component {
             </div>
           </div>
           <div className = "row">
-            <div className = "col-lg-3 numberField">
+            <div className = "col-lg-3">
             <TextInput
-                name="phone"
+                name="alias"
+                label="Alias"
                 placeholder=""
-                value='Phone Number'
+                value={personComplete.person.alias}
                 onChange={onChange}
                 addClass="medium-textbox"
                 error={errors.alias} />
+
             </div>
           </div>
           <div className = "row">
@@ -101,28 +134,10 @@ class PersonForm extends Component {
                 onChange={onChange}
                 error={errors.sex} />
             </div>
-            <div className="col-lg-4">
-            <label htmlFor="dateOfBirth">Date of Birth</label>
-              <DatePicker name="dateOfBirth"
-                className="date-text-box form-control medium-textbox"
-                selected={moment(personComplete.person.dateOfBirth)}
-                onChange={dobChange}
-              />
-            </div>
+            {birthday}
           </div>
           <div className="row">
-
-           <div className="col-lg-3">
-            <TextInput
-              name="socialSecurityNumber"
-              label="Social Security Number"
-              placeholder="Social Security Number"
-                value={personComplete.person.socialSecurityNumber}
-              onChange={onChange}
-              addClass="medium-textbox"
-              error={errors.lastName} />
-          </div>
-
+            {ssn}
           <div className="col-lg-4">
 
           </div>
@@ -174,6 +189,8 @@ PersonForm.propTypes = {
   onSave: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   dobChange: PropTypes.func.isRequired,
+  isBirthday: PropTypes.bool,
+  isSsn: PropTypes.bool,
   saving: PropTypes.bool,
   errors: PropTypes.object
 };
