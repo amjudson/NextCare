@@ -12,6 +12,7 @@ import InvoicePage from './components/invoice/InvoicePage';
 import ViewInvoice from './components/invoice/ViewInvoice';
 import PersonPage from './components/person/PersonPage';
 import ManagePersonPage from './components/person/ManagePersonPage';
+import EventsCalendar from './components/calendar/CalendarPage';
 
 export default (
   <Route path="/" component={App}>
@@ -19,7 +20,6 @@ export default (
     <Route path="students" component={StudentPage} />
     <Route path="student" component={ManageStudentPage} />
     <Route path="student/:id" component={ManageStudentPage} />
-
     <Route path="accounts" component={AccountPage} />
     <Route path="account" component={ManageAccountPage} />
     <Route path="account/:id" component={ManageAccountPage} />
@@ -27,6 +27,7 @@ export default (
     <Route path="viewinvoice" component={ViewInvoice} />
     <Route path="invoice" component={ManageInvoicePage} />
     <Route path="invoice/:id" component={ManageInvoicePage} />
+    <Route path="calendar" component={EventsCalendar}/>
     <Route path="persons" component={PersonPage} />
     <Route path="person" component={ManagePersonPage} />
     <Route path="person/:id" component={ManagePersonPage} />

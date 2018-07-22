@@ -18,7 +18,7 @@ class App extends React.Component {
             <main className="main">
               {this.props.children}
             </main>
-            <Aside loading={this.props.loading} />
+            <Aside loading={this.props.loading} date={this.props.date} />
           </div>
       </div>
     );

@@ -30,7 +30,7 @@ class StudentPage extends React.Component {
               <div className="col-md-8 text-right">
               <input
                 type="submit"
-                value="Add Person"
+                value="Add Student"
                 className="btn nextcareBtn"
                 onClick={this.redirectToAddPersonPage}
               />

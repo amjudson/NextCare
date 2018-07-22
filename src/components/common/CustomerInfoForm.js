@@ -29,8 +29,6 @@ class CustomerInfoForm extends Component {
         const gotoInvoice = () => {
         browserHistory.push('/invoice/1');
         };
-    
-    
         return (
             <div>
                 <form>

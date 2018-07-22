@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
 import TextInput from '../common/TextInput';
@@ -12,24 +12,22 @@ import EmergencyContactForm from './EmergencyContactForm';
 
 class PersonForm extends Component {
   render() {
-    const {personComplete, sexes, onSave, onChange, saving, errors, dobChange} = this.props;
+    const { personComplete, sexes, onSave, onChange, saving, errors, dobChange } = this.props;
     const returnToPreviousPage = () => {
       browserHistory.push('/persons');
     };
-
     return (
-
       <div className="container-fluid mainPage">
-      <div className="row">
-        <div className = "pageHeaders">
-            <div className="col-md-6">   
-            <h2>Person</h2>
+        <div className="row">
+          <div className="pageHeaders">
+            <div className="col-md-6">
+              <h2>Person</h2>
             </div>
+          </div>
         </div>
-      </div>
         <form>
           <div className="row">
-          <div className="col-lg-1">
+            <div className="col-lg-1">
               <TextInput
                 name="prefix"
                 label="Prefix"
@@ -80,9 +78,9 @@ class PersonForm extends Component {
                 error={errors.sufix} />
             </div>
           </div>
-          <div className = "row">
-            <div className = "col-lg-3 numberField">
-            <TextInput
+          <div className="row">
+            <div className="col-lg-3 numberField">
+              <TextInput
                 name="phone"
                 placeholder=""
                 value='Phone Number'
@@ -91,7 +89,7 @@ class PersonForm extends Component {
                 error={errors.alias} />
             </div>
           </div>
-          <div className = "row">
+          <div className="row">
             <div className="col-lg-1">
               <SelectInput
                 name="sex"
@@ -102,7 +100,7 @@ class PersonForm extends Component {
                 error={errors.sex} />
             </div>
             <div className="col-lg-4">
-            <label htmlFor="dateOfBirth">Date of Birth</label>
+              <label htmlFor="dateOfBirth">Date of Birth</label>
               <DatePicker name="dateOfBirth"
                 className="date-text-box form-control medium-textbox"
                 selected={moment(personComplete.person.dateOfBirth)}
@@ -111,31 +109,30 @@ class PersonForm extends Component {
             </div>
           </div>
           <div className="row">
-
-           <div className="col-lg-3">
-            <TextInput
-              name="socialSecurityNumber"
-              label="Social Security Number"
-              placeholder="Social Security Number"
+            <div className="col-lg-3">
+              <TextInput
+                name="socialSecurityNumber"
+                label="Social Security Number"
+                placeholder="Social Security Number"
                 value={personComplete.person.socialSecurityNumber}
-              onChange={onChange}
-              addClass="medium-textbox"
-              error={errors.lastName} />
-          </div>
+                onChange={onChange}
+                addClass="medium-textbox"
+                error={errors.lastName} />
+            </div>
 
-          <div className="col-lg-4">
+            <div className="col-lg-4">
 
+            </div>
           </div>
-        </div>
           <div className="row">
             <div className="col-lg-4">
-            <input
+              <input
                 type="submit"
                 disabled={saving}
                 value={saving ? 'Saving...' : 'Save'}
                 className="btn nextcareBtn col-lg-4"
                 onClick={onSave} />
-           &nbsp;
+              &nbsp;
             <button className="btn nextcareBtn col-lg-4"
                 type="submit" onClick={returnToPreviousPage}>
                 Back
@@ -163,7 +160,7 @@ class PersonForm extends Component {
             </div>
           </div>
         </form>
-        </div>
+      </div>
     );
   }
 }

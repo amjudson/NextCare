@@ -41,7 +41,9 @@ class Navigation extends Component {
             <li className="nav-item">
               <Link to="/invoices" className={this.state.textCollapse}><i className="fas fa-file-alt fa-2x navIcon"></i> <span className = "navSpan">Invoices</span> </Link>
             </li>
-           
+            <li className="nav-item">
+              <Link to="/calendar" className={this.state.textCollapse}><i className="fas fa-calendar-alt fa-2x navIcon"></i> <span className = "navSpan">Calendar</span> </Link>
+            </li>
             <li className="nav-item">
               <Link to="/about" className={this.state.textCollapse}><i className="fas fa-envelope-square fa-2x navIcon"></i> <span className = "navSpan">Messages</span> </Link>
             </li>

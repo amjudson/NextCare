@@ -82,22 +82,20 @@ class AccountForm extends Component {
           <div className = "col-md-8">
           <CustomerInfoForm />   
           </div>
-              <div className = "col-md-4">
-                <div className = "row">
-                <div className = "col-md-12">
-                  <div className = "formHeaders flexLine">
+          <div className = "col-md-4">
+            <div className = "row">
+              <div className = "col-md-12">
+                <div className = "formHeaders flexLine"> 
+                    <div className = "col-md-9">
+                      <h3>Student(s) On Account</h3>
+                    </div>
+                    <div className = "col-md-3 float-right">
                       
-                      <div className = "col-md-9">
-                        <h3>Student(s) On Account</h3>
-                      </div>
-                      <div className = "col-md-3 float-right">
-                        
-                        <AddNewFieldButton className="smallAddNew"
-                        name="addNewField"
-                        onClick={gotoCreatStudent}
-                        />
-                      </div>
-                    
+                      <AddNewFieldButton className="smallAddNew"
+                      name="addNewField"
+                      onClick={gotoCreatStudent}
+                      />
+                    </div>
                   </div>
                     <button className="btn btn-block nextcareBtn float-right"
                     type="submit" onClick={gotoStudent}>
@@ -130,14 +128,14 @@ class AccountForm extends Component {
                       type="submit" onClick={viewInvoice}>
                       Unpaid Invoice
                       </button>
-                      <button className="btn btn-block nextcareBtn float-right"
+                      <button className="btn btn-block  alert alert-danger float-right"
                       type="submit" onClick={viewInvoice}>
                       Unpaid Invoice 2
                       </button>
                     </div>
                   </div> 
                 </div>
-            </div>
+          </div>
           </div>
       );
     }
