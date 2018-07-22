@@ -4,7 +4,7 @@ GO
 BEGIN TRAN
 SET IDENTITY_INSERT dbo.AddressType ON;
 GO
-INSERT INTO AddressType	(AddressTypeId, Description) VALUES(1, 'Home');
+INSERT INTO AddressType	(AddressTypeId, Description) VALUES(1, 'Home'); 
 INSERT INTO AddressType	(AddressTypeId, Description) VALUES(2, 'Work');
 INSERT INTO AddressType	(AddressTypeId, Description) VALUES(3, 'Vacation');
 INSERT INTO AddressType	(AddressTypeId, Description) VALUES(4, 'Other');

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as studentActions from '../../actions/studentActions';
+import * as personCompleteActions from '../../actions/personCompleteActions';
 import * as phoneActions from '../../actions/phoneActions';
-import StudentForm from '../students/StudentForm';
+import StudentForm from './StudentForm';
 import toastr from 'toastr';
 import moment from 'moment';
 
@@ -13,52 +13,42 @@ class ManageStudentPage extends React.Component {
     super(props, context);
 
     this.state = {
-      student: Object.assign({}, this.props.student),
+      personComplete: Object.assign({}, this.props.personComplete),
       errors: {},
       saving: false
     };
 
     //this.getPhoneNumber = this.getPhoneNumber.bind(this);
-    this.updateStudentState = this.updateStudentState.bind(this);
-    this.saveStudent = this.saveStudent.bind(this);
+    this.updatePersonState = this.updatePersonState.bind(this);
+    this.savePerson = this.savePerson.bind(this);
     this.handleDobDateChange = this.handleDobDateChange.bind(this);
-    this.handleStartDateChange = this.handleStartDateChange.bind(this);
-    this.handleTestDateChange = this.handleTestDateChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.student.studentId != nextProps.student.studentId) {
-      // necessary to populate form whene existing student is loaded directly.
-      this.setState({ student: Object.assign({}, nextProps.student) });
+    if (this.props.personComplete.person.personId != nextProps.personComplete.person.personId) {
+      // necessary to populate form whene existing person is loaded directly.
+      let personComplete = this.props.actions.loadPersonComplete(nextProps.personComplete.person.personId);
+      this.setState({personComplete: Object.assign({}, personComplete) });
     }
   }
 
-  getPhoneNumber(phones, id) {
-    const phoneNum = { number: 'Number Not Found', phoneTypeId: 0, phoneId: 0 };
-    const phoneNums = phones.filter(r => r.phoneId == id);
-    if (phoneNums.length > 0) {
-      return phoneNums[0];
-    }
-    return phoneNum;
-  }
-
-  updateStudentState(event) {
+  updatePersonState(event) {
     const field = event.target.name;
-    let student = this.state.student;
-    student[field] = event.target.value;
-    return this.setState({ student: student });
+    let personComplete = this.state.personComplete;
+    personComplete.person[field] = event.target.value;
+    return this.setState({personComplete: personComplete });
   }
 
-  studentFormIsValid() {
+  personFormIsValid() {
     let formIsValid = true;
     let errors = {};
 
-    if (this.state.student.lastName.length < 3) {
+    if (this.state.personComplete.person.lastName.length < 3) {
       errors.lastName = 'Last name must be at least 3 characters.';
       formIsValid = false;
     }
 
-    if (this.state.student.firstName.length < 3) {
+    if (this.state.personComplete.person.firstName.length < 3) {
       errors.firstName = 'First name must be at least 3 characters.';
       formIsValid = false;
     }
@@ -67,14 +57,14 @@ class ManageStudentPage extends React.Component {
     return formIsValid;
   }
 
-  saveStudent(event) {
+  savePerson(event) {
     event.preventDefault();
-    if (!this.studentFormIsValid()) {
+    if (!this.personFormIsValid()) {
       return;
     }
 
     this.setState({ saving: true });
-    this.props.actions.saveStudent(this.state.student)
+    this.props.actions.savePerson(this.state.personComplete.person)
       .then(() => this.redirect())
       .catch(error => {
         this.setState({ saving: false });
@@ -85,49 +75,33 @@ class ManageStudentPage extends React.Component {
   redirect() {
     this.setState({ saving: false });
     toastr.success('Student saved!');
-    this.context.router.push('/students');
-  }
-
-  handleStartDateChange(date) {
-    let student = this.state.student;
-    student.startDate = date.format();
-    return this.setState({ student: student });
+    this.context.router.push('/persons');
   }
 
   handleDobDateChange(date) {
-    let student = this.state.student;
-    student.dateOfBirth = date.format();
-    return this.setState({ student: student });
-  }
-
-  handleTestDateChange(date) {
-    let student = this.state.student;
-    student.lastTestingDate = date.format();
-    return this.setState({ student: student });
+    let personComplete = this.state.personComplete;
+    personComplete.person.dateOfBirth = date.format();
+    return this.setState({personComplete: personComplete });
   }
 
   render() {
     return (
       <StudentForm
-        allRanks={this.props.ranks}
-        studentStatuses={this.props.studentStatuses}
-        onChange={this.updateStudentState}
-        onSave={this.saveStudent}
-        student={this.state.student}
+        onChange={this.updatePersonState}
+        onSave={this.savePerson}
+        personComplete={this.state.personComplete}
         errors={this.state.errors}
         saving={this.state.saving}
-        startDateChange={this.handleStartDateChange}
+        sexes={this.props.sexes}
         dobChange={this.handleDobDateChange}
-        lastTestDateChange={this.handleTestDateChange}
       />
     );
   }
 }
 
 ManageStudentPage.propTypes = {
-  student: PropTypes.object.isRequired,
-  ranks: PropTypes.array.isRequired,
-  studentStatuses: PropTypes.array.isRequired,
+  personComplete: PropTypes.object.isRequired,
+  sexes: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 
@@ -136,72 +110,54 @@ ManageStudentPage.contextTypes = {
   router: PropTypes.object
 };
 
-function getStudentById(students, studentId) {
-  const student = students.filter(student => student.studentId == studentId);
-  if (student) return student[0]; // since filter returns an array, have to grab the first.
+function getPersonById(personCompletes, personId) {
+  const personComplete = personCompletes.filter(personComplete => personComplete.person.personId == personId);
+  if (personComplete) return personComplete[0]; // since filter returns an array, have to grab the first.
   return null;
 }
 
 function mapStateToProps(state, ownProps) {
-  const studentId = ownProps.params.id; // from the path '/student/:id'
+  const personId = ownProps.params.id; // from the path '/person/:id'
 
-  let student = {
-    studentId: 0,
-    academyId: 0,
-    beltSize: '',
-    dateOfBirth: '1900-01-01T00:00:00',
-    startDate: '1900-01-01T00:00:00',
-    lastName: '',
-    firstName: '',
-    middleName: null,
-    lastTestingDate: '1900-01-01T00:00:00',
-    studentStatusId: 0,
-    rankId: 0,
-    academy: null,
-    rank: null,
-    studentStatus: null,
-    studentAddresses: null,
-    studentEmails: null,
-    studentPhones: null,
-    fullName: ''
+  let personComplete = {
+    person: {
+      personId: 0,
+      personTypeId: 0,
+      alias: '',
+      dateOfBirth: '1900-01-01T00:00:00',
+      lastName: '',
+      firstName: '',
+      middleName: null,
+      socialSecurityNumber: '',
+      ssnSalt: '',
+      sex: '',
+      raceId: 0,
+      prefix: '',
+      suffix: ''
+    },
+    addresses: {},
+    emails: {},
+    phones: {}
   };
 
-  if (studentId && state.students.length > 0) {
-    student = getStudentById(state.students, studentId);
+  if (personId && state.personCompletes.length > 0) {
+    personComplete = getPersonById(state.personCompletes, personId);
   }
 
-  const ranksFormattedForDropdown = state.ranks.map(rank => {
-    return {
-      value: rank.rankId.toString(),
-      text: rank.description
-    };
-  });
-
-  const academiesFormattedForDropdown = state.academies.map(academy => {
-    return {
-      value: academy.academyId.toString(),
-      text: academy.name
-    };
-  });
-
-  const studentStatusesFormattedForDropdown = state.studentStatuses.map(studentStatus => {
-    return {
-      value: studentStatus.studentStatusId.toString(),
-      text: studentStatus.description
-    };
-  });
+  const sexes = [
+    {value: 'M', text: 'Male'},
+    {value: 'F', text: 'Female'}
+  ];
 
   return {
-    student: student,
-    ranks: ranksFormattedForDropdown,
-    academies: academiesFormattedForDropdown,
-    studentStatuses: studentStatusesFormattedForDropdown
+    personComplete: personComplete,
+    sexes: sexes
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(studentActions, dispatch)
+    actions: bindActionCreators(personCompleteActions, dispatch)
   };
 }
 

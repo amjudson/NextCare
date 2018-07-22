@@ -15,10 +15,11 @@ class ManagePersonPage extends React.Component {
     this.state = {
       personComplete: Object.assign({}, this.props.personComplete),
       errors: {},
-      saving: false
+      saving: false,
+      isBirthday: this.props.isBirthday,
+      isSsn: this.props.isSsn
     };
 
-    //this.getPhoneNumber = this.getPhoneNumber.bind(this);
     this.updatePersonState = this.updatePersonState.bind(this);
     this.savePerson = this.savePerson.bind(this);
     this.handleDobDateChange = this.handleDobDateChange.bind(this);
@@ -30,15 +31,6 @@ class ManagePersonPage extends React.Component {
       let personComplete = this.props.actions.loadPerson(nextProps.personComplete.person.personId);
       this.setState({personComplete: Object.assign({}, personComplete) });
     }
-  }
-
-  getPhoneNumber(phones, id) {
-    const phoneNum = { number: 'Number Not Found', phoneTypeId: 0, phoneId: 0 };
-    const phoneNums = phones.filter(r => r.phoneId == id);
-    if (phoneNums.length > 0) {
-      return phoneNums[0];
-    }
-    return phoneNum;
   }
 
   updatePersonState(event) {
@@ -94,11 +86,14 @@ class ManagePersonPage extends React.Component {
   }
 
   render() {
+    const {isBirthday, isSsn} = this.props;
     return (
       <PersonForm
         onChange={this.updatePersonState}
         onSave={this.savePerson}
         personComplete={this.state.personComplete}
+        isBirthday={this.state.isBirthday}
+        isSsn={this.state.isSsn}
         errors={this.state.errors}
         saving={this.state.saving}
         sexes={this.props.sexes}
@@ -111,7 +106,9 @@ class ManagePersonPage extends React.Component {
 ManagePersonPage.propTypes = {
   personComplete: PropTypes.object.isRequired,
   sexes: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  isBirthday: PropTypes.bool,
+  isSsn: PropTypes.bool
 };
 
 // Pull in the React Router context so router is available on this.context.router.
@@ -160,7 +157,9 @@ function mapStateToProps(state, ownProps) {
 
   return {
     personComplete: personComplete,
-    sexes: sexes
+    sexes: sexes,
+    isBirthday: state.isBirthday,
+    isSsn: state.isSsn
   };
 }
 

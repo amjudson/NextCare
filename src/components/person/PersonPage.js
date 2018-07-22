@@ -6,7 +6,7 @@ import * as personCompleteActions from '../../actions/personCompleteActions';
 import PersonList from './PersonList';
 import { browserHistory } from 'react-router';
 
-class PersonsPage extends React.Component {
+class PersonPage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -24,7 +24,7 @@ class PersonsPage extends React.Component {
         <div className="row">
           <div className = "pageHeaders">
               <div className="col-md-4">
-                  <h2>Students</h2>
+                  <h2>Person List</h2>
               </div>
               <div className="col-md-8 text-right">
               <input
@@ -42,7 +42,7 @@ class PersonsPage extends React.Component {
   }
 }
 
-PersonsPage.propTypes = {
+PersonPage.propTypes = {
   personCompletes: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
@@ -59,4 +59,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PersonsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(PersonPage);

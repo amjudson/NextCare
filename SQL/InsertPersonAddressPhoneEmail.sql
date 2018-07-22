@@ -2,7 +2,7 @@ USE NextCARE;
 GO
 
 DELETE FROM Address;
-DBCC CHECKIDENT ('Address', RESEED, 0)
+DBCC CHECKIDENT ('Address', RESEED, 0);
 
 INSERT INTO Address (AddressLine1, AddressLine2, AddressTypeId, City, IsPrimary, StatesId, Zip) VALUES('554 Acher Place', 'Apt 209', 3, 'Ann Arbor', 0, 16, '65478');
 INSERT INTO Address (AddressLine1, AddressLine2, AddressTypeId, City, IsPrimary, StatesId, Zip) VALUES('878 Ledgendary Pl', '', 1, 'Destin', 0, 30, '25676');
@@ -36,7 +36,7 @@ INSERT INTO Address (AddressLine1, AddressLine2, AddressTypeId, City, IsPrimary,
 INSERT INTO Address (AddressLine1, AddressLine2, AddressTypeId, City, IsPrimary, StatesId, Zip) VALUES('554 Acher Place', '', 3, 'Fort Walton', 1, 28, '38946');
 
 DELETE FROM Person;
-DBCC CHECKIDENT ('Person', RESEED, 0)
+DBCC CHECKIDENT ('Person', RESEED, 0);
 
 INSERT INTO Person (Alias, DateOfBirth, FirstName, LastName, MiddleName, PersonTypeId, Prefix, RaceId, Sex, SocialSecurityNumber, SSNSalt, Suffix) VALUES('Joe', '11/10/2001 7:46:00 AM', 'Mark', 'Bradshaw', 'E', 6, '', 3, 'M', '456128463', '', '');
 INSERT INTO Person (Alias, DateOfBirth, FirstName, LastName, MiddleName, PersonTypeId, Prefix, RaceId, Sex, SocialSecurityNumber, SSNSalt, Suffix) VALUES('Jim', '4/5/1986 7:46:00 AM', 'Corey', 'Noyce', 'N', 5, '', 2, 'F', '467829908', '', '');
@@ -70,7 +70,7 @@ INSERT INTO Person (Alias, DateOfBirth, FirstName, LastName, MiddleName, PersonT
 INSERT INTO Person (Alias, DateOfBirth, FirstName, LastName, MiddleName, PersonTypeId, Prefix, RaceId, Sex, SocialSecurityNumber, SSNSalt, Suffix) VALUES('', '3/19/1985 7:46:00 AM', 'Steve', 'Almound', 'C', 5, '', 3, 'F', '328228493', '', '');
 
 DELETE FROM Email;
-DBCC CHECKIDENT ('Email', RESEED, 0)
+DBCC CHECKIDENT ('Email', RESEED, 0);
 
 INSERT INTO Email (EmailAddress, EmailTypeId, IsPrimary) VALUES('eight.seven@outlook.com', 3, 1);
 INSERT INTO Email (EmailAddress, EmailTypeId, IsPrimary) VALUES('two.seven@yahoo.com', 4, 0);
@@ -104,7 +104,7 @@ INSERT INTO Email (EmailAddress, EmailTypeId, IsPrimary) VALUES('seven.three@bur
 INSERT INTO Email (EmailAddress, EmailTypeId, IsPrimary) VALUES('eight.seven@yahoo.com', 1, 1);
 
 DELETE FROM Phone;
-DBCC CHECKIDENT ('Phone', RESEED, 0)
+DBCC CHECKIDENT ('Phone', RESEED, 0);
 
 INSERT INTO Phone (Extension, IsPrimary, PhoneNumber, PhoneTypeId) VALUES('2345', 1, '7748762987', 4);
 INSERT INTO Phone (Extension, IsPrimary, PhoneNumber, PhoneTypeId) VALUES('', 1, '7748762987', 2);

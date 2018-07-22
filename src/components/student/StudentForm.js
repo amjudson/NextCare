@@ -158,7 +158,7 @@ class StudentForm extends Component {
                     </button>
                   </div>
                  </div> 
-                 <br />
+                 <br />c
             </div>
             <div className = "col-lg-4 offset-md-2">
               <button className="btn nextcareBtn "

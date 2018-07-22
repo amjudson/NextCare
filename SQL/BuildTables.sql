@@ -147,6 +147,13 @@ BEGIN
 END
 GO
 
+IF OBJECT_ID('dbo.Guardian', 'U') IS NOT NULL
+BEGIN
+  ALTER TABLE dbo.Guardian DROP CONSTRAINT FK_Guardian_GuardianType
+  DROP TABLE dbo.Guardian;
+END
+GO
+
 IF OBJECT_ID('dbo.Document', 'U') IS NOT NULL
 BEGIN
   ALTER TABLE dbo.Document DROP CONSTRAINT FK_Document_DocumentType
@@ -171,7 +178,7 @@ IF OBJECT_ID('dbo.AddressType', 'U') IS NOT NULL
   DROP TABLE dbo.AddressType
 GO
 IF OBJECT_ID('dbo.GradeLevel', 'U') IS NOT NULL
-  DROP TABLE dbo.AddressType
+  DROP TABLE dbo.GradeLevel
 GO
 IF OBJECT_ID('dbo.DocumentType', 'U') IS NOT NULL
 	DROP TABLE dbo.DocumentType
@@ -612,12 +619,16 @@ GO
 /****** Object:  Table dbo.Invoice    Script Date: 5/29/2018 6:53:54 PM ******/
 CREATE TABLE dbo.Invoice
 (
-  InvoiceId int IDENTITY(1,1) NOT NULL,
-  InvoiceOwnerId int NOT NULL,
+  InvoiceId INT IDENTITY(1,1) NOT NULL,
+  InvoiceOwnerId INT NOT NULL,
   Paid bit NOT NULL,
-  InvoiceTypeId int NOT NULL,
+  InvoiceTypeId INT NOT NULL,
   InvoiceNumber NVARCHAR(30) NOT NULL,
-  Description nvarchar(512) NOT NULL,
+  Description NVARCHAR(512) NOT NULL,
+  LastChangeDate DATETIME NOT NULL,
+  CreateDate DATETIME NOT NULL,
+  DueDate DATETIME NOT NULL,
+  PaidDate DATETIME NULL,
   CONSTRAINT PK_Invoice PRIMARY KEY CLUSTERED
 (
 	InvoiceId ASC
@@ -632,6 +643,12 @@ GO
 ALTER TABLE dbo.Invoice CHECK CONSTRAINT FK_Invoice_InvoiceType
 GO
 
+ALTER TABLE Invoice ADD CONSTRAINT DF_Invoice_LastChangeDate DEFAULT GETDATE() FOR LastChangeDate;
+
+ALTER TABLE Invoice ADD CONSTRAINT DF_Invoice_CreateDate DEFAULT GETDATE() FOR CreateDate;
+
+ALTER TABLE Invoice ADD CONSTRAINT DF_Invoice_DueDate DEFAULT DATEADD(MONTH, 1, GETDATE()) FOR DueDate;
+
 /****** Object:  Table dbo.InvoiceLine    Script Date: 5/29/2018 6:53:54 PM ******/
 CREATE TABLE dbo.InvoiceLine
 (
@@ -640,6 +657,7 @@ CREATE TABLE dbo.InvoiceLine
   Paid bit NOT NULL,
   Quantity int NOT NULL,
   Cost DECIMAL NOT NULL,
+  CreateDate DATETIME NOT NULL,
   Description nvarchar(512) NOT NULL,
   CONSTRAINT PK_InvoiceLine PRIMARY KEY CLUSTERED
 (
@@ -654,6 +672,8 @@ GO
 
 ALTER TABLE dbo.InvoiceLine CHECK CONSTRAINT FK_InvoiceLine_Invoice
 GO
+
+ALTER TABLE InvoiceLine ADD CONSTRAINT DF_InvoiceLine_CreateDate DEFAULT GETDATE() FOR CreateDate;
 
 /****** Object:  Table dbo.PersonAddress    Script Date: 6/3/2018 4:55:48 PM ******/
 CREATE TABLE dbo.PersonAddress(
@@ -741,10 +761,10 @@ GO
 CREATE TABLE dbo.Student(
 	StudentId int IDENTITY(1,1) NOT NULL,
 	PersonId int NOT NULL,
-  StudentTypeId int NOT NULL,
+	StudentTypeId int NOT NULL,
 	GradeLevelId int NOT NULL,
-  Alias nvarchar(30) NULL,
-  PhysicianId int NOT NULL,
+	Alias nvarchar(30) NULL,
+	PhysicianId int NULL,
  CONSTRAINT PK_Student PRIMARY KEY CLUSTERED
 (
 	StudentId ASC
@@ -764,6 +784,27 @@ REFERENCES dbo.GradeLevel (GradeLevelId)
 GO
 
 ALTER TABLE dbo.Student CHECK CONSTRAINT FK_Student_StudentType
+GO
+
+/****** Object:  Table dbo.Guardin    Script Date: 6/1/2018 8:39:10 AM ******/
+CREATE TABLE dbo.Guardian
+(
+  GuardianId int IDENTITY(1,1) NOT NULL,
+  PersonId int NOT NULL,
+  StudentId int NOT NULL,
+  GuardianTypeId int NOT NULL
+    CONSTRAINT PK_Guardian PRIMARY KEY CLUSTERED
+(
+	GuardianId ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE dbo.Guardian  WITH CHECK ADD  CONSTRAINT FK_Guardian_GuardianType FOREIGN KEY(GuardianTypeId)
+REFERENCES dbo.GuardianType (GuardianTypeId)
+GO
+
+ALTER TABLE dbo.Guardian CHECK CONSTRAINT FK_Guardian_GuardianType
 GO
 
 /****** Object:  Table dbo.EmergencyContact    Script Date: 6/1/2018 8:39:10 AM ******/
@@ -788,6 +829,9 @@ GO
 
 ALTER TABLE dbo.EmergencyContact  WITH CHECK ADD  CONSTRAINT FK_EmergencyContact_Student FOREIGN KEY(StudentId)
 REFERENCES dbo.Student (StudentId)
+GO
+
+ALTER TABLE dbo.EmergencyContact CHECK CONSTRAINT FK_EmergencyContact_Student
 GO
 
 /****** Object:  Table dbo.StudentDietary    Script Date: 6/1/2018 8:40:57 AM ******/
