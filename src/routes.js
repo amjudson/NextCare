@@ -12,8 +12,6 @@ import InvoicePage from './components/invoice/InvoicePage';
 import ViewInvoice from './components/invoice/ViewInvoice';
 import PersonPage from './components/person/PersonPage';
 import ManagePersonPage from './components/person/ManagePersonPage';
-import StudentPage from './components/students/StudentPage';
-import ManageStudentPage from './components/students/ManageStudentPage';
 
 export default (
   <Route path="/" component={App}>
@@ -32,9 +30,6 @@ export default (
     <Route path="persons" component={PersonPage} />
     <Route path="person" component={ManagePersonPage} />
     <Route path="person/:id" component={ManagePersonPage} />
-    <Route path="students" component={StudentPage} />
-    <Route path="student" component={ManageStudentPage} />
-    <Route path="student/:id" component={ManageStudentPage} />
     <Route path="about" component={AboutPage} />
   </Route>
 );
