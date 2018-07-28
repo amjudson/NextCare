@@ -45,7 +45,7 @@ class StudentForm extends Component {
             <img src={'http://placehold.it/100x100&text=Student Photo'} className="img-responsive rounded-circle"/>
           
         </div>
-        <div className = "col-md-8">
+        <div className = "col-md-6">
               <form>
                 <div className="row">
                   {/* Student Name */}
@@ -137,13 +137,36 @@ class StudentForm extends Component {
               </form>
               
             </div>
+            
+            <div className = "col-md-4">
+            <div className = "row">
+              <div className = "col-md-12">
+                <div className = "formHeaders flexLine"> 
+                      <h3>Student Documents</h3>
+                      <AddNewFieldButton className="smallAddNew"
+                      name="addNewField"
+                      onClick={moveToAccountPage}
+                      />
+                  </div>
+                    <button className="btn btn-block nextcareBtn float-right"
+                    type="submit" onClick={moveToAccountPage}>
+                    Vaccinations | Uploaded Feb 3<sup>rd</sup> 2018
+                    </button>
+                    <button className="btn btn-block nextcareBtn float-right"
+                    type="submit" onClick={moveToAccountPage}>
+                    Field Trip Release | Uploaded June 8<sup>th</sup> 2018
+                    </button>
+                  </div>
+                 </div> 
+                 <br />c
+            </div>
             <div className = "col-lg-4 offset-md-2">
               <button className="btn nextcareBtn "
               type="submit" onClick={moveToAccountPage}>
               View Account
               </button>
             </div>
-            <div className = "col-md-4 offset-md-1 float-right">
+            <div className = "col-md-3  float-right">
               <input
               type="submit"
               disabled={saving}

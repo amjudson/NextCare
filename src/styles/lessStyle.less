@@ -9,6 +9,69 @@
 @nc-medgrey: #cccccc;
 @nc-white:#fdfdfd;
 
+
+.react-calendar
+{
+  margin-left:auto;
+  margin-right:auto;
+  width:80% !important;
+  height:80vh !important;
+}
+.react-calendar__navigation
+{
+  background-color:@nc-blue;
+  color:@nc-white !important;
+  margin-bottom:0px;
+}
+.tileClass
+{
+  background-color:@nc-white !important;
+}
+.react-calendar__tile
+{
+  height:11.7vh !important;
+  border:1px solid @nc-lightgrey !important;
+  text-align:left;
+}
+.react-calendar__month-view__weekdays
+{
+  color:@nc-blue !important;
+  border:1px solid @nc-medgrey;
+  padding:10px;
+}
+.react-calendar__tile time
+{
+ 
+  vertical-align: text-top !important;
+  margin-top:10px !important;
+  top:0px !important;
+  background-color:@nc-lightgrey !important;
+  text-align:left;
+  padding:4px;
+  border-radius:50%;
+  width:100%;
+  color: @nc-blue !important;
+  
+}
+.react-calendar__tile ul
+{
+  margin-top:10px;  
+}
+.react-calendar__tile ul li
+{
+ color:@nc-blue;
+}
+button.react-calendar__tile--active:enabled:hover, button.react-calendar__tile--active:enabled:focus,.react-calendar__tile--active
+{
+  background:@nc-blue !important;
+  color:@nc-white !important;
+}
+button.react-calendar__tile--active:enabled:hover, button.react-calendar__tile--active:enabled:focus,.react-calendar__tile--active ul li
+{
+  background:@nc-blue !important;
+  color:@nc-white !important;
+}
+
 //Interface Icons
 .fa-bars
 {
@@ -97,7 +160,15 @@
 .main{
   margin-top:55px;
 }
+.card
+{
+  margin-top:20px;
+}
 ////Side Nav
+.aside-menu
+{
+  margin-top:55px;
+}
 .toggleNavButton
 {
   position:relative;
@@ -111,6 +182,23 @@
   color:@nc-white !important;
   -webkit-transition: all .3s; /* Safari */
   transition: all .3s;
+}
+.asideForm
+{
+  margin-left:10px !important;
+  margin-right:auto !important;
+}
+.asideField
+{
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+.asideSave
+{
+  margin-top:20px;
+  margin-right:auto !important;
+  margin-left:auto !important;
+  text-align:center;
 }
 .sidebar
 {

@@ -17,12 +17,16 @@ GO
 
 CREATE TABLE dbo.Invoice
 (
-  InvoiceId int IDENTITY(1,1) NOT NULL,
-  InvoiceOwnerId int NOT NULL,
+  InvoiceId INT IDENTITY(1,1) NOT NULL,
+  InvoiceOwnerId INT NOT NULL,
   Paid bit NOT NULL,
-  InvoiceTypeId int NOT NULL,
+  InvoiceTypeId INT NOT NULL,
   InvoiceNumber NVARCHAR(30) NOT NULL,
-  Description nvarchar(512) NOT NULL,
+  Description NVARCHAR(512) NOT NULL,
+  LastChangeDate DATETIME NOT NULL,
+  CreateDate DATETIME NOT NULL,
+  DueDate DATETIME NOT NULL,
+  PaidDate DATETIME NULL,
   CONSTRAINT PK_Invoice PRIMARY KEY CLUSTERED
 (
 	InvoiceId ASC
@@ -36,4 +40,10 @@ GO
 
 ALTER TABLE dbo.Invoice CHECK CONSTRAINT FK_Invoice_InvoiceType
 GO
+
+ALTER TABLE Invoice ADD CONSTRAINT DF_Invoice_LastChangeDate DEFAULT GETDATE() FOR LastChangeDate;
+
+ALTER TABLE Invoice ADD CONSTRAINT DF_Invoice_CreateDate DEFAULT GETDATE() FOR CreateDate;
+
+ALTER TABLE Invoice ADD CONSTRAINT DF_Invoice_DueDate DEFAULT DATEADD(MONTH, 1, GETDATE()) FOR DueDate;
 
