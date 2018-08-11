@@ -34,6 +34,8 @@ class ManagePersonPage extends React.Component {
   }
 
   updatePersonState(event) {
+    console.log('NAME:', event.target.name);
+    console.log('VALUE:', event.target.value);
     const field = event.target.name;
     let personComplete = this.state.personComplete;
     personComplete.person[field] = event.target.value;
@@ -97,6 +99,7 @@ class ManagePersonPage extends React.Component {
         errors={this.state.errors}
         saving={this.state.saving}
         sexes={this.props.sexes}
+        personTypes={this.props.personTypes}
         dobChange={this.handleDobDateChange}
       />
     );
@@ -106,6 +109,7 @@ class ManagePersonPage extends React.Component {
 ManagePersonPage.propTypes = {
   personComplete: PropTypes.object.isRequired,
   sexes: PropTypes.array.isRequired,
+  personTypes: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
   isBirthday: PropTypes.bool,
   isSsn: PropTypes.bool
@@ -150,6 +154,13 @@ function mapStateToProps(state, ownProps) {
     personComplete = getPersonById(state.personCompletes, personId);
   }
 
+  const personTypesFormattedForDropdown = state.personTypes.map(type => {
+    return {
+      value: type.personTypeId.toString(),
+      text: type.description
+    };
+  });
+
   const sexes = [
     {value: 'M', text: 'Male'},
     {value: 'F', text: 'Female'}
@@ -158,6 +169,7 @@ function mapStateToProps(state, ownProps) {
   return {
     personComplete: personComplete,
     sexes: sexes,
+    personTypes: personTypesFormattedForDropdown,
     isBirthday: state.isBirthday,
     isSsn: state.isSsn
   };

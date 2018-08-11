@@ -10,6 +10,7 @@ import totalInvoices from './totalInvoicesReducer';
 import ajaxCallsInProgress from './ajaxStatusReducer';
 import persons from './personReducer';
 import personCompletes from './personCompleteReducer';
+import personTypes from './personTypeReducer';
 
 const rootReducer = combineReducers({
   students,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   addresses,
   addressTypes,
   persons,
+  personTypes,
   personCompletes,
   ajaxCallsInProgress
 });

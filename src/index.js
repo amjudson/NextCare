@@ -16,6 +16,7 @@ import {loadAddresses} from './actions/addressActions';
 import {loadAddressTypes} from './actions/addressTypeActions';
 import {loadPersons} from './actions/personActions';
 import {loadPersonCompletes} from './actions/personCompleteActions';
+import {loadPersonTypes} from './actions/personTypeActions';
 import './styles/styles.css'; // webpack can import CSS files too!
 import './styles/lessStyle.less';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -33,6 +34,7 @@ store.dispatch(loadAddresses());
 store.dispatch(loadAddressTypes());
 store.dispatch(loadStates());
 store.dispatch(loadPersons());
+store.dispatch(loadPersonTypes());
 store.dispatch(loadPersonCompletes());
 
 

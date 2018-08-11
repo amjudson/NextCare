@@ -1,5 +1,4 @@
 import actions from '../actions/mirrorActions';
-import * as types from '../actions/actionTypes';
 import initialState from './initailState';
 
 export default function invoiceReducer(state = initialState.totalInvoices, action) {

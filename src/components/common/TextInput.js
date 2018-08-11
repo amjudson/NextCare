@@ -15,10 +15,11 @@ class TextInput extends PureComponent {
     }
 
     return (
-      <div className={wrapperClass}>   
-       <label htmlFor={name}>{label}</label> 
+      <div className={wrapperClass}>
+       <label htmlFor={name}>{label}</label>
         <div className="field">
           <input
+            label={label}
             disabled={disabled}
             type="text"
             name={name}
@@ -35,7 +36,7 @@ class TextInput extends PureComponent {
 
 TextInput.propTypes = {
   name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   addClass: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,

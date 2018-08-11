@@ -13,6 +13,7 @@ class PersonForm extends Component {
     const {
       personComplete,
       sexes,
+      personTypes,
       onSave,
       onChange,
       saving,
@@ -21,6 +22,7 @@ class PersonForm extends Component {
       isBirthday,
       isSsn
     } = this.props;
+
     const returnToPreviousPage = () => {
       browserHistory.push('/persons');
     };
@@ -40,7 +42,7 @@ class PersonForm extends Component {
       <div className="col-lg-3">
         <TextInput
           name="socialSecurityNumber"
-          label="Social Security Number"
+          label={null}
           placeholder="Social Security Number"
           value={personComplete.person.socialSecurityNumber}
           onChange={onChange}
@@ -61,9 +63,18 @@ class PersonForm extends Component {
         <form>
           <div className="row">
             <div className="col-lg-1">
+              <SelectInput
+                name="personTypeId"
+                label={null}
+                value={personComplete.person.personTypeId.toString()}
+                options={personTypes}
+                onChange={onChange}
+                error={errors.personType} />
+            </div>
+            <div className="col-lg-1">
               <TextInput
                 name="prefix"
-                label="Prefix"
+                label={null}
                 placeholder="Prefix"
                 value={personComplete.person.prefix}
                 onChange={onChange}
@@ -73,7 +84,7 @@ class PersonForm extends Component {
             <div className="col-lg-3">
               <TextInput
                 name="firstName"
-                label="First Name"
+                label={null}
                 placeholder="Enter First Name"
                 value={personComplete.person.firstName}
                 onChange={onChange}
@@ -83,7 +94,7 @@ class PersonForm extends Component {
             <div className="col-lg-1">
               <TextInput
                 name="middleName"
-                label="Middle Initial"
+                label={null}
                 placeholder=""
                 value={personComplete.person.middleName}
                 onChange={onChange}
@@ -93,7 +104,7 @@ class PersonForm extends Component {
             <div className="col-lg-3">
               <TextInput
                 name="lastName"
-                label="Last Name"
+                label={null}
                 placeholder="Enter Last Name"
                 value={personComplete.person.lastName}
                 onChange={onChange}
@@ -103,7 +114,7 @@ class PersonForm extends Component {
             <div className="col-lg-1">
               <TextInput
                 name="sufix"
-                label="Sufix"
+                label={null}
                 placeholder="Enter Sufix"
                 value={personComplete.person.sufix}
                 onChange={onChange}
@@ -115,8 +126,8 @@ class PersonForm extends Component {
             <div className = "col-lg-3">
             <TextInput
                 name="alias"
-                label="Alias"
-                placeholder=""
+                label={null}
+                placeholder="Enter Alias"
                 value={personComplete.person.alias}
                 onChange={onChange}
                 addClass="medium-textbox"
@@ -128,7 +139,7 @@ class PersonForm extends Component {
             <div className="col-lg-1">
               <SelectInput
                 name="sex"
-                label="Sex"
+                label={null}
                 value={personComplete.person.sex}
                 options={sexes}
                 onChange={onChange}
@@ -186,6 +197,7 @@ class PersonForm extends Component {
 PersonForm.propTypes = {
   personComplete: PropTypes.object.isRequired,
   sexes: PropTypes.array.isRequired,
+  personTypes: PropTypes.array.isRequired,
   onSave: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   dobChange: PropTypes.func.isRequired,

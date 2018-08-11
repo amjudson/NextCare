@@ -39,7 +39,7 @@ class SelectInput extends PureComponent {
 
 SelectInput.propTypes = {
   name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   defaultOption: PropTypes.string,
   value: PropTypes.string,

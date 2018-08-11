@@ -1,5 +1,4 @@
 import actions from '../actions/mirrorActions';
-import * as types from '../actions/actionTypes';
 import initialState from './initailState';
 
 export default function accountReducer(state = initialState.accounts, action) {

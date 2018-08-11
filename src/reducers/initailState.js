@@ -8,6 +8,7 @@ export default {
   invoices: [],
   totalInvoices: [],
   persons: [],
+  personTypes: [],
   personCompletes: [],
   ajaxCallsInProgress: 0
 };

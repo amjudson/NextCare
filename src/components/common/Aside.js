@@ -8,21 +8,21 @@ class Aside extends Component {
   constructor (props) {
       super(props);
       this.state = {date: this.props.date};
-      this.dateChecker = this.dateChecker.bind(this);
-    } 
+    this.dateChecker = this.dateChecker.bind(this);
+    this.onChange = this.onChange.bind(this);
+    }
     componentWillReceiveProps(nextProps) {
-      console.log(nextProps  +' -- |');
+      // console.log(nextProps  +' -- |');
     }
-    dateChecker()
-    {
-      console.log(this.props.date +' --- Date Function Aside');
+    dateChecker() {
+      // console.log(this.props.date +' --- Date Function Aside');
     }
-    onChange()
-    {
+  onChange(event) {
+    console.log('OnChange', event)
+  }
 
-    }
   render() {
-    const {account, allStates, onSave, onDelete, onChange, saving, deleting, errors} = this.props;
+    const {account, allStates, onSave, onDelete, saving, deleting, errors} = this.props;
     const loading = this.props.loading;
     const theDate = this.props.date;
 
@@ -31,13 +31,13 @@ class Aside extends Component {
       <aside className="aside-menu">
         <ul className="nav nav-tabs" role="tablist">
           <li className="nav-item">
-         
-         {/*} <TabButton 
+
+         {/*} <TabButton
             theIcon = "fas fa-utensils"
             tabContent = "#timeline"
             ref="timeline"
-          />*/}      
-           
+          />*/}
+
           </li>
           <li className="nav-item">
             <a className="nav-link" data-toggle="tab" href="#settings" role="tab">
@@ -63,34 +63,34 @@ class Aside extends Component {
                  <div className = "asideForm">
                   <TextInput
                     name="Meal Item"
-                    
+                      label=""
                     placeholder="Meal Item"
                     value=""
-                    onChange={onChange}
+                    onChange={this.onChange}
                     addClass="col-md-10 medium-textbox asideField"
                     error="" />
                     <TextInput
                     name="Meal Item"
-                    
+                    label=""
                     placeholder="Meal Item"
                     value=""
-                    onChange={onChange}
+                      onChange={this.onChange}
                     addClass="col-md-10 medium-textbox asideField"
                     error="" />
                     <TextInput
                     name="Meal Item"
-                    
+                      label=""
                     placeholder="Meal Item"
                     value=""
-                    onChange={onChange}
+                      onChange={this.onChange}
                     addClass="col-md-10 medium-textbox asideField"
                     error="" />
                     <TextInput
                     name="Meal Item"
-                    
+                      label=""
                     placeholder="Meal Item"
                     value=""
-                    onChange={onChange}
+                      onChange={this.onChange}
                     addClass="col-md-10 medium-textbox asideField"
                     error="" />
                     <div className = "formGroup asideSave">
@@ -119,29 +119,29 @@ class Aside extends Component {
                  <div className = "asideForm">
                   <TextInput
                     name="Meal Item"
-                    
+                      label=""
                     placeholder="Destination"
                     value=""
-                    onChange={onChange}
+                      onChange={this.onChange}
                     addClass="col-md-10 medium-textbox asideField"
                     error="" />
                     <TextInput
                     name="Meal Item"
-                    
+                      label=""
                     placeholder="Date"
                     value=""
-                    onChange={onChange}
+                      onChange={this.onChange}
                     addClass="col-md-10 medium-textbox asideField"
                     error="" />
                     <TextInput
                     name="Time"
-                    
+                      label=""
                     placeholder="Cost"
                     value=""
-                    onChange={onChange}
+                      onChange={this.onChange}
                     addClass="col-md-10 medium-textbox asideField"
                     error="" />
-                    
+
                     <div className = "formGroup asideSave">
                     <input
                       type="submit"
@@ -165,8 +165,9 @@ Aside.propTypes = {
   loading: PropTypes.bool.isRequired,
   date: PropTypes.string
 };
+
 function mapStateToProps(state) {
-  console.log(state.date + 'mapStateToProps - Aside')
+  // console.log(state.date + 'mapStateToProps - Aside')
   return {
     date: state.date
   };
